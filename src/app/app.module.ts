@@ -7,12 +7,14 @@ import { MovieListComponent } from './moviehub/movie-list/movie-list.component';
 import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import {AppRootingModule} from "./app-rooting.module";
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MoviehubComponent,
-    MovieListComponent
+    MovieListComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
