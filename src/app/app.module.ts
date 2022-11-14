@@ -8,13 +8,15 @@ import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import {AppRootingModule} from "./app-rooting.module";
 import { HeaderComponent } from './header/header.component';
+import { MovieDetailComponent } from './moviehub/movie-detail/movie-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MoviehubComponent,
     MovieListComponent,
-    HeaderComponent
+    HeaderComponent,
+    MovieDetailComponent
   ],
   imports: [
     BrowserModule,

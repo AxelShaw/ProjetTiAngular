@@ -1,0 +1,16 @@
+<div *ngIf="movie; else movieNotFound">
+  <p>
+    {{movie.idMovie}}<br>
+    {{movie.nameMovie}}<br>
+    {{movie.runtimeMinute}}<br>
+    {{movie.movieType}}<br>
+    {{movie.descriptionMovie}}<br>
+    {{movie.imageMovie}}<br>
+    {{movie.filmGenre}}<br>
+    {{movie.director}}<br>
+    {{movie.release_movie}}<br>
+  </p>
+</div>
+<ng-template #movieNotFound>
+  Movie not found.
+</ng-template>

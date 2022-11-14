@@ -14,4 +14,8 @@ export class MovieService {
   fetchAll(): Observable<DtoInputMovie[]> {
     return this._httpClient.get<DtoInputMovie[]>(MovieService.ENTRY_POINT);
   }
+
+  fetchById(id: number): Observable<DtoInputMovie> {
+    return this._httpClient.get<DtoInputMovie>(`${MovieService.ENTRY_POINT}/${id}`);
+  }
 }

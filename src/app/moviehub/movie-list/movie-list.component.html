@@ -1,7 +1,11 @@
 <div *ngIf="movies.length; else movieListEmpty">
   <ul>
     <li *ngFor="let movie of movies">
-      nom : {{movie.nameMovie}}
+      <a routerLink="../detail/{{movie.idMovie}}">
+        <img src="{{movie.imageMovie}}" alt="movie image">
+        <br />
+        {{movie.nameMovie}}
+      </a>
     </li>
   </ul>
 </div>

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import {MovieListComponent} from "./moviehub/movie-list/movie-list.component";
 import {MoviehubComponent} from "./moviehub/moviehub.component";
+import {MovieDetailComponent} from "./moviehub/movie-detail/movie-detail.component";
 
 const routes: Routes = [
   {
@@ -12,7 +13,11 @@ const routes: Routes = [
         path: 'list', component: MovieListComponent
       }
     ]
+  },
+  {
+    path: 'detail/:movieid', component: MovieDetailComponent
   }
+
 ];
 
 @NgModule({
