@@ -7,5 +7,5 @@ export interface DtoInputMovie {
   imageMovie: string;
   filmGenre:string;
   director:string;
-  release_movie:string;
+  release_movie: string;
 }

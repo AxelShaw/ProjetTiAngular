@@ -9,6 +9,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {AppRootingModule} from "./app-rooting.module";
 import { HeaderComponent } from './header/header.component';
 import { MovieDetailComponent } from './moviehub/movie-detail/movie-detail.component';
+import { MovieHomeComponent } from './moviehub/movie-home/movie-home.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MovieDetailComponent } from './moviehub/movie-detail/movie-detail.compo
     MoviehubComponent,
     MovieListComponent,
     HeaderComponent,
-    MovieDetailComponent
+    MovieDetailComponent,
+    MovieHomeComponent
   ],
   imports: [
     BrowserModule,

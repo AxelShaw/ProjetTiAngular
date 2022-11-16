@@ -4,6 +4,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {MovieListComponent} from "./moviehub/movie-list/movie-list.component";
 import {MoviehubComponent} from "./moviehub/moviehub.component";
 import {MovieDetailComponent} from "./moviehub/movie-detail/movie-detail.component";
+import {MovieHomeComponent} from "./moviehub/movie-home/movie-home.component";
 
 const routes: Routes = [
   {
@@ -16,6 +17,9 @@ const routes: Routes = [
   },
   {
     path: 'detail/:movieid', component: MovieDetailComponent
+  },
+  {
+    path: 'home', component: MovieHomeComponent
   }
 
 ];

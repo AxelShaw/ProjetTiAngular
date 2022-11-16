@@ -17,12 +17,12 @@ export class MovieDetailComponent implements OnInit {
     this._route.paramMap.subscribe(args => {
       if (args.has("movieid")) {
         const movieId = Number(args.get("movieid"));
-        this.fetchUserData(movieId);
+        this.fetchMovieData(movieId);
       }
     });
   }
 
-  private fetchUserData(id: number) {
+  private fetchMovieData(id: number) {
     this._movieService
       .fetchById(id)
       .subscribe(movie => this.movie = movie);
