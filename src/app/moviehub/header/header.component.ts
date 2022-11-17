@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {DtoInputMovie} from "../dtos/dto-input-movie";
 import {MovieService} from "../movie.service";
 
@@ -13,15 +13,20 @@ export class HeaderComponent implements OnInit {
   constructor(private _movieService: MovieService) { }
 
   ngOnInit(): void {
+    this.searchMovies = [];
   }
 
   search(chaine: HTMLInputElement) {
     let name = chaine.value;
     name = name.trim();
     if(name.length){
-      this._movieService.fetchAll().subscribe(
+      this._movieService.fetchByName(name).subscribe(
         (movies) => {
+          // @ts-ignore
           this.searchMovies = movies;
+          while (this.searchMovies.length > 5){
+            this.searchMovies.pop();
+          }
         }
       );
     }else{
@@ -29,7 +34,7 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  selectMovie(movie: DtoInputMovie) {
-
+  selectInput() {
+    this.searchMovies = [];
   }
 }

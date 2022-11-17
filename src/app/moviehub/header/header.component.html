@@ -5,10 +5,12 @@
     #inputSearch
     class="form-control"
     (keyup)="search(inputSearch)"
+    (blur)="selectInput()"
+    (change)="selectInput()"
   >
 
   <ul class="menuChoix">
-    <div *ngFor="let movie of searchMovies" class="list-movie" (click)="selectMovie(movie)">
+    <div *ngFor="let movie of searchMovies" class="list-movie">
       <a routerLink="../detail/{{movie.idMovie}}">
       <li class="choix">
         {{movie.nameMovie}}

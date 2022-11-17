@@ -1,15 +1,20 @@
-<div *ngIf="movie; else movieNotFound">
-  <p>
-    {{movie.idMovie}}<br>
-    {{movie.nameMovie}}<br>
-    {{movie.runtimeMinute}}<br>
-    {{movie.movieType}}<br>
-    {{movie.descriptionMovie}}<br>
-    {{movie.imageMovie}}<br>
-    {{movie.filmGenre}}<br>
-    {{movie.director}}<br>
-    {{movie.release_movie}}<br>
-  </p>
+<div *ngIf="movie; else movieNotFound" class="all">
+
+    <h2 class="titre">{{movie.nameMovie}}</h2>
+
+    <img src="{{movie.imageMovie}}" alt="img movie">
+    <div>
+      {{movie.release_movie | date:"dd/MM/yyyy"}} - {{movie.movieType}} / {{movie.runtimeMinute}} min / {{movie.filmGenre}} <br />
+      De {{movie.director}}
+
+    </div>
+
+    <div>
+      <h2>Synopsis</h2>
+      {{movie.descriptionMovie}}
+    </div>
+
+
 </div>
 <ng-template #movieNotFound>
   Movie not found.

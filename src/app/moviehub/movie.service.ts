@@ -19,4 +19,8 @@ export class MovieService {
     return this._httpClient.get<DtoInputMovie>(`${MovieService.ENTRY_POINT}/${id}`);
   }
 
+  fetchByName(name : string):Observable<DtoInputMovie>{
+    return this._httpClient.get<DtoInputMovie>(`${MovieService.ENTRY_POINT}/${name}`);
+  }
+
 }
