@@ -7,7 +7,7 @@ import { MovieListComponent } from './moviehub/movie-list/movie-list.component';
 import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
 import {AppRootingModule} from "./app-rooting.module";
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent } from './moviehub/header/header.component';
 import { MovieDetailComponent } from './moviehub/movie-detail/movie-detail.component';
 import { MovieHomeComponent } from './moviehub/movie-home/movie-home.component';
 

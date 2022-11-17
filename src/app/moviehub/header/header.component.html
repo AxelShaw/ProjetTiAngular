@@ -1,0 +1,36 @@
+<nav>
+  <img src="../../../assets/img/logo.png" alt="logo site">
+  <input
+    type="text"
+    #inputSearch
+    class="form-control"
+    (keyup)="search(inputSearch)"
+  >
+
+  <ul class="menuChoix">
+    <div *ngFor="let movie of searchMovies" class="list-movie" (click)="selectMovie(movie)">
+      <a routerLink="../detail/{{movie.idMovie}}">
+      <li class="choix">
+        {{movie.nameMovie}}
+      </li>
+      </a>
+    </div>
+  </ul>
+
+
+  <a class="login" routerLink="movies">Login</a>
+  <ul class="menu">
+    <li>
+      <a routerLink="home">Accueil</a>
+    </li>
+    <li>
+      <a routerLink="movies">Liste film</a>
+    </li>
+    <li>
+      <a routerLink="movies">Movie panel</a>
+    </li>
+    <li>
+      <a routerLink="movies">Movie panel</a>
+    </li>
+  </ul>
+</nav>

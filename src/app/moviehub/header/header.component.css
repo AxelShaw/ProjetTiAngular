@@ -42,11 +42,38 @@ img{
 }
 
 input{
-  width: 40%;
+  width: 500px;
   padding: 5px;
   margin-top: 15px;
   margin-left: 50px;
   box-sizing: border-box;
   border: 2px solid;
   border-radius: 4px;
+}
+
+.menuChoix{
+  margin-left: 150px;
+  list-style:none;
+  text-decoration: none;
+  color: black;
+  position:absolute;
+  display:block;
+  width:1000px;
+}
+
+.choix{
+  background-color: white;
+  width: 40%;
+  border: 1px solid black;
+  padding: 15px;
+  list-style:none;
+}
+
+.choix:hover{
+  background-color: goldenrod;
+}
+
+a{
+  text-decoration: none;
+  color: black;
 }
