@@ -1,12 +1,15 @@
 <div *ngIf="movie; else movieNotFound" class="all">
 
+
     <h2 class="titre">{{movie.nameMovie}}</h2>
 
     <img src="{{movie.imageMovie}}" alt="img movie">
     <div>
       {{movie.release_movie | date:"dd/MM/yyyy"}} - {{movie.movieType}} / {{movie.runtimeMinute}} min / {{movie.filmGenre}} <br />
       De {{movie.director}}
-
+    </div>
+    <div *ngIf="rating; else movieNotFound">
+        {{rating.average_rating}} / 100 - {{rating.numVote}} votes
     </div>
 
     <div>
