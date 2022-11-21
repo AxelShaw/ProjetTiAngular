@@ -8,7 +8,7 @@
       {{movie.release_movie | date:"dd/MM/yyyy"}} - {{movie.movieType}} / {{movie.runtimeMinute}} min / {{movie.filmGenre}} <br />
       De {{movie.director}}
     </div>
-    <div *ngIf="rating; else movieNotFound">
+    <div *ngIf="rating; else ratingNotFound">
         {{rating.average_rating}} / 100 - {{rating.numVote}} votes
     </div>
 
@@ -21,4 +21,7 @@
 </div>
 <ng-template #movieNotFound>
   Movie not found.
+</ng-template>
+<ng-template #ratingNotFound>
+  Rating not found.
 </ng-template>

@@ -4,3 +4,10 @@ li{
   margin-left:15px;
   margin-bottom:15px;
 }
+.ratingSpan{
+  float: right;
+}
+
+img{
+  width: 250px;
+}

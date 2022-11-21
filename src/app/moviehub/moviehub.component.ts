@@ -17,7 +17,7 @@ export class MoviehubComponent implements OnInit {
   }
 
   private fetchAll() {
-    this._movieService.fetchAll().subscribe(movies => this.movies = movies);
+    this._movieService.fetchAllMovie().subscribe(movies => this.movies = movies);
   }
 
 }

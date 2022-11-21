@@ -13,7 +13,7 @@ export class MovieService {
   private static readonly ENTRY_POINT_RATING= environment.apiUrl + "/ratingmovie"
   constructor(private _httpClient: HttpClient) { }
 
-  fetchAll(): Observable<DtoInputMovie[]> {
+  fetchAllMovie(): Observable<DtoInputMovie[]> {
     return this._httpClient.get<DtoInputMovie[]>(MovieService.ENTRY_POINT);
   }
 
@@ -27,6 +27,10 @@ export class MovieService {
 
   fetchByRating(id : number):Observable<DtoInputRatingMovie>{
     return this._httpClient.get<DtoInputRatingMovie>(`${MovieService.ENTRY_POINT_RATING}/${id}`);
+  }
+
+  fetchAllRating():Observable<DtoInputRatingMovie[]>{
+    return this._httpClient.get<DtoInputRatingMovie[]>(`${MovieService.ENTRY_POINT_RATING}`);
   }
 
 }
