@@ -3,6 +3,7 @@ import {DtoInputMovie} from "../dtos/dto-input-movie";
 import {MovieService} from "../movie.service";
 import * as module from "module";
 import {formatDate} from "@angular/common";
+import {DtoInputRatingMovie} from "../dtos/dto-input-rating-movie";
 
 @Component({
   selector: 'app-movie-home',
@@ -11,6 +12,7 @@ import {formatDate} from "@angular/common";
 })
 export class MovieHomeComponent implements OnInit {
   movies: DtoInputMovie[] = [];
+  ratings : DtoInputRatingMovie[] = [];
   myDate = new Date();
 
 
@@ -20,6 +22,7 @@ export class MovieHomeComponent implements OnInit {
   ngOnInit(): void {
     this.fetchAll();
     this.getDateT();
+    this.fetchAllRating();
   }
 
   private fetchAll() {
@@ -33,5 +36,9 @@ export class MovieHomeComponent implements OnInit {
   convert(dateString : string){
     let newDate = new Date(dateString);
     return newDate;
+  }
+
+  private fetchAllRating() {
+    this._movieService.fetchAllRating().subscribe(rating => this.ratings = rating);
   }
 }

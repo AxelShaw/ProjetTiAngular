@@ -4,9 +4,9 @@
       <a routerLink="../detail/{{movie.idMovie}}">
         <img src="{{movie.imageMovie}}" alt="movie image">
         <br />
-        {{movie.nameMovie}}
+        <div class="name">{{movie.nameMovie}}</div>
         <span *ngFor="let rating of ratings">
-          <span *ngIf="movie.idMovie == rating.movieRefId" class="ratingSpan">
+          <span *ngIf="movie.idMovie == rating.movieRefId && rating.numVote != 0" class="ratingSpan">
             {{rating.average_rating}} / 100
           </span>
         </span>

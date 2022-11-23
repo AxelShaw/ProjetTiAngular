@@ -11,7 +11,6 @@ import {DtoInputRatingMovie} from "../dtos/dto-input-rating-movie";
 export class MovieListComponent implements OnInit {
   @Input() movies: DtoInputMovie[] = [];
   ratings : DtoInputRatingMovie[] = [];
-  rating: DtoInputRatingMovie | null = null;
 
 
 
@@ -24,11 +23,4 @@ export class MovieListComponent implements OnInit {
   private fetchAllRating() {
     this._movieService.fetchAllRating().subscribe(rating => this.ratings = rating);
   }
-
-  public fetchByRating(id: number){
-    this._movieService
-      .fetchByRating(id)
-      .subscribe(rating => this.rating = rating)
-  }
-
 }

@@ -1,12 +1,17 @@
 <h2>Home</h2>
 <div *ngIf="movies.length; else movieListEmpty">
   <ul>
-    <div *ngFor="let movie of movies">
+    <div *ngFor="let movie of movies" class="home">
       <li *ngIf="convert(movie.release_movie) > myDate">
         <a routerLink="../detail/{{movie.idMovie}}">
           <img src="{{movie.imageMovie}}" alt="movie image">
           <br />
-          {{movie.nameMovie}}<br />
+          <div class="name">{{movie.nameMovie}}</div>
+          <span *ngFor="let rating of ratings">
+          <span *ngIf="movie.idMovie == rating.movieRefId && rating.numVote != 0" class="ratingSpan">
+            {{rating.average_rating}} / 100
+          </span>
+        </span>
         </a>
       </li>
     </div>

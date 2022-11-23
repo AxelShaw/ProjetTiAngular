@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {DtoInputMovie} from "../dtos/dto-input-movie";
-import {MovieService} from "../movie.service";
+import {DtoInputMovie} from "../moviehub/dtos/dto-input-movie";
+import {MovieService} from "../moviehub/movie.service";
 
 @Component({
   selector: 'app-header',

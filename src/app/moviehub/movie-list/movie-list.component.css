@@ -11,3 +11,16 @@ li{
 img{
   width: 250px;
 }
+
+li{
+  width: 250px;
+}
+
+.name{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 75%;
+  display:inline-block;
+}
+
