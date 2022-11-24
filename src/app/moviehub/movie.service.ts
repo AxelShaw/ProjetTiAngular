@@ -33,4 +33,12 @@ export class MovieService {
     return this._httpClient.get<DtoInputRatingMovie[]>(`${MovieService.ENTRY_POINT_RATING}`);
   }
 
+  fetchAllRatingDown():Observable<DtoInputRatingMovie[]>{
+    return this._httpClient.get<DtoInputRatingMovie[]>(`${MovieService.ENTRY_POINT_RATING}/Down`);
+  }
+
+  fetchAllRatingTop():Observable<DtoInputRatingMovie[]>{
+    return this._httpClient.get<DtoInputRatingMovie[]>(`${MovieService.ENTRY_POINT_RATING}/Top`);
+  }
+
 }

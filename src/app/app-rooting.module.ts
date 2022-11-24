@@ -6,6 +6,7 @@ import {MoviehubComponent} from "./moviehub/moviehub.component";
 import {MovieDetailComponent} from "./moviehub/movie-detail/movie-detail.component";
 import {MovieHomeComponent} from "./moviehub/movie-home/movie-home.component";
 import {AdminhubComponent} from "./adminhub/adminhub.component";
+import {MovieTop100Component} from "./moviehub/movie-top100/movie-top100.component";
 
 const routes: Routes = [
   {
@@ -24,7 +25,11 @@ const routes: Routes = [
   },
   {
     path: 'admin', component: AdminhubComponent
+  },
+  {
+    path: 'top100', component: MovieTop100Component
   }
+
 
 ];
 
