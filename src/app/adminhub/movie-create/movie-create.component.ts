@@ -17,7 +17,7 @@ export class MovieCreateComponent implements OnInit {
     runtimeMinute: [0, [Validators.required, Validators.min(1)]],
     movieType: ['', Validators.required],
     descriptionMovie: ['', Validators.required],
-    imageMovie: ['', Validators.required],
+    imageMovie: ['assets/movie/', Validators.required],
     filmGenre: ['', Validators.required],
     director: ['', Validators.required],
     release_movie: ['', Validators.required]
