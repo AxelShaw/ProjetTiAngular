@@ -11,6 +11,9 @@ import { HeaderComponent } from './header/header.component';
 import { MovieDetailComponent } from './moviehub/movie-detail/movie-detail.component';
 import { MovieHomeComponent } from './moviehub/movie-home/movie-home.component';
 import { AdminhubComponent } from './adminhub/adminhub.component';
+import { MovieCreateComponent } from './adminhub/movie-create/movie-create.component';
+import { MovieListAdminComponent } from './adminhub/movie-list-admin/movie-list-admin.component';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { AdminhubComponent } from './adminhub/adminhub.component';
     HeaderComponent,
     MovieDetailComponent,
     MovieHomeComponent,
-    AdminhubComponent
+    AdminhubComponent,
+    MovieCreateComponent,
+    MovieListAdminComponent,
+
   ],
   imports: [
     BrowserModule,

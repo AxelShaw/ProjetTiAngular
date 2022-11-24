@@ -1,0 +1,11 @@
+<div *ngIf="movies.length; else movieListEmpty">
+  <ul>
+    <li *ngFor="let movie of movies">
+      {{movie.idMovie}}
+      {{movie.nameMovie}}
+    </li>
+  </ul>
+</div>
+<ng-template #movieListEmpty>
+  <p>Movie list is empty.</p>
+</ng-template>
