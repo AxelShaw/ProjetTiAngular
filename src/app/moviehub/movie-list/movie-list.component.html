@@ -2,7 +2,7 @@
   <ul>
     <li *ngFor="let movie of movies">
       <a routerLink="../detail/{{movie.idMovie}}">
-        <img src="{{movie.imageMovie}}" alt="movie image">
+        <img src="data:image/jpg;base64, {{movie.imageMovie}}" alt="movie image">
         <br />
         <div class="name">{{movie.nameMovie}}</div>
         <span *ngFor="let rating of ratings">
