@@ -16,22 +16,29 @@ export class HeaderComponent implements OnInit {
     this.searchMovies = [];
   }
 
-  search(chaine: HTMLInputElement) {
-    let name = chaine.value;
-    name = name.trim();
-    if(name.length){
-      this._movieService.fetchByName(name).subscribe(
-        (movies) => {
-          // @ts-ignore
-          this.searchMovies = movies;
-          while (this.searchMovies.length > 5){
-            this.searchMovies.pop();
+
+
+  search(chaine: HTMLInputElement , delay = 700) {
+    let time;
+    clearTimeout(time);
+
+    time = setTimeout(() => {
+      let name = chaine.value;
+      name = name.trim();
+      if(name.length){
+        this._movieService.fetchByName(name).subscribe(
+          (movies) => {
+            // @ts-ignore
+            this.searchMovies = movies;
+            while (this.searchMovies.length > 5){
+              this.searchMovies.pop();
+            }
           }
-        }
-      );
-    }else{
-      this.searchMovies = [];
-    }
+        );
+      }else{
+        this.searchMovies = [];
+      }
+    }, delay);
   }
 
   selectInput() {
