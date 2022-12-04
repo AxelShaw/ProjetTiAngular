@@ -30,9 +30,6 @@ export class HeaderComponent implements OnInit {
           (movies) => {
             // @ts-ignore
             this.searchMovies = movies;
-            while (this.searchMovies.length > 5){
-              this.searchMovies.pop();
-            }
           }
         );
       }else{
