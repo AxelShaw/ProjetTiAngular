@@ -14,10 +14,12 @@ import {DtoInputUser} from "../dtos/dto-input-user";
 export class MovieDetailComponent implements OnInit {
   movie: DtoInputMovie | null = null;
   rating: DtoInputRatingMovie | null = null;
-  user: DtoInputUser | null = null;
+  users: DtoInputUser [] = [];
   comments : DtoInputComments[] = [];
 
-  constructor(private _movieService: MovieService, private _route: ActivatedRoute) { }
+  constructor(private _movieService: MovieService, private _route: ActivatedRoute) {
+
+  }
 
   ngOnInit(): void {
     this._route.paramMap.subscribe(args => {
@@ -27,6 +29,7 @@ export class MovieDetailComponent implements OnInit {
         this.fetchByRating(movieId);
         this.fetchAllCommentById(movieId);
       }
+      this.fetchAllUser();
     });
   }
 
@@ -48,11 +51,7 @@ export class MovieDetailComponent implements OnInit {
       .subscribe(comment => this.comments = comment);
   }
 
-  fetchByIdUser(id : number){
-    this._movieService
-      .fetchByIdUser(id)
-      .subscribe(user => this.user = user);
-
-    return this.user;
+  private fetchAllUser(){
+    this._movieService.fetchAllUser().subscribe(user => this.users = user);
   }
 }

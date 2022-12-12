@@ -22,11 +22,13 @@
 
 <div *ngIf="comments; else commentNotFound" class="commentList">
     <li *ngFor="let comment of comments">
-      <div *ngIf="fetchByIdUser(comment.idUserRef) && user; else userNotFound">
-        {{user.nickname}}
-        {{comment.rating}} / 100<br>
-        {{comment.commentText}}
-      </div>
+      <span *ngFor="let user of users">
+        <span *ngIf="comment.idUserRef == user.idUser">
+          {{user.nickname}}
+        </span>
+      </span>
+      {{comment.rating}} / 100<br>
+      {{comment.commentText}}
     </li>
 </div>
 <ng-template #movieNotFound>

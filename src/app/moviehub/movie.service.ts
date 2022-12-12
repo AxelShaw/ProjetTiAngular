@@ -49,8 +49,8 @@ export class MovieService {
     return this._httpClient.get<DtoInputComments[]>(`${MovieService.ENTRY_POINT_COMMENT}/${id}`);
   }
 
-  fetchByIdUser(id : number):Observable<DtoInputUser>{
-    return this._httpClient.get<DtoInputUser>(`${MovieService.ENTRY_POINT_USER}/${id}`);
+  fetchAllUser():Observable<DtoInputUser[]>{
+    return this._httpClient.get<DtoInputUser[]>(`${MovieService.ENTRY_POINT_USER}`);
   }
 
 }
