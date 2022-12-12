@@ -19,9 +19,25 @@
 
 
 </div>
+
+<div *ngIf="comments; else commentNotFound" class="commentList">
+    <li *ngFor="let comment of comments">
+      <div *ngIf="fetchByIdUser(comment.idUserRef) && user; else userNotFound">
+        {{user.nickname}}
+        {{comment.rating}} / 100<br>
+        {{comment.commentText}}
+      </div>
+    </li>
+</div>
 <ng-template #movieNotFound>
   Movie not found.
 </ng-template>
 <ng-template #ratingNotFound>
   Rating not found.
+</ng-template>
+<ng-template #commentNotFound>
+  No comment yet.
+</ng-template>
+<ng-template #userNotFound>
+  User not found.
 </ng-template>

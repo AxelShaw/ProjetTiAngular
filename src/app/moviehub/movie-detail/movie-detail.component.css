@@ -1,6 +1,7 @@
 img{
   float: left;
   width: 300px;
+  inline : block;
 }
 
 .all{
@@ -10,6 +11,10 @@ img{
 h2{
   text-align: center;
   text-transform: uppercase;
+}
+.commentList{
+  padding : 15px;
+  float: left;
 }
 
 

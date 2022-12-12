@@ -4,6 +4,8 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {DtoInputMovie} from "./dtos/dto-input-movie";
 import {DtoInputRatingMovie} from "./dtos/dto-input-rating-movie";
+import {DtoInputComments} from "./dtos/dto-input-comments";
+import {DtoInputUser} from "./dtos/dto-input-user";
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +13,8 @@ import {DtoInputRatingMovie} from "./dtos/dto-input-rating-movie";
 export class MovieService {
   private static readonly ENTRY_POINT= environment.apiUrl + "/movie"
   private static readonly ENTRY_POINT_RATING= environment.apiUrl + "/ratingmovie"
+  private static readonly ENTRY_POINT_COMMENT= environment.apiUrl + "/commentmovie"
+  private static readonly ENTRY_POINT_USER= environment.apiUrl + "/user"
   constructor(private _httpClient: HttpClient) { }
 
   fetchAllMovie(): Observable<DtoInputMovie[]> {
@@ -39,6 +43,14 @@ export class MovieService {
 
   fetchAllRatingTop():Observable<DtoInputRatingMovie[]>{
     return this._httpClient.get<DtoInputRatingMovie[]>(`${MovieService.ENTRY_POINT_RATING}/Top`);
+  }
+
+  fetchAllCommentById(id : number):Observable<DtoInputComments[]>{
+    return this._httpClient.get<DtoInputComments[]>(`${MovieService.ENTRY_POINT_COMMENT}/${id}`);
+  }
+
+  fetchByIdUser(id : number):Observable<DtoInputUser>{
+    return this._httpClient.get<DtoInputUser>(`${MovieService.ENTRY_POINT_USER}/${id}`);
   }
 
 }

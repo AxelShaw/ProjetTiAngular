@@ -8,7 +8,7 @@ import {DtoInputRatingMovie} from "../dtos/dto-input-rating-movie";
 @Component({
   selector: 'app-movie-home',
   templateUrl: './movie-home.component.html',
-  styleUrls: ['./movie-home.component.css']
+  styleUrls: ['./movie-home.component.css'],
 })
 export class MovieHomeComponent implements OnInit {
   movies: DtoInputMovie[] = [];

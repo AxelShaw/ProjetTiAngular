@@ -8,10 +8,10 @@ import {DtoInputRatingMovie} from "../dtos/dto-input-rating-movie";
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.css']
 })
+
 export class MovieListComponent implements OnInit {
   @Input() movies: DtoInputMovie[] = [];
   ratings : DtoInputRatingMovie[] = [];
-
 
 
   constructor(private _movieService: MovieService) { }
