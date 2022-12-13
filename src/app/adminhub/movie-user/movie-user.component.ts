@@ -10,6 +10,7 @@ export class MovieUserComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

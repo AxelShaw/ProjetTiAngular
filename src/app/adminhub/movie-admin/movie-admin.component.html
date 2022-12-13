@@ -1,1 +1,73 @@
-<p>movie-admin works!</p>
+<form [formGroup]="form" (ngSubmit)="emitMovieCreated()" (ngSubmit)="emitRatingMovieCreated()">
+  <div>
+    <label>
+      movie name: <input type="text" formControlName="nameMovie">
+    </label>
+    <div *ngIf="control('nameMovie')?.dirty && control('nameMovie')?.invalid">
+      Please, you have to provide a name for the movie.
+    </div>
+  </div>
+  <div>
+    <label>
+      runtime minutes: <input type="number" formControlName="runtimeMinute">
+    </label>
+    <div *ngIf="control('runtimeMinute')?.dirty && control('runtimeMinute')?.invalid">
+      You need to provide an amount of minutes for completing the movie.
+    </div>
+  </div>
+  <div>
+    <label>
+      movie type:
+      <select [(ngModel)]='ngDropdown'  formControlName="movieType" id="dropdownOption" class='form-control'>
+        <option value="streaming">streaming</option>
+        <option value="TV">en salle</option>
+        <option value="pasDispo">pas disponible</option>
+      </select>
+    </label>
+    <div *ngIf="control('movieType')?.dirty && control('movieType')?.invalid">
+      Please, you have to provide a type for the movie.
+    </div>
+  </div>
+  <div>
+    <label>
+      description movie: <input type="text" formControlName="descriptionMovie">
+    </label>
+    <div *ngIf="control('descriptionMovie')?.dirty && control('descriptionMovie')?.invalid">
+      Please, you have to provide a description for the movie.
+    </div>
+  </div>
+  <div>
+    <label>
+      image movie: <input type="text" formControlName="imageMovie">
+    </label>
+    <div *ngIf="control('imageMovie')?.dirty && control('imageMovie')?.invalid">
+      Please, you have to provide a description for the movie.
+    </div>
+  </div>
+  <div>
+    <label>
+      film genre: <input type="text" formControlName="filmGenre">
+    </label>
+    <div *ngIf="control('filmGenre')?.dirty && control('filmGenre')?.invalid">
+      Please, you have to provide a genre for the movie.
+    </div>
+  </div>
+  <div>
+    <label>
+      director: <input type="text" formControlName="director">
+    </label>
+    <div *ngIf="control('director')?.dirty && control('director')?.invalid">
+      Please, you have to provide a director for the movie.
+    </div>
+  </div>
+  <div>
+    <label>
+      release movie: <input type="text" formControlName="release_movie">
+    </label>
+    <div *ngIf="control('release_movie')?.dirty && control('release_movie')?.invalid">
+      Please, you have to provide a release movie for the movie.
+    </div>
+  </div>
+  <input type="submit" [disabled]="form.invalid" >
+</form>
+

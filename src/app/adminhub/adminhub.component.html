@@ -1,8 +1,4 @@
-<div class="menuAdmin">
-  <a routerLink="movieAdmin">Movie admin</a>
-  <a routerLink="userAdmin">Utilisateur admin</a>
-</div>
+<app-movie-admin (ratingmovieCreated)="createRatingMovie($event)" (movieCreated)="createMovie($event)" ></app-movie-admin>
 
-<router-outlet></router-outlet>
 
 
