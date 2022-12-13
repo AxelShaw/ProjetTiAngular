@@ -1,8 +1,8 @@
-<h2>Movie panel</h2>
+<div class="menuAdmin">
+  <a routerLink="movieAdmin">Movie admin</a>
+  <a routerLink="userAdmin">Utilisateur admin</a>
+</div>
 
-<h3>Add a new movie</h3>
-<app-movie-create (movieCreated)="create($event)"></app-movie-create>
-<h3>List of movies</h3>
-<app-movie-list-admin  [movies]="movies"></app-movie-list-admin>
+<router-outlet></router-outlet>
 
 

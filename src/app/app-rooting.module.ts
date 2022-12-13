@@ -8,6 +8,8 @@ import {MovieHomeComponent} from "./moviehub/movie-home/movie-home.component";
 import {AdminhubComponent} from "./adminhub/adminhub.component";
 import {MovieTop100Component} from "./moviehub/movie-top100/movie-top100.component";
 import {MovieBad100Component} from "./moviehub/movie-bad100/movie-bad100.component";
+import {MovieAdminComponent} from "./adminhub/movie-admin/movie-admin.component";
+import {MovieUserComponent} from "./adminhub/movie-user/movie-user.component";
 
 const routes: Routes = [
   {
@@ -25,16 +27,19 @@ const routes: Routes = [
     path: 'home', component: MovieHomeComponent
   },
   {
-    path: 'admin', component: AdminhubComponent
+    path: 'admin', component: AdminhubComponent,
+    children: [
+      {
+        path: 'movieAdmin', component: MovieAdminComponent
+      },
+      {
+        path: 'userAdmin', component: MovieUserComponent
+      }
+    ]
   },
   {
     path: 'top100', component: MovieTop100Component
-  },
-  {
-    path: 'bad100', component: MovieBad100Component
   }
-
-
 ];
 
 @NgModule({

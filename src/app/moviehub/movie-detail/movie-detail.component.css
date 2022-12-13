@@ -5,7 +5,9 @@ img{
 }
 
 .all{
-  margin: 50px;
+  margin: 1%;
+  display: block;
+  float: right;
 }
 
 h2{
@@ -15,6 +17,28 @@ h2{
 .commentList{
   padding : 15px;
   float: left;
+}
+
+.createComment{
+  width: 90%;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.noteComment{
+  width: 5%;
+  margin-left: 5%;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.buttonEnvoie{
+  margin-left: auto;
+  display: block;
+  margin-right: 5%;
 }
 
 

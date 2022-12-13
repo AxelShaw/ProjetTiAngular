@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit} from '@angular/core';
 import {DtoInputMovie} from "../dtos/dto-input-movie";
 import {MovieService} from "../movie.service";
 import {ActivatedRoute} from "@angular/router";
@@ -16,6 +16,7 @@ export class MovieDetailComponent implements OnInit {
   rating: DtoInputRatingMovie | null = null;
   users: DtoInputUser [] = [];
   comments : DtoInputComments[] = [];
+  commentDelete: EventEmitter<DtoInputComments> = new EventEmitter<DtoInputComments>();
 
   constructor(private _movieService: MovieService, private _route: ActivatedRoute) {
 
@@ -53,5 +54,11 @@ export class MovieDetailComponent implements OnInit {
 
   private fetchAllUser(){
     this._movieService.fetchAllUser().subscribe(user => this.users = user);
+  }
+
+  DeleteComment(comment: DtoInputComments) {
+    this._movieService.deleteComment(comment.idComMovie).subscribe(() =>{
+      this.comments = this.comments.filter(comments =>comments.idComMovie !== comment.idComMovie);
+    });
   }
 }
