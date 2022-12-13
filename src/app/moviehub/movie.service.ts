@@ -6,6 +6,7 @@ import {DtoInputMovie} from "./dtos/dto-input-movie";
 import {DtoInputRatingMovie} from "./dtos/dto-input-rating-movie";
 import {DtoInputComments} from "./dtos/dto-input-comments";
 import {DtoInputUser} from "./dtos/dto-input-user";
+import {DtoOutputCreateComment} from "./dtos/dto-output-create-comment";
 
 @Injectable({
   providedIn: 'root'
@@ -57,4 +58,7 @@ export class MovieService {
     return this._httpClient.delete(MovieService.ENTRY_POINT_COMMENT + "/" + id);
   }
 
+  createComment(dto: DtoOutputCreateComment | null): Observable<DtoInputComments> {
+    return this._httpClient.post<DtoInputComments>(MovieService.ENTRY_POINT_COMMENT, dto);
+  }
 }

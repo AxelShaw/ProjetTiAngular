@@ -16,11 +16,11 @@
     </div>
 </div>
 
-<div>
-  <form>
-    <input id="note" type="number" max="100" min="0" class="noteComment"/>
-    <input id="comment" type="text" maxlength="500" class="createComment"/>
-    <button class="buttonEnvoie">Envoyer</button>
+<div *ngIf="movie" class="createCommentAll">
+  <form [formGroup]="form" (ngSubmit)="emitCommentCreated(movie.idMovie)">
+    <input id="note" type="number" max="100" min="0" class="noteComment" formControlName="rating"/>
+    <input id="comment" type="text" maxlength="500" class="createComment" formControlName="commentText"/>
+    <button class="buttonEnvoie" type="submit" value="Submit">Envoyer</button>
   </form>
 </div>
 

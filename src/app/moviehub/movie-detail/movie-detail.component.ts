@@ -5,6 +5,8 @@ import {ActivatedRoute} from "@angular/router";
 import {DtoInputRatingMovie} from "../dtos/dto-input-rating-movie";
 import {DtoInputComments} from "../dtos/dto-input-comments";
 import {DtoInputUser} from "../dtos/dto-input-user";
+import {DtoOutputCreateComment} from "../dtos/dto-output-create-comment";
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-movie-detail',
@@ -16,10 +18,16 @@ export class MovieDetailComponent implements OnInit {
   rating: DtoInputRatingMovie | null = null;
   users: DtoInputUser [] = [];
   comments : DtoInputComments[] = [];
-  commentDelete: EventEmitter<DtoInputComments> = new EventEmitter<DtoInputComments>();
+  createComment : DtoOutputCreateComment | null = null;
+  form : FormGroup;
 
-  constructor(private _movieService: MovieService, private _route: ActivatedRoute) {
-
+  constructor(private _movieService: MovieService, private _route: ActivatedRoute, private _fb: FormBuilder) {
+    this.form = this._fb.group({
+      rating: new FormControl(),
+      commentText: new FormControl(''),
+      idMovieRef: 0,
+      idUserRef: 1
+    })
   }
 
   ngOnInit(): void {
@@ -57,8 +65,16 @@ export class MovieDetailComponent implements OnInit {
   }
 
   DeleteComment(comment: DtoInputComments) {
-    this._movieService.deleteComment(comment.idComMovie).subscribe(() =>{
-      this.comments = this.comments.filter(comments =>comments.idComMovie !== comment.idComMovie);
-    });
+    if (confirm("Êtes-vous sur de vouloir supprimer ce commentaire ? ")) {
+      this._movieService.deleteComment(comment.idComMovie).subscribe(() => {
+        this.comments = this.comments.filter(comments => comments.idComMovie !== comment.idComMovie);
+      });
+    }
+  }
+
+  emitCommentCreated(id : number) {
+    this.form.controls['idMovieRef'].setValue(5);
+    this.createComment = this.form.value;
+    this._movieService.createComment(this.createComment).subscribe(comment => this.comments.push(comment))
   }
 }

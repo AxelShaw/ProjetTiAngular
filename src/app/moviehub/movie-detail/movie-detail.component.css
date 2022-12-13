@@ -2,12 +2,13 @@ img{
   float: left;
   width: 300px;
   inline : block;
+  margin-right: 10px;
 }
 
 .all{
-  margin: 1%;
   display: block;
   float: right;
+  width: 100%;
 }
 
 h2{
@@ -30,8 +31,8 @@ h2{
 
 .noteComment{
   width: 5%;
+  margin-top: 10px;
   margin-left: 5%;
-  display: block;
   margin-bottom: 10px;
 }
 
@@ -40,5 +41,4 @@ h2{
   display: block;
   margin-right: 5%;
 }
-
 
