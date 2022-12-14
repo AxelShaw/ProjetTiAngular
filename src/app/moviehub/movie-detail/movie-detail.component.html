@@ -17,11 +17,13 @@
 </div>
 
 <div *ngIf="movie" class="createCommentAll">
-  <form [formGroup]="form" (ngSubmit)="emitCommentCreated(movie.idMovie)">
-    <input id="note" type="number" max="100" min="0" class="noteComment" formControlName="rating"/>
-    <input id="comment" type="text" maxlength="500" class="createComment" formControlName="commentText"/>
-    <button class="buttonEnvoie" type="submit" value="Submit">Envoyer</button>
-  </form>
+  <div *ngIf="rating">
+    <form [formGroup]="form" (ngSubmit)="emitCommentCreated(movie.idMovie, rating)">
+      <input id="noteInput" type="number" max="100" min="0" class="noteComment" formControlName="rating" required/>
+      <input id="commentInput" type="text" maxlength="500" class="createComment" formControlName="commentText" />
+      <button class="buttonEnvoie" type="submit" value="Submit">Envoyer</button>
+    </form>
+  </div>
 </div>
 
 <div *ngIf="comments; else commentNotFound" class="commentList">
@@ -33,7 +35,9 @@
     </span>
     {{comment.rating}} / 100<br>
     {{comment.commentText}}<br>
-    <button (click)="DeleteComment(comment)">supprimer</button>
+    <div *ngIf="rating">
+      <button (click)="DeleteComment(comment, rating)">supprimer</button>
+    </div>
   </li>
 </div>
 

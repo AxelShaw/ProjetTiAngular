@@ -7,6 +7,7 @@ import {DtoInputComments} from "../dtos/dto-input-comments";
 import {DtoInputUser} from "../dtos/dto-input-user";
 import {DtoOutputCreateComment} from "../dtos/dto-output-create-comment";
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {DtoOutputUpdateRating} from "../dtos/dto-output-update-rating";
 
 @Component({
   selector: 'app-movie-detail',
@@ -19,6 +20,7 @@ export class MovieDetailComponent implements OnInit {
   users: DtoInputUser [] = [];
   comments : DtoInputComments[] = [];
   createComment : DtoOutputCreateComment | null = null;
+  updateRating : DtoOutputUpdateRating | null = null;
   form : FormGroup;
 
   constructor(private _movieService: MovieService, private _route: ActivatedRoute, private _fb: FormBuilder) {
@@ -64,17 +66,40 @@ export class MovieDetailComponent implements OnInit {
     this._movieService.fetchAllUser().subscribe(user => this.users = user);
   }
 
-  DeleteComment(comment: DtoInputComments) {
+  DeleteComment(comment: DtoInputComments, rate : DtoInputRatingMovie) {
     if (confirm("Êtes-vous sur de vouloir supprimer ce commentaire ? ")) {
       this._movieService.deleteComment(comment.idComMovie).subscribe(() => {
         this.comments = this.comments.filter(comments => comments.idComMovie !== comment.idComMovie);
+
+        this.updateRating = rate;
+        if(this.updateRating.numVote == 1){
+          this.updateRating.average_rating = ((this.updateRating.average_rating * this.updateRating.numVote) - comment.rating);
+        }else{
+          this.updateRating.average_rating = ((this.updateRating.average_rating * this.updateRating.numVote) - comment.rating)/(this.updateRating.numVote - 1);
+        }
+
+        this.updateRating.numVote = this.updateRating.numVote - 1;
+        this._movieService.updateRate(this.updateRating).subscribe();
       });
     }
   }
 
-  emitCommentCreated(id : number) {
-    this.form.controls['idMovieRef'].setValue(5);
+  emitCommentCreated(id : number, rate : DtoInputRatingMovie) {
+    this.form.controls['idMovieRef'].setValue(id);
     this.createComment = this.form.value;
     this._movieService.createComment(this.createComment).subscribe(comment => this.comments.push(comment))
+
+    this.updateRating = rate;
+
+    if(this.updateRating.numVote == 0){
+      this.updateRating.average_rating = this.form.get('rating')?.value;
+      this.updateRating.numVote = this.updateRating.numVote + 1;
+    }else{
+      this.updateRating.average_rating = ((this.updateRating.average_rating * this.updateRating.numVote) + this.form.get('rating')?.value) /(this.updateRating.numVote +1);
+      this.updateRating.numVote = this.updateRating.numVote + 1;
+    }
+
+    this._movieService.updateRate(this.updateRating).subscribe();
+    this.form.reset();
   }
 }
