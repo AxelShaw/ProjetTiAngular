@@ -6,7 +6,9 @@ import {AdminService} from "../admin.service";
 import {DtoInputMovie} from "../dtos/dto-input-movie";
 import {DtoInputRatingmovie} from "../dtos/dto-input-ratingmovie";
 import {DtoInputCommentmovie} from "../dtos/dto-input-commentmovie";
-import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {DtoOutputCreateComment} from "../../moviehub/dtos/dto-output-create-comment";
+import {DtoInputRatingMovie} from "../../moviehub/dtos/dto-input-rating-movie";
 
 @Component({
   selector: 'app-movie-admin',
@@ -14,52 +16,56 @@ import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/form
   styleUrls: ['./movie-admin.component.css']
 })
 export class MovieAdminComponent implements OnInit {
-  @Output()
-  movieCreated: EventEmitter<DtoOutputCreateMovie> = new EventEmitter<DtoOutputCreateMovie>();
-  @Output()
-  ratingmovieCreated: EventEmitter<DtoOutputCreateRatingmovie> = new EventEmitter<DtoOutputCreateRatingmovie>();
-  commentmovieCreated: EventEmitter<DtoOutputCreateCommentmovie> = new EventEmitter<DtoOutputCreateCommentmovie>();
+  movies: DtoInputMovie[] = [];
+  ratingmovies: DtoInputRatingmovie[] = [];
+  moviesMax: DtoInputMovie | null = null;
+
+  movieCreated: DtoOutputCreateMovie | null = null;
+  ratingmovieCreated: DtoOutputCreateRatingmovie | null = null;
+  form : FormGroup;
   ngDropdown = "streaming";
 
-  form: FormGroup = this._fb.group({
-    nameMovie: ['', Validators.required],
-    runtimeMinute: [0, [Validators.required, Validators.min(1)]],
-    movieType: ['', Validators.required],
-    descriptionMovie: ['', Validators.required],
-    imageMovie: ['assets/movie/', Validators.required],
-    filmGenre: ['', Validators.required],
-    director: ['', Validators.required],
-    release_movie: ['', Validators.required]
-  });
 
-  constructor(private _fb: FormBuilder) { }
+
+  constructor(private _fb: FormBuilder, private _adminService: AdminService) {
+    this.form = this._fb.group({
+      nameMovie: new FormControl(),
+      runtimeMinute: new FormControl([0, [Validators.required, Validators.min(1)]]),
+      movieType: new FormControl(['', Validators.required]),
+      descriptionMovie: new FormControl(['', Validators.required]),
+      imageMovie: new FormControl(['test', Validators.required]),
+      filmGenre: new FormControl(['', Validators.required]),
+      director: new FormControl(['', Validators.required]),
+      release_movie: new FormControl(['', Validators.required]),
+
+    });
+
+  }
 
   ngOnInit(): void {
   }
 
-  emitRatingMovieCreated() {
-    this.ratingmovieCreated.next({
-      average_rating: 0,
-      numVote: 0,
-      movieRefId: 23
-    });
-    this.form.reset();
+  emitRatingMovieCreated(rate : DtoInputRatingMovie) {
+
+    this.ratingmovieCreated = rate;
+    this.ratingmovieCreated.numVote = 0;
+    this.ratingmovieCreated.average_rating = 0;
+    //this.ratingmovieCreated.movieRefId = this.fetchLastId();
+
+    this._adminService.createRatingMovie(this.ratingmovieCreated).subscribe(ratingmovie => this.ratingmovies.push(ratingmovie));
   }
+
   emitMovieCreated() {
-    this.movieCreated.next({
-      nameMovie: this.form.value.nameMovie,
-      runtimeMinute: this.form.value.runtimeMinute,
-      movieType: this.form.value.movieType,
-      descriptionMovie: this.form.value.descriptionMovie,
-      imageMovie: this.form.value.imageMovie,
-      filmGenre: this.form.value.filmGenre,
-      director: this.form.value.director,
-      release_movie: this.form.value.release_movie
-    });
-    this.form.reset();
+    this.movieCreated = this.form.value;
+    this._adminService.createMovie(this.movieCreated).subscribe(movie => this.movies.push(movie));
   }
 
   control(nameMovie: string): AbstractControl | null {
     return this.form.get(nameMovie);
   }
+
+  fetchLastId(){
+    return this._adminService.fetchLastId().subscribe(movieMax => this.moviesMax = movieMax);
+  }
+
 }

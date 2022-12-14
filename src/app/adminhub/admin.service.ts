@@ -8,6 +8,7 @@ import {DtoOutputCreateRatingmovie} from "./dtos/dto-output-create-ratingmovie";
 import {DtoInputRatingmovie} from "./dtos/dto-input-ratingmovie";
 import {DtoOutputCreateCommentmovie} from "./dtos/dto-output-create-commentmovie";
 import {DtoInputCommentmovie} from "./dtos/dto-input-commentmovie";
+import {DtoInputRatingMovie} from "../moviehub/dtos/dto-input-rating-movie";
 
 @Injectable({
   providedIn: 'root'
@@ -20,14 +21,18 @@ export class AdminService {
 
   constructor(private _httpClient: HttpClient) { }
 
-  createRatingMovie(dto: DtoOutputCreateRatingmovie): Observable<DtoInputRatingmovie> {
+  createRatingMovie(dto: DtoOutputCreateRatingmovie | null): Observable<DtoInputRatingmovie> {
     return this._httpClient.post<DtoInputRatingmovie>(AdminService.ENTRY_POINT_RATING_MOVIE, dto);
   }
-  createMovie(dto: DtoOutputCreateMovie): Observable<DtoInputMovie> {
+  createMovie(dto: DtoOutputCreateMovie | null): Observable<DtoInputMovie> {
     return this._httpClient.post<DtoInputMovie>(AdminService.ENTRY_POINT, dto);
   }
 
   createCommentMovie(dto: DtoOutputCreateCommentmovie): Observable<DtoInputCommentmovie> {
     return this._httpClient.post<DtoInputCommentmovie>(AdminService.ENTRY_POINT_COMMENT_MOVIE, dto);
+  }
+
+  fetchLastId():Observable<DtoInputMovie>{
+    return this._httpClient.get<DtoInputMovie>(`${AdminService.ENTRY_POINT}/Max`);
   }
 }

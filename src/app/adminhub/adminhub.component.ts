@@ -13,24 +13,14 @@ import {DtoInputCommentmovie} from "./dtos/dto-input-commentmovie";
   styleUrls: ['./adminhub.component.css']
 })
 export class AdminhubComponent implements OnInit {
-  movies: DtoInputMovie[] = [];
-  ratingmovies: DtoInputRatingmovie[] = [];
-  commentmovies: DtoInputCommentmovie[] = [];
 
-  constructor(private _adminService: AdminService) { }
+
+  constructor() { }
 
 
   ngOnInit(): void {
   }
-  createMovie(dto: DtoOutputCreateMovie) {
-    this._adminService.createMovie(dto).subscribe(movie => this.movies.push(movie));
-  }
-  createRatingMovie(dto: DtoOutputCreateRatingmovie) {
-    this._adminService.createRatingMovie(dto).subscribe(ratingmovie => this.ratingmovies.push(ratingmovie));
-  }
-  createCommentMovie(dto: DtoOutputCreateCommentmovie) {
-    this._adminService.createCommentMovie(dto).subscribe(commentmovie => this.commentmovies.push(commentmovie));
-  }
+
 
 
 }
