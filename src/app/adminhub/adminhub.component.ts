@@ -14,13 +14,8 @@ import {DtoInputCommentmovie} from "./dtos/dto-input-commentmovie";
 })
 export class AdminhubComponent implements OnInit {
 
-
   constructor() { }
-
 
   ngOnInit(): void {
   }
-
-
-
 }

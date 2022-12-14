@@ -9,6 +9,9 @@ import {DtoInputCommentmovie} from "../dtos/dto-input-commentmovie";
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {DtoOutputCreateComment} from "../../moviehub/dtos/dto-output-create-comment";
 import {DtoInputRatingMovie} from "../../moviehub/dtos/dto-input-rating-movie";
+import {logMessages} from "@angular-devkit/build-angular/src/builders/browser-esbuild/esbuild";
+import {resolve} from "@angular/compiler-cli";
+import {Observable, Subject, Subscriber} from "rxjs";
 
 @Component({
   selector: 'app-movie-admin',
@@ -17,27 +20,20 @@ import {DtoInputRatingMovie} from "../../moviehub/dtos/dto-input-rating-movie";
 })
 export class MovieAdminComponent implements OnInit {
   movies: DtoInputMovie[] = [];
-  ratingmovies: DtoInputRatingmovie[] = [];
-  moviesMax: DtoInputMovie | null = null;
-
   movieCreated: DtoOutputCreateMovie | null = null;
-  ratingmovieCreated: DtoOutputCreateRatingmovie | null = null;
   form : FormGroup;
-  ngDropdown = "streaming";
-
-
+  imageData : "";
 
   constructor(private _fb: FormBuilder, private _adminService: AdminService) {
     this.form = this._fb.group({
       nameMovie: new FormControl(),
-      runtimeMinute: new FormControl([0, [Validators.required, Validators.min(1)]]),
-      movieType: new FormControl(['', Validators.required]),
-      descriptionMovie: new FormControl(['', Validators.required]),
-      imageMovie: new FormControl(['test', Validators.required]),
-      filmGenre: new FormControl(['', Validators.required]),
-      director: new FormControl(['', Validators.required]),
-      release_movie: new FormControl(['', Validators.required]),
-
+      runtimeMinute: new FormControl(),
+      movieType: new FormControl(),
+      descriptionMovie: new FormControl(),
+      imageMovie: new FormControl(),
+      filmGenre: new FormControl(),
+      director: new FormControl(),
+      release_movie: new FormControl()
     });
 
   }
@@ -45,27 +41,52 @@ export class MovieAdminComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  emitRatingMovieCreated(rate : DtoInputRatingMovie) {
-
-    this.ratingmovieCreated = rate;
-    this.ratingmovieCreated.numVote = 0;
-    this.ratingmovieCreated.average_rating = 0;
-    //this.ratingmovieCreated.movieRefId = this.fetchLastId();
-
-    this._adminService.createRatingMovie(this.ratingmovieCreated).subscribe(ratingmovie => this.ratingmovies.push(ratingmovie));
-  }
-
   emitMovieCreated() {
+    this.form.controls['imageMovie'].setValue(this.imageData);
+    console.log(this.form.value);
     this.movieCreated = this.form.value;
     this._adminService.createMovie(this.movieCreated).subscribe(movie => this.movies.push(movie));
+    this.form.reset();
   }
 
   control(nameMovie: string): AbstractControl | null {
     return this.form.get(nameMovie);
   }
 
-  fetchLastId(){
-    return this._adminService.fetchLastId().subscribe(movieMax => this.moviesMax = movieMax);
+  getImage(event: Event) {
+    const file1=(event.target as HTMLInputElement).files;
+    let file;
+    if(file1){
+      file = file1[0];
+    }
+    // @ts-ignore
+    this.convertToBase64(file);
   }
 
+  convertToBase64(file : File){
+    const observable = new Observable((subscriber: Subscriber<any>)=>{
+      this.readFile(file,subscriber);
+    });
+    observable.subscribe((d)=>{
+      this.imageData = d.slice(22);
+
+    })
+  }
+
+  readFile(file : File, subscriber: Subscriber<any>){
+    const filereader = new FileReader();
+
+    filereader.readAsDataURL(file);
+
+    filereader.onload=()=>{
+      subscriber.next(filereader.result);
+      subscriber.complete();
+    }
+
+    filereader.onerror=(error)=>{
+      subscriber.error(error);
+      subscriber.complete();
+
+    }
+  }
 }

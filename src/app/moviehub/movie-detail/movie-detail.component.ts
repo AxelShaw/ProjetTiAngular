@@ -102,4 +102,8 @@ export class MovieDetailComponent implements OnInit {
     this._movieService.updateRate(this.updateRating).subscribe();
     this.form.reset();
   }
+
+  control(nameMovie: string): AbstractControl | null {
+    return this.form.get(nameMovie);
+  }
 }

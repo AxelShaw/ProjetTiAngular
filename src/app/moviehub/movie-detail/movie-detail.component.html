@@ -20,8 +20,11 @@
   <div *ngIf="rating">
     <form [formGroup]="form" (ngSubmit)="emitCommentCreated(movie.idMovie, rating)">
       <input id="noteInput" type="number" max="100" min="0" class="noteComment" formControlName="rating" required/>
+      <div *ngIf="control('rating')?.dirty && control('rating')?.invalid">
+        Entrez un nombre entre 0 et 100 svp.
+      </div>
       <input id="commentInput" type="text" maxlength="500" class="createComment" formControlName="commentText" />
-      <button class="buttonEnvoie" type="submit" value="Submit">Envoyer</button>
+      <button class="buttonEnvoie" type="submit" [disabled]="form.invalid">Envoyer</button>
     </form>
   </div>
 </div>

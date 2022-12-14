@@ -28,10 +28,6 @@ export class AdminService {
     return this._httpClient.post<DtoInputMovie>(AdminService.ENTRY_POINT, dto);
   }
 
-  createCommentMovie(dto: DtoOutputCreateCommentmovie): Observable<DtoInputCommentmovie> {
-    return this._httpClient.post<DtoInputCommentmovie>(AdminService.ENTRY_POINT_COMMENT_MOVIE, dto);
-  }
-
   fetchLastId():Observable<DtoInputMovie>{
     return this._httpClient.get<DtoInputMovie>(`${AdminService.ENTRY_POINT}/Max`);
   }

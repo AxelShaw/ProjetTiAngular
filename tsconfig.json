@@ -3,6 +3,10 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strictPropertyInitialization": false,
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -27,6 +31,7 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictTemplates": true,
+    "strictNullChecks": false
   }
 }
