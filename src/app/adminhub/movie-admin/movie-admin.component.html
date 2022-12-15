@@ -40,7 +40,6 @@
     <label>
       image movie: <input type="file" id="fileInput" required (change)="getImage($event)" required>
     </label>
-    <img [src]="imageData">
     <div *ngIf="control('imageMovie')?.dirty && control('imageMovie')?.invalid">
       Please, you have to provide a description for the movie.
     </div>
@@ -69,6 +68,7 @@
       Please, you have to provide a release movie for the movie.
     </div>
   </div>
-  <input type="submit" [disabled]="form.invalid" >
+  <input type="submit" [disabled]="form.invalid" *ngIf="rating == false">
 </form>
+<input type="submit" *ngIf="rating" value="Click to continue" (click)="ratingSet()">
 

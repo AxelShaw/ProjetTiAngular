@@ -44,13 +44,6 @@ export class MovieDetailComponent implements OnInit {
       }
       this.fetchAllUser();
     });
-    for (let i = 0; i < this.comments.length; i++){
-      if(this.createComment?.idUserRef == this.comments[i].idUserRef){
-        this.val = false;
-      }else{
-        this.val = true;
-      }
-    }
   }
 
   private fetchMovieData(id: number) {

@@ -11,7 +11,7 @@ import {DtoOutputCreateComment} from "../../moviehub/dtos/dto-output-create-comm
 import {DtoInputRatingMovie} from "../../moviehub/dtos/dto-input-rating-movie";
 import {logMessages} from "@angular-devkit/build-angular/src/builders/browser-esbuild/esbuild";
 import {resolve} from "@angular/compiler-cli";
-import {Observable, Subject, Subscriber} from "rxjs";
+import {delay, Observable, Subject, Subscriber} from "rxjs";
 
 @Component({
   selector: 'app-movie-admin',
@@ -20,10 +20,13 @@ import {Observable, Subject, Subscriber} from "rxjs";
 })
 export class MovieAdminComponent implements OnInit {
   movies: DtoInputMovie[] = [];
+  ratings: DtoInputRatingMovie [] = [];
   movieCreated: DtoOutputCreateMovie | null = null;
+  ratingCreated: DtoOutputCreateRatingmovie | null = null;
   form : FormGroup;
   formRating : FormGroup;
   imageData : "";
+  rating: boolean = false;
 
   constructor(private _fb: FormBuilder, private _adminService: AdminService) {
     this.form = this._fb.group({
@@ -46,6 +49,11 @@ export class MovieAdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.fetchAll();
+  }
+
+  private fetchAll() {
+    this._adminService.fetchAllMovie().subscribe(movies => this.movies = movies);
   }
 
   emitMovieCreated() {
@@ -54,8 +62,9 @@ export class MovieAdminComponent implements OnInit {
     this.movieCreated = this.form.value;
     this._adminService.createMovie(this.movieCreated).subscribe(movie => this.movies.push(movie));
 
-
     this.form.reset();
+
+    this.setRating();
   }
 
   control(nameMovie: string): AbstractControl | null {
@@ -97,5 +106,24 @@ export class MovieAdminComponent implements OnInit {
       subscriber.complete();
 
     }
+  }
+
+  setRating() {
+    this.rating = true;
+  }
+
+  ratingSet() {
+    this.fetchAll();
+    console.log(this.movies.length);
+
+    this.formRating.controls['average_rating'].setValue(0);
+    this.formRating.controls['numVote'].setValue(0);
+    this.formRating.controls['movieRefId'].setValue(this.movies[this.movies.length-1].idMovie);
+
+    this.ratingCreated = this.formRating.value;
+
+    this._adminService.createRatingMovie(this.ratingCreated).subscribe(rating => this.ratings.push(rating));
+
+    this.rating = false;
   }
 }

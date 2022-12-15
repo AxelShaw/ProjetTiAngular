@@ -28,7 +28,7 @@ export class AdminService {
     return this._httpClient.post<DtoInputMovie>(AdminService.ENTRY_POINT, dto);
   }
 
-  fetchLastId():Observable<DtoInputMovie>{
-    return this._httpClient.get<DtoInputMovie>(`${AdminService.ENTRY_POINT}/Max`);
+  fetchAllMovie(): Observable<DtoInputMovie[]> {
+    return this._httpClient.get<DtoInputMovie[]>(AdminService.ENTRY_POINT);
   }
 }

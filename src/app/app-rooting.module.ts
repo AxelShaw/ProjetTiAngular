@@ -39,6 +39,9 @@ const routes: Routes = [
   },
   {
     path: 'top100', component: MovieTop100Component
+  },
+  {
+    path: 'bad100', component: MovieBad100Component
   }
 ];
 
