@@ -22,6 +22,7 @@ export class MovieAdminComponent implements OnInit {
   movies: DtoInputMovie[] = [];
   movieCreated: DtoOutputCreateMovie | null = null;
   form : FormGroup;
+  formRating : FormGroup;
   imageData : "";
 
   constructor(private _fb: FormBuilder, private _adminService: AdminService) {
@@ -36,6 +37,12 @@ export class MovieAdminComponent implements OnInit {
       release_movie: new FormControl()
     });
 
+    this.formRating = this._fb.group({
+      average_rating: new FormControl(),
+      numVote: new FormControl(),
+      movieRefId: new FormControl()
+    });
+
   }
 
   ngOnInit(): void {
@@ -46,6 +53,8 @@ export class MovieAdminComponent implements OnInit {
     console.log(this.form.value);
     this.movieCreated = this.form.value;
     this._adminService.createMovie(this.movieCreated).subscribe(movie => this.movies.push(movie));
+
+
     this.form.reset();
   }
 

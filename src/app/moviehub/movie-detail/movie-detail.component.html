@@ -23,8 +23,13 @@
       <div *ngIf="control('rating')?.dirty && control('rating')?.invalid">
         Entrez un nombre entre 0 et 100 svp.
       </div>
-      <input id="commentInput" type="text" maxlength="500" class="createComment" formControlName="commentText" />
-      <button class="buttonEnvoie" type="submit" [disabled]="form.invalid">Envoyer</button>
+      <input id="commentInput" type="text" maxlength="500" class="createComment" formControlName="commentText"/>
+      <div *ngIf="val == true">
+        <button class="buttonEnvoie" type="submit" [disabled]="form.invalid">Envoyer</button>
+      </div>
+      <div *ngIf="val == false">
+        <p>Vous avez deja posté un commentaire sur ce film</p>
+      </div>
     </form>
   </div>
 </div>

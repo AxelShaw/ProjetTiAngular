@@ -8,6 +8,7 @@ import {DtoInputUser} from "../dtos/dto-input-user";
 import {DtoOutputCreateComment} from "../dtos/dto-output-create-comment";
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {DtoOutputUpdateRating} from "../dtos/dto-output-update-rating";
+import {observable, Observable, Subject} from "rxjs";
 
 @Component({
   selector: 'app-movie-detail',
@@ -22,6 +23,7 @@ export class MovieDetailComponent implements OnInit {
   createComment : DtoOutputCreateComment | null = null;
   updateRating : DtoOutputUpdateRating | null = null;
   form : FormGroup;
+  val : boolean = true;
 
   constructor(private _movieService: MovieService, private _route: ActivatedRoute, private _fb: FormBuilder) {
     this.form = this._fb.group({
@@ -42,6 +44,13 @@ export class MovieDetailComponent implements OnInit {
       }
       this.fetchAllUser();
     });
+    for (let i = 0; i < this.comments.length; i++){
+      if(this.createComment?.idUserRef == this.comments[i].idUserRef){
+        this.val = false;
+      }else{
+        this.val = true;
+      }
+    }
   }
 
   private fetchMovieData(id: number) {
@@ -87,23 +96,40 @@ export class MovieDetailComponent implements OnInit {
   emitCommentCreated(id : number, rate : DtoInputRatingMovie) {
     this.form.controls['idMovieRef'].setValue(id);
     this.createComment = this.form.value;
-    this._movieService.createComment(this.createComment).subscribe(comment => this.comments.push(comment))
+     for (let i = 0; i < this.comments.length; i++){
+       if(1 == this.comments[i].idUserRef){
+         this.val = false;
+       }
+     }
+    if(this.val == true){
+      this._movieService.createComment(this.createComment).subscribe(comment => this.comments.push(comment))
 
-    this.updateRating = rate;
+      this.updateRating = rate;
 
-    if(this.updateRating.numVote == 0){
-      this.updateRating.average_rating = this.form.get('rating')?.value;
-      this.updateRating.numVote = this.updateRating.numVote + 1;
-    }else{
-      this.updateRating.average_rating = ((this.updateRating.average_rating * this.updateRating.numVote) + this.form.get('rating')?.value) /(this.updateRating.numVote +1);
-      this.updateRating.numVote = this.updateRating.numVote + 1;
+      if(this.updateRating.numVote == 0){
+        this.updateRating.average_rating = this.form.get('rating')?.value;
+        this.updateRating.numVote = this.updateRating.numVote + 1;
+      }else{
+        this.updateRating.average_rating = ((this.updateRating.average_rating * this.updateRating.numVote) + this.form.get('rating')?.value) /(this.updateRating.numVote +1);
+        this.updateRating.numVote = this.updateRating.numVote + 1;
+      }
+
+      this._movieService.updateRate(this.updateRating).subscribe();
+      this.form.reset();
+
     }
-
-    this._movieService.updateRate(this.updateRating).subscribe();
-    this.form.reset();
   }
 
   control(nameMovie: string): AbstractControl | null {
     return this.form.get(nameMovie);
+  }
+
+  changeValueButton(){
+    for (let i = 0; i < this.comments.length; i++){
+      if(this.createComment?.idUserRef == this.comments[i].idUserRef){
+        return false
+      }
+    }
+    return true;
   }
 }
