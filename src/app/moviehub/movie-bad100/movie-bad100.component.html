@@ -1,11 +1,11 @@
-<h2>Bad 100</h2>
+<h2>Pire film</h2>
 
 <div *ngIf="ratings.length; else movieListEmpty">
-  <ul>
+  <ul class="all">
     <div *ngFor="let rating of ratings | paginate :{
     itemsPerPage: 20,
      currentPage: page}
-" class="all">
+" class="allMovie">
       <span *ngFor="let movie of movies" >
         <li *ngIf="movie.idMovie == rating.movieRefId" class="film">
           <a routerLink="../detail/{{movie.idMovie}}">

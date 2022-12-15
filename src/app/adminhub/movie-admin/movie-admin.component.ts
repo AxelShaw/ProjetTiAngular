@@ -114,7 +114,6 @@ export class MovieAdminComponent implements OnInit {
 
   ratingSet() {
     this.fetchAll();
-    console.log(this.movies.length);
 
     this.formRating.controls['average_rating'].setValue(0);
     this.formRating.controls['numVote'].setValue(0);
@@ -125,5 +124,7 @@ export class MovieAdminComponent implements OnInit {
     this._adminService.createRatingMovie(this.ratingCreated).subscribe(rating => this.ratings.push(rating));
 
     this.rating = false;
+
+    this.formRating.reset();
   }
 }

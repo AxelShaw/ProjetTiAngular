@@ -117,13 +117,4 @@ export class MovieDetailComponent implements OnInit {
   control(nameMovie: string): AbstractControl | null {
     return this.form.get(nameMovie);
   }
-
-  changeValueButton(){
-    for (let i = 0; i < this.comments.length; i++){
-      if(this.createComment?.idUserRef == this.comments[i].idUserRef){
-        return false
-      }
-    }
-    return true;
-  }
 }

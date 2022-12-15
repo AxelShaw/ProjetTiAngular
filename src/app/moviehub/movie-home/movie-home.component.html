@@ -1,7 +1,7 @@
-<h2>Home</h2>
+<h2>Sortie du mois</h2>
 <div *ngIf="movies.length; else movieListEmpty">
-  <ul>
-    <div *ngFor="let movie of movies" class="all">
+  <ul class="ulMenu">
+    <div *ngFor="let movie of movies">
       <li *ngIf="convert(movie.release_movie) > myDate" class="film">
         <a routerLink="../detail/{{movie.idMovie}}">
           <img src="data:image/jpg;base64, {{movie.imageMovie}}" alt="movie image" />

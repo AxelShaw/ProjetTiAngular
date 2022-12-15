@@ -1,17 +1,10 @@
-.all{
-  list-style:none;
-  display:inline-block;
-}
-.film{
-  margin-left:15px;
-  margin-bottom:15px;
-}
 .ratingSpan{
   float: right;
+  margin-right: 10px;
 }
 
 img{
-  width: 250px;
+  width: 240px;
 }
 
 li{
@@ -25,4 +18,29 @@ li{
   width: 75%;
   display:inline-block;
 }
+
+.ulMenu{
+  margin-left: 80px;
+  padding-top: 10px;
+  overflow-x: scroll;
+  display: -webkit-box;
+  flex-wrap: inherit ;
+  width: 85%;
+  list-style: none;
+  scrollbar-color: blank grise;
+  scrollbar-width: thin;
+}
+
+.film{
+  margin-bottom: 10px;
+}
+
+.film:hover{
+  -ms-transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+
+
+}
+
 

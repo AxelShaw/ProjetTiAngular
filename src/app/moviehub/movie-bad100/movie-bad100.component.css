@@ -1,4 +1,7 @@
 .all{
+  margin-left: 20px;
+}
+.allMovie{
   list-style:none;
   display:inline-block;
 }
@@ -6,13 +9,7 @@
   margin-left:15px;
   margin-bottom:15px;
 }
-.ratingSpan{
-  float: right;
-}
 
-img{
-  width: 250px;
-}
 
 li{
   width: 250px;
@@ -22,8 +19,23 @@ li{
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  width: 75%;
+  width: 70%;
   display:inline-block;
+}
+
+.ratingSpan{
+  float: right;
+  margin-right: 10px;
+}
+
+img{
+  width: 240px;
+}
+
+.film:hover{
+  -ms-transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .Page{
