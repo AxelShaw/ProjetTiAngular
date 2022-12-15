@@ -11,6 +11,7 @@ import {MovieService} from "../movie.service";
 export class MovieBad100Component implements OnInit {
   movies: DtoInputMovie[] = [];
   ratings : DtoInputRatingMovie[] = [];
+  page : number ;
 
   constructor(private _movieService: MovieService) { }
 

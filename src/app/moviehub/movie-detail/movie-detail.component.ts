@@ -89,12 +89,13 @@ export class MovieDetailComponent implements OnInit {
   emitCommentCreated(id : number, rate : DtoInputRatingMovie) {
     this.form.controls['idMovieRef'].setValue(id);
     this.createComment = this.form.value;
-     for (let i = 0; i < this.comments.length; i++){
+    for (let i = 0; i < this.comments.length; i++){
        if(1 == this.comments[i].idUserRef){
          this.val = false;
        }
-     }
+    }
     if(this.val == true){
+      console.log("test");
       this._movieService.createComment(this.createComment).subscribe(comment => this.comments.push(comment))
 
       this.updateRating = rate;

@@ -15,6 +15,7 @@ import { MovieTop100Component } from './moviehub/movie-top100/movie-top100.compo
 import { MovieBad100Component } from './moviehub/movie-bad100/movie-bad100.component';
 import { MovieAdminComponent } from './adminhub/movie-admin/movie-admin.component';
 import { MovieUserComponent } from './adminhub/movie-user/movie-user.component';
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { MovieUserComponent } from './adminhub/movie-user/movie-user.component';
     BrowserModule,
     HttpClientModule,
     AppRootingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

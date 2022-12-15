@@ -1,9 +1,13 @@
 <h2>Bad 100</h2>
+
 <div *ngIf="ratings.length; else movieListEmpty">
   <ul>
-    <div *ngFor="let rating of ratings" class="all">
+    <div *ngFor="let rating of ratings | paginate :{
+    itemsPerPage: 20,
+     currentPage: page}
+" class="all">
       <span *ngFor="let movie of movies" >
-        <li *ngIf="movie.idMovie == rating.movieRefId && rating.numVote != 0" class="film">
+        <li *ngIf="movie.idMovie == rating.movieRefId" class="film">
           <a routerLink="../detail/{{movie.idMovie}}">
             <img src="data:image/jpg;base64, {{movie.imageMovie}}" alt="movie image">
             <br />
@@ -15,6 +19,9 @@
     </div>
   </ul>
 </div>
+
+<pagination-controls (pageChange)="page = $event" class="Page"></pagination-controls>
+
 <ng-template #movieListEmpty>
   <p>movie list is empty.</p>
   <p>You need to create some movie!</p>
