@@ -14,6 +14,9 @@ export class MovieHomeComponent implements OnInit {
   movies: DtoInputMovie[] = [];
   ratings : DtoInputRatingMovie[] = [];
   myDate = new Date();
+  myDateMoment = new Date();
+  ratingsTop : DtoInputRatingMovie[] = [];
+  ratingsDown : DtoInputRatingMovie[] = [];
 
 
   constructor(private _movieService: MovieService) {
@@ -22,7 +25,10 @@ export class MovieHomeComponent implements OnInit {
   ngOnInit(): void {
     this.fetchAll();
     this.getDateT();
+    this.getDateT3();
     this.fetchAllRating();
+    this.fetchAllRatingTop();
+    this.fetchAllRatingDown();
   }
 
   private fetchAll() {
@@ -33,6 +39,10 @@ export class MovieHomeComponent implements OnInit {
     this.myDate.setMonth(this.myDate.getMonth()-1);
   }
 
+  private getDateT3(){
+    this.myDateMoment.setMonth(this.myDateMoment.getMonth()-3);
+  }
+
   convert(dateString : string){
     let newDate = new Date(dateString);
     return newDate;
@@ -40,5 +50,13 @@ export class MovieHomeComponent implements OnInit {
 
   private fetchAllRating() {
     this._movieService.fetchAllRating().subscribe(rating => this.ratings = rating);
+  }
+
+  private fetchAllRatingDown() {
+    this._movieService.fetchAllRatingDownHome().subscribe(rating => this.ratingsDown = rating);
+  }
+
+  private fetchAllRatingTop() {
+    this._movieService.fetchAllRatingTopHome().subscribe(rating => this.ratingsTop = rating);
   }
 }

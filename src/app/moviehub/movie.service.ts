@@ -66,4 +66,12 @@ export class MovieService {
   updateRate(dto: DtoOutputUpdateRating): Observable<any> {
     return this._httpClient.put(MovieService.ENTRY_POINT_RATING, dto);
   }
+
+  fetchAllRatingDownHome():Observable<DtoInputRatingMovie[]>{
+    return this._httpClient.get<DtoInputRatingMovie[]>(`${MovieService.ENTRY_POINT_RATING}/DownHome`);
+  }
+
+  fetchAllRatingTopHome():Observable<DtoInputRatingMovie[]>{
+    return this._httpClient.get<DtoInputRatingMovie[]>(`${MovieService.ENTRY_POINT_RATING}/TopHome`);
+  }
 }

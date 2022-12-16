@@ -95,7 +95,6 @@ export class MovieDetailComponent implements OnInit {
        }
     }
     if(this.val == true){
-      console.log("test");
       this._movieService.createComment(this.createComment).subscribe(comment => this.comments.push(comment))
 
       this.updateRating = rate;

@@ -145,6 +145,10 @@ export class MovieAdminComponent implements OnInit {
     this.rating = false;
 
     this.formRating.reset();
+
+    this.movieCreated =  null;
+    this.ratingCreated = null;
+
   }
   search(chaine: HTMLInputElement , delay = 700) {
     let time;
