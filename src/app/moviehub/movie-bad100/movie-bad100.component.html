@@ -3,7 +3,7 @@
 <div *ngIf="ratings.length; else movieListEmpty">
   <ul class="all">
     <div *ngFor="let rating of ratings | paginate :{
-    itemsPerPage: 20,
+    itemsPerPage: 16 ,
      currentPage: page}
 " class="allMovie">
       <span *ngFor="let movie of movies" >

@@ -1,57 +1,24 @@
 <h2>Sortie du mois</h2>
 
-
-<swiper
-  [slidesPerView]="1"
-  [spaceBetween]="10"
-  [navigation]="true"
-  [pagination]="{ clickable: true}"
-  [centeredSlides]="true"
-  [keyboard]="{
-    enabled: true
-  }"
-  [breakpoints]="{
-      '@0.00': {
-        slidesPerView: 1,
-        spaceBetween: 10
-      },
-      '@0.75': {
-        slidesPerView: 2,
-        spaceBetween: 20
-      },
-      '@1.00': {
-        slidesPerView: 3,
-        spaceBetween: 40
-      },
-      '@1.50': {
-        slidesPerView: 4,
-        spaceBetween: 50
-      }
-    }"
-  [virtual]="true"
-  class="my-swiper"
->
-  <ng-template swiperSlide *ngFor="let slide of slides$ | async; index as i">
-    <div *ngIf="movies.length; else movieListEmpty" class="swiper-slide-container">
-      <ul class="ulMenu">
-        <div *ngFor="let movie of movies">
-          <li *ngIf="convert(movie.release_movie) > myDate" class="film">
-            <a routerLink="../detail/{{movie.idMovie}}">
-              <img src="data:image/jpg;base64, {{movie.imageMovie}}" alt="movie image" />
-              <br />
-              <div class="name">{{movie.nameMovie}}</div>
-              <span *ngFor="let rating of ratings">
-          <span *ngIf="movie.idMovie == rating.movieRefId && rating.numVote != 0" class="ratingSpan">
-            {{rating.average_rating}} / 100
+<div *ngIf="movies.length; else movieListEmpty" class="main_div">
+  <ul class="ulMenu">
+    <div *ngFor="let movie of movies; let i2 = index">
+      <li *ngIf="convert(movie.release_movie) > myDate" class="film">
+        <a routerLink="../detail/{{movie.idMovie}}">
+          <img src="data:image/jpg;base64, {{movie.imageMovie}}" alt="movie image" />
+          <br />
+          <div class="name" >{{movie.nameMovie}}</div>
+          <span *ngFor="let rating of ratings">
+            <span *ngIf="movie.idMovie == rating.movieRefId && rating.numVote != 0" class="ratingSpan">
+              {{rating.average_rating}} / 100
+            </span>
           </span>
-        </span>
-            </a>
-          </li>
-        </div>
-      </ul>
+        </a>
+      </li>
     </div>
-  </ng-template>
-</swiper>
+  </ul>
+</div>
+
 <h2>Meilleur sortie du moment</h2>
 <div *ngIf="ratingsTop.length; else movieListEmpty" class="main_div">
   <ul class="ulMenu">

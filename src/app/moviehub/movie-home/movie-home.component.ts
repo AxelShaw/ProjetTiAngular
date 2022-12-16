@@ -22,8 +22,7 @@ export class MovieHomeComponent implements OnInit {
   myDateMoment = new Date();
   ratingsTop : DtoInputRatingMovie[] = [];
   ratingsDown : DtoInputRatingMovie[] = [];
-  slides$ = new BehaviorSubject<string[]>(['']);
-
+  temp: number = -1;
 
   constructor(private _movieService: MovieService) {
   }
@@ -35,9 +34,6 @@ export class MovieHomeComponent implements OnInit {
     this.fetchAllRating();
     this.fetchAllRatingTop();
     this.fetchAllRatingDown();
-    this.slides$.next(
-      Array.from({ length: this.movies.length  }).map((el, index) => `Slide ${index + 1}`)
-    );
   }
 
   private fetchAll() {

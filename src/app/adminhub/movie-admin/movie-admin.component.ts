@@ -56,16 +56,14 @@ export class MovieAdminComponent implements OnInit {
   }
 
   emitMovieCreated() {
-    if (confirm("Êtes-vous sur de vouloir ajouter ce film ? ")) {
-      this.form.controls['imageMovie'].setValue(this.imageData);
-      console.log(this.form.value);
-      this.movieCreated = this.form.value;
-      this._adminService.createMovie(this.movieCreated).subscribe(movie => this.movies.push(movie));
 
-      this.form.reset();
-
-      this.setRating();
-    }
+    this.form.controls['imageMovie'].setValue(this.imageData);
+    console.log(this.form.value);
+    this.movieCreated = this.form.value;
+    this._adminService.createMovie(this.movieCreated).subscribe(movie => this.movies.push(movie));
+    this.form.reset();
+    this.setRating();
+    this.movieCreated = null;
   }
 
   emitMovieDeleted(movie: DtoInputMovie){
@@ -145,10 +143,6 @@ export class MovieAdminComponent implements OnInit {
     this.rating = false;
 
     this.formRating.reset();
-
-    this.movieCreated =  null;
-    this.ratingCreated = null;
-
   }
   search(chaine: HTMLInputElement , delay = 700) {
     let time;
