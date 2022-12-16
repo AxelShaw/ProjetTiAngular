@@ -27,6 +27,8 @@ export class MovieAdminComponent implements OnInit {
   formRating : FormGroup;
   imageData : "";
   rating: boolean = false;
+  searchMovies: DtoInputMovie[] = [];
+
 
   constructor(private _fb: FormBuilder, private _adminService: AdminService) {
     this.form = this._fb.group({
@@ -50,6 +52,7 @@ export class MovieAdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchAll();
+    this.searchMovies = [];
   }
 
   private fetchAll() {
@@ -65,6 +68,17 @@ export class MovieAdminComponent implements OnInit {
     this.form.reset();
 
     this.setRating();
+  }
+
+  emitMovieDeleted(movie: DtoInputMovie){
+    if (confirm("Êtes-vous sur de vouloir supprimer ce film ? ")) {
+      this._adminService.deleteMovie(movie.idMovie).subscribe(() => {
+        this.movies = this.movies.filter(movies => movies.idMovie !== movie.idMovie);
+      });
+        //this._adminService.deleteRatingMovie(this.movies[this.movies.length-1].idMovie).subscribe(() => {
+          //this.ratings = this.ratings.filter(ratings => ratings.movieRefId !== rating.movieRefId);
+      //});
+      }
   }
 
   control(nameMovie: string): AbstractControl | null {
@@ -126,5 +140,28 @@ export class MovieAdminComponent implements OnInit {
     this.rating = false;
 
     this.formRating.reset();
+  }
+  search(chaine: HTMLInputElement , delay = 700) {
+    let time;
+    clearTimeout(time);
+
+    time = setTimeout(() => {
+      let name = chaine.value;
+      name = name.trim();
+      if(name.length){
+        this._adminService.fetchByName(name).subscribe(
+          (movies) => {
+            // @ts-ignore
+            this.searchMovies = movies;
+          }
+        );
+      }else{
+        this.searchMovies = [];
+      }
+    }, delay);
+  }
+
+  selectInput() {
+    this.searchMovies = [];
   }
 }

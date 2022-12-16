@@ -1,4 +1,4 @@
-<div *ngIf="movies.length; else movieListEmpty">
+<div *ngIf="movies.length; else movieListEmpty" >
   <ul>
     <li *ngFor="let movie of movies">
       <a routerLink="../detail/{{movie.idMovie}}">

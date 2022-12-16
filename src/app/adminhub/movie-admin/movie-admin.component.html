@@ -91,4 +91,23 @@
   <input type="submit" [disabled]="form.invalid" *ngIf="rating == false" >
 </form>
 <input type="submit" *ngIf="rating" value="Click to continue" (click)="ratingSet()">
+<div>
+  <input
+    type="text"
+    id="tempo"
+    #inputSearch
+    class="form-control"
+    (keyup)="search(inputSearch)"
+  >
+  <ul class="menuChoix">
+    <div *ngFor="let movie of searchMovies" class="list-movie">
+        <li class="choix" >
+          {{movie.idMovie}}
+          {{movie.nameMovie}}
+          <button (click)="emitMovieDeleted(movie)">supprimer</button>
+        </li>
+    </div>
+  </ul>
+
+</div>
 

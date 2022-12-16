@@ -1,60 +1,73 @@
-<div *ngIf="movie; else movieNotFound" class="all">
-    <h2 class="titre">{{movie.nameMovie}}</h2>
+<div class="all">
+  <div *ngIf="movie; else movieNotFound" class="movieP">
+      <h2 class="titre">{{movie.nameMovie}}</h2>
 
-    <img src="data:image/jpg;base64, {{movie.imageMovie}}" alt="img movie">
-    <div>
-      {{movie.release_movie | date:"dd/MM/yyyy"}} - {{movie.movieType}} / {{movie.runtimeMinute}} min / {{movie.filmGenre}} <br />
-      De {{movie.director}}
-    </div>
-    <div *ngIf="rating; else ratingNotFound">
-        {{rating.average_rating}} / 100 - {{rating.numVote}} votes
-    </div>
 
-    <div>
-      <h2>Synopsis</h2>
-      {{movie.descriptionMovie}}
-    </div>
-</div>
+      <div  class="infoP">
+        <div class="imgP">
+          <img src="data:image/jpg;base64, {{movie.imageMovie}}" alt="img movie">
+        </div>
 
-<div *ngIf="movie" class="createCommentAll">
-  <div *ngIf="rating">
-    <form [formGroup]="form" (ngSubmit)="emitCommentCreated(movie.idMovie, rating)">
-      <input id="noteInput" type="number" max="100" min="0" class="noteComment" formControlName="rating" required/>
-      <div *ngIf="control('rating')?.dirty && control('rating')?.invalid">
-        Entrez un nombre entre 0 et 100 svp.
+        <div>
+          {{movie.release_movie | date:"dd/MM/yyyy"}} - {{movie.movieType}} / {{movie.runtimeMinute}} min / {{movie.filmGenre}} <br />
+          De {{movie.director}}
+        </div>
+        <div *ngIf="rating; else ratingNotFound">
+            {{rating.average_rating}} / 100 - {{rating.numVote}} votes
+        </div>
       </div>
-      <input id="commentInput" type="text" maxlength="500" class="createComment" formControlName="commentText"/>
-      <div *ngIf="val == true">
-        <button class="buttonEnvoie" type="submit" [disabled]="form.invalid">Envoyer</button>
+
+      <div class="descrptionP">
+        <h2>Synopsis</h2>
+        <p>
+          {{movie.descriptionMovie}}
+        </p>
+
       </div>
-      <div *ngIf="val == false">
-        <p>Vous avez deja posté un commentaire sur ce film</p>
-      </div>
-    </form>
   </div>
-</div>
 
-<div *ngIf="comments; else commentNotFound" class="commentList">
-  <li *ngFor="let comment of comments">
-    <span *ngFor="let user of users">
-      <span *ngIf="comment.idUserRef == user.idUser">
-        {{user.nickname}}
-      </span>
-    </span>
-    {{comment.rating}} / 100<br>
-    {{comment.commentText}}<br>
-    <div *ngIf="rating">
-      <button (click)="DeleteComment(comment, rating)">supprimer</button>
+  <div *ngIf="movie" class="createCommentAll">
+    <div *ngIf="rating" >
+      <form [formGroup]="form" (ngSubmit)="emitCommentCreated(movie.idMovie, rating)">
+        <div>
+          <input id="noteInput" type="number" max="100" min="0" class="noteComment" formControlName="rating" required/>
+        </div>
+        <div *ngIf="control('rating')?.dirty && control('rating')?.invalid">
+          Entrez un nombre entre 0 et 100 svp.
+        </div>
+        <input id="commentInput" type="text" maxlength="500" class="createComment" formControlName="commentText"/>
+        <div *ngIf="val == true">
+          <button class="buttonEnvoie" type="submit" [disabled]="form.invalid">Envoyer</button>
+        </div>
+        <div *ngIf="val == false">
+          <p>Vous avez deja posté un commentaire sur ce film</p>
+        </div>
+      </form>
     </div>
-  </li>
-</div>
+  </div>
 
-<ng-template #movieNotFound>
-  Movie not found.
-</ng-template>
-<ng-template #ratingNotFound>
-  Rating not found.
-</ng-template>
-<ng-template #commentNotFound>
-  No comment yet.
-</ng-template>
+  <div *ngIf="comments; else commentNotFound" class="commentList">
+    <li *ngFor="let comment of comments">
+      <span *ngFor="let user of users">
+        <span *ngIf="comment.idUserRef == user.idUser">
+          {{user.nickname}}
+        </span>
+      </span>
+      {{comment.rating}} / 100<br>
+      {{comment.commentText}}<br>
+      <div *ngIf="rating">
+        <button (click)="DeleteComment(comment, rating)">supprimer</button>
+      </div>
+    </li>
+  </div>
+
+  <ng-template #movieNotFound>
+    Movie not found.
+  </ng-template>
+  <ng-template #ratingNotFound>
+    Rating not found.
+  </ng-template>
+  <ng-template #commentNotFound>
+    No comment yet.
+  </ng-template>
+</div>

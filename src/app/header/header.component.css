@@ -1,16 +1,16 @@
 nav{
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-  background-color: rgba(0,0,0,.1);
+
+  background-color: #3a424c;
   display: block;
+  width: 100%;
+
 }
 .menu{
   list-style-type: none;
   display: flex;
   padding: 0;
-  display: flex;
   justify-content: center;
+  width: 100%;
 }
 img{
   padding: 5px;
@@ -22,24 +22,24 @@ img{
   min-width: 120px;
   padding: 0.4rem 0;
   text-align: center;
-  color: black;
+  color: white;
   text-decoration: none;
 }
 
 .menu a:hover {
-  background-color: cornflowerblue;
+  background-color: #00c1b8;
 }
 
 .login{
   display:block;
   padding: 0.4rem;
   text-align: right;
-  color: black;
+  color: white;
   text-decoration: none;
   float: right;
 }
 .login:hover{
-  background-color: cornflowerblue;
+  background-color: #00c1b8;
 }
 
 input{
@@ -71,7 +71,7 @@ input{
 }
 
 .choix:hover{
-  background-color: goldenrod;
+  background-color:  #00c1b8;
 }
 
 .menuChoix a{

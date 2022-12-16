@@ -1,19 +1,65 @@
 img{
-  float: left;
   width: 300px;
   inline : block;
   margin-right: 10px;
+  text-align: center;
+  border: black solid 2px;
+  order: 1;
 }
 
 .all{
-  display: block;
-  float: right;
+  background-color: #f5f5f5;
+  flex-wrap: wrap;
+  max-width: 1100px;
   width: 100%;
+  justify-content: center;
+  margin: auto;
+  border: black solid 4px;
+  height: 100%;
+  padding: 10px;
+}
+.movieP{
+  padding: 10px;
+  float: left;
+}
+.movieP>div{
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.descrptionP{
+  padding: 10px;
+  float: left;
+  order: 2;
+  margin-top: 1%;
+}
+.descrptionP>p{
+  background-color: #4a5662;
+  color: white;
+  text-align: justify;
+  padding: 10px;
+  box-shadow: 6px 5px 5px black;
+  font-size: 18px;
+
+}
+
+.infoP{
+  order: 1;
+  display: inline-block;
+  font-size: 18px;
+
 }
 
 h2{
   text-align: center;
   text-transform: uppercase;
+  font-size: 30px;
+
+}
+.createCommentAll{
+  order: 2;
+
 }
 .commentList{
   padding : 15px;
@@ -23,17 +69,14 @@ h2{
 .createComment{
   width: 90%;
   height: 50px;
-  margin-left: auto;
-  margin-right: auto;
   display: block;
-  margin-bottom: 10px;
+  margin: 10px auto 10px 50px;
 }
 
 .noteComment{
   width: 5%;
-  margin-top: 10px;
-  margin-left: 5%;
-  margin-bottom: 10px;
+  display: block;
+  margin-left: 50px;
 }
 
 .buttonEnvoie{

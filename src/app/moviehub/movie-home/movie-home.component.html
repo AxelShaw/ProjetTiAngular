@@ -1,5 +1,5 @@
 <h2>Sortie du mois</h2>
-<div *ngIf="movies.length; else movieListEmpty">
+<div *ngIf="movies.length; else movieListEmpty" class="main_div">
   <ul class="ulMenu">
     <div *ngFor="let movie of movies">
       <li *ngIf="convert(movie.release_movie) > myDate" class="film">
