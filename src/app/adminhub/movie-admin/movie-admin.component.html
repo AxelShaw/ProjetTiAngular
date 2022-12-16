@@ -99,15 +99,18 @@
     class="form-control"
     (keyup)="search(inputSearch)"
   >
-  <ul class="menuChoix">
-    <div *ngFor="let movie of searchMovies" class="list-movie">
-        <li class="choix" >
-          {{movie.idMovie}}
-          {{movie.nameMovie}}
-          <button (click)="emitMovieDeleted(movie)">supprimer</button>
-        </li>
-    </div>
-  </ul>
+
+
+
+
+  <div *ngIf="movies">
+    <li *ngFor="let movie of searchMovies" class="list-movie">
+      {{movie.idMovie}}
+      {{movie.nameMovie}}
+      <button (click)="emitMovieDeleted(movie)">supprimer</button>
+    </li>
+  </div>
+
 
 </div>
 

@@ -1,17 +1,12 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DtoOutputCreateMovie} from "../dtos/dto-output-create-movie";
 import {DtoOutputCreateRatingmovie} from "../dtos/dto-output-create-ratingmovie";
-import {DtoOutputCreateCommentmovie} from "../dtos/dto-output-create-commentmovie";
 import {AdminService} from "../admin.service";
 import {DtoInputMovie} from "../dtos/dto-input-movie";
-import {DtoInputRatingmovie} from "../dtos/dto-input-ratingmovie";
-import {DtoInputCommentmovie} from "../dtos/dto-input-commentmovie";
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {DtoOutputCreateComment} from "../../moviehub/dtos/dto-output-create-comment";
 import {DtoInputRatingMovie} from "../../moviehub/dtos/dto-input-rating-movie";
-import {logMessages} from "@angular-devkit/build-angular/src/builders/browser-esbuild/esbuild";
-import {resolve} from "@angular/compiler-cli";
-import {delay, Observable, Subject, Subscriber} from "rxjs";
+import {Observable, Subscriber} from "rxjs";
+import {DtoInputComments} from "../../moviehub/dtos/dto-input-comments";
 
 @Component({
   selector: 'app-movie-admin',
@@ -21,6 +16,7 @@ import {delay, Observable, Subject, Subscriber} from "rxjs";
 export class MovieAdminComponent implements OnInit {
   movies: DtoInputMovie[] = [];
   ratings: DtoInputRatingMovie [] = [];
+  comments: DtoInputComments [] = [];
   movieCreated: DtoOutputCreateMovie | null = null;
   ratingCreated: DtoOutputCreateRatingmovie | null = null;
   form : FormGroup;
@@ -60,25 +56,34 @@ export class MovieAdminComponent implements OnInit {
   }
 
   emitMovieCreated() {
-    this.form.controls['imageMovie'].setValue(this.imageData);
-    console.log(this.form.value);
-    this.movieCreated = this.form.value;
-    this._adminService.createMovie(this.movieCreated).subscribe(movie => this.movies.push(movie));
+    if (confirm("Êtes-vous sur de vouloir ajouter ce film ? ")) {
+      this.form.controls['imageMovie'].setValue(this.imageData);
+      console.log(this.form.value);
+      this.movieCreated = this.form.value;
+      this._adminService.createMovie(this.movieCreated).subscribe(movie => this.movies.push(movie));
 
-    this.form.reset();
+      this.form.reset();
 
-    this.setRating();
+      this.setRating();
+    }
   }
 
   emitMovieDeleted(movie: DtoInputMovie){
     if (confirm("Êtes-vous sur de vouloir supprimer ce film ? ")) {
-      this._adminService.deleteMovie(movie.idMovie).subscribe(() => {
-        this.movies = this.movies.filter(movies => movies.idMovie !== movie.idMovie);
+      this._adminService.deleteRatingMovie(movie.idMovie).subscribe(() => {
+        this.ratings = this.ratings.filter(ratings => ratings.movieRefId !== movie.idMovie);
       });
-        //this._adminService.deleteRatingMovie(this.movies[this.movies.length-1].idMovie).subscribe(() => {
-          //this.ratings = this.ratings.filter(ratings => ratings.movieRefId !== rating.movieRefId);
-      //});
-      }
+
+      this._adminService.deleteCommentMovie(movie.idMovie).subscribe(() => {
+        this.comments = this.comments.filter(comments => comments.idMovieRef !== movie.idMovie);
+      });
+
+    }
+
+    this._adminService.deleteMovie(movie.idMovie).subscribe(() => {
+        this.movies = this.movies.filter(movies => movies.idMovie !== movie.idMovie);
+    });
+    this.searchMovies = [];
   }
 
   control(nameMovie: string): AbstractControl | null {
@@ -159,9 +164,5 @@ export class MovieAdminComponent implements OnInit {
         this.searchMovies = [];
       }
     }, delay);
-  }
-
-  selectInput() {
-    this.searchMovies = [];
   }
 }

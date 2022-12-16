@@ -9,6 +9,7 @@ import {DtoInputRatingmovie} from "./dtos/dto-input-ratingmovie";
 import {DtoOutputCreateCommentmovie} from "./dtos/dto-output-create-commentmovie";
 import {DtoInputCommentmovie} from "./dtos/dto-input-commentmovie";
 import {DtoInputRatingMovie} from "../moviehub/dtos/dto-input-rating-movie";
+import {DtoInputComments} from "../moviehub/dtos/dto-input-comments";
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,7 @@ export class AdminService {
   private static readonly ENTRY_POINT = environment.apiUrl + "/movie"
   private static readonly ENTRY_POINT_RATING_MOVIE = environment.apiUrl + "/ratingmovie"
   private static readonly ENTRY_POINT_USER = environment.apiUrl + "/user"
+  private static readonly ENTRY_POINT_COMMENT= environment.apiUrl + "/commentmovie"
 
 
 
@@ -43,5 +45,11 @@ export class AdminService {
   }
   deleteRatingMovie(id: number):Observable<any>{
     return this._httpClient.delete(AdminService.ENTRY_POINT_RATING_MOVIE + "/" + id);
+  }
+  deleteCommentMovie(id: number):Observable<any>{
+    return this._httpClient.delete(AdminService.ENTRY_POINT_COMMENT + "/" + id);
+  }
+  fetchByIdComment(id: number): Observable<DtoInputComments[]> {
+    return this._httpClient.get<DtoInputComments[]>(`${AdminService.ENTRY_POINT_COMMENT}/${id}`);
   }
 }

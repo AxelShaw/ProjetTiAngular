@@ -9,9 +9,9 @@
   >
 
   <ul class="menuChoix">
-    <div *ngFor="let movie of searchMovies" class="list-movie">
+    <div *ngFor="let movie of searchMovies" class="list-movie" >
       <a routerLink="../detail/{{movie.idMovie}}" (blur)="selectInput()">
-      <li class="choix" >
+      <li class="choix">
         {{movie.nameMovie}}
       </li>
       </a>
@@ -22,16 +22,16 @@
   <a class="login" routerLink="admin">Admin</a>
   <ul class="menu">
     <li>
-      <a routerLink="home">Accueil</a>
+      <a routerLink="home" class="menuA">Accueil</a>
     </li>
     <li>
-      <a routerLink="movies">Liste film</a>
+      <a routerLink="movies" class="menuA">Liste film</a>
     </li>
     <li>
-      <a routerLink="top100">Top 100</a>
+      <a routerLink="top100" class="menuA">Top 100</a>
     </li>
     <li>
-      <a routerLink="bad100">Bad 100</a>
+      <a routerLink="bad100" class="menuA">Bad 100</a>
     </li>
   </ul>
 </nav>

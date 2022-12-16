@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {DtoInputMovie} from "../moviehub/dtos/dto-input-movie";
 import {MovieService} from "../moviehub/movie.service";
 
@@ -41,4 +41,5 @@ export class HeaderComponent implements OnInit {
   selectInput() {
     this.searchMovies = [];
   }
+
 }
