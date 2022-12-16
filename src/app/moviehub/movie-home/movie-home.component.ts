@@ -1,14 +1,19 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {DtoInputMovie} from "../dtos/dto-input-movie";
 import {MovieService} from "../movie.service";
 import * as module from "module";
 import {formatDate} from "@angular/common";
 import {DtoInputRatingMovie} from "../dtos/dto-input-rating-movie";
+import {BehaviorSubject} from "rxjs";
+import SwiperCore, { Keyboard, Pagination, Navigation, Virtual } from 'swiper';
+
+SwiperCore.use([Keyboard, Pagination, Navigation, Virtual]);
 
 @Component({
   selector: 'app-movie-home',
   templateUrl: './movie-home.component.html',
   styleUrls: ['./movie-home.component.css'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class MovieHomeComponent implements OnInit {
   movies: DtoInputMovie[] = [];
@@ -17,6 +22,7 @@ export class MovieHomeComponent implements OnInit {
   myDateMoment = new Date();
   ratingsTop : DtoInputRatingMovie[] = [];
   ratingsDown : DtoInputRatingMovie[] = [];
+  slides$ = new BehaviorSubject<string[]>(['']);
 
 
   constructor(private _movieService: MovieService) {
@@ -29,6 +35,9 @@ export class MovieHomeComponent implements OnInit {
     this.fetchAllRating();
     this.fetchAllRatingTop();
     this.fetchAllRatingDown();
+    this.slides$.next(
+      Array.from({ length: this.movies.length  }).map((el, index) => `Slide ${index + 1}`)
+    );
   }
 
   private fetchAll() {

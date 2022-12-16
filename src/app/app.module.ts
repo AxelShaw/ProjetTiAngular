@@ -16,6 +16,7 @@ import { MovieBad100Component } from './moviehub/movie-bad100/movie-bad100.compo
 import { MovieAdminComponent } from './adminhub/movie-admin/movie-admin.component';
 import { MovieUserComponent } from './adminhub/movie-user/movie-user.component';
 import {NgxPaginationModule} from "ngx-pagination";
+import {SwiperModule} from "swiper/angular";
 
 
 @NgModule({
@@ -34,13 +35,14 @@ import {NgxPaginationModule} from "ngx-pagination";
 
 
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    AppRootingModule,
-    ReactiveFormsModule,
-    NgxPaginationModule
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        AppRootingModule,
+        ReactiveFormsModule,
+        NgxPaginationModule,
+        SwiperModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
