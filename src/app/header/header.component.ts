@@ -38,8 +38,12 @@ export class HeaderComponent implements OnInit {
     }, delay);
   }
 
-  selectInput() {
-    this.searchMovies = [];
-  }
+  selectInput( delay = 100) {
+    let time;
+    clearTimeout(time);
 
+    time = setTimeout(() => {
+      this.searchMovies = [];
+    }, delay);
+  }
 }

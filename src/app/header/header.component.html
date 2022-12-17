@@ -6,11 +6,12 @@
     #inputSearch
     class="form-control"
     (keyup)="search(inputSearch)"
+    (blur)="selectInput()"
   >
 
   <ul class="menuChoix">
     <div *ngFor="let movie of searchMovies" class="list-movie" >
-      <a routerLink="../detail/{{movie.idMovie}}" (blur)="selectInput()">
+      <a routerLink="../detail/{{movie.idMovie}}">
       <li class="choix">
         {{movie.nameMovie}}
       </li>
