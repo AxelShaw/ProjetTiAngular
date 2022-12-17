@@ -27,4 +27,8 @@ export class MovieBad100Component implements OnInit {
   private fetchAllRating() {
     this._movieService.fetchAllRatingDown().subscribe(rating => this.ratings = rating);
   }
+
+  Tri(genre: string) {
+    this._movieService.fetchAllByGenre(genre).subscribe(movies => this.movies = movies)
+  }
 }

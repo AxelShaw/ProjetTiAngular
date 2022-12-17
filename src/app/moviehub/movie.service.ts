@@ -74,4 +74,8 @@ export class MovieService {
   fetchAllRatingTopHome():Observable<DtoInputRatingMovie[]>{
     return this._httpClient.get<DtoInputRatingMovie[]>(`${MovieService.ENTRY_POINT_RATING}/TopHome`);
   }
+
+  fetchAllByGenre(genre : string):Observable<DtoInputMovie[]>{
+    return this._httpClient.get<DtoInputMovie[]>(`${MovieService.ENTRY_POINT}/genre/${genre}`);
+  }
 }

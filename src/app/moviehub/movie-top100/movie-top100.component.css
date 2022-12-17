@@ -1,9 +1,9 @@
 .all{
-  width: 75%;
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
-
 }
+
 .allMovie{
   list-style:none;
   display:inline-block;
@@ -44,4 +44,20 @@ img{
 .Page{
   text-align: center;
 }
+
+.genre{
+  float: left;
+  padding-bottom: 100%;
+  list-style:none;
+}
+
+.genre li:hover{
+  background-color: #00c1b8;
+}
+
+.genre li{
+  margin-top: 10px;
+}
+
+
 

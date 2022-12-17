@@ -1,4 +1,26 @@
 <h2>Meilleur Film</h2>
+
+<ul class="genre">
+  <li (click)="Tri('Action')">Action</li>
+  <li (click)="Tri('Animation')">Animation</li>
+  <li (click)="Tri('Aventure')">Aventure</li>
+  <li (click)="Tri('Biopic')">Biopic</li>
+  <li (click)="Tri('Comédie')">Comédie</li>
+  <li (click)="Tri('Comédie dramatique')">Comédie dramatique</li>
+  <li (click)="Tri('Drame')">Drame</li>
+  <li (click)="Tri('Epouvante-horreur')">Epouvante-horreur</li>
+  <li (click)="Tri('Famille')">Famille</li>
+  <li (click)="Tri('Fantastique')">Fantastique</li>
+  <li (click)="Tri('Guerre')">Guerre</li>
+  <li (click)="Tri('Historique')">Historique</li>
+  <li (click)="Tri('Musical')">Musical</li>
+  <li (click)="Tri('Policier')">Policier</li>
+  <li (click)="Tri('Romance')">Romance</li>
+  <li (click)="Tri('Science Fiction')">Science Fiction</li>
+  <li (click)="Tri('Thriller')">Thriller</li>
+  <li (click)="Tri('Western')">Western</li>
+</ul>
+
 <div *ngIf="ratings.length; else movieListEmpty">
   <ul class="all">
     <div *ngFor="let rating of ratings | paginate :{

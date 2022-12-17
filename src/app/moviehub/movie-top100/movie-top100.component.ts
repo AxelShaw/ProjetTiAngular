@@ -28,4 +28,7 @@ export class MovieTop100Component implements OnInit {
     this._movieService.fetchAllRatingTop().subscribe(rating => this.ratings = rating);
   }
 
+  Tri(genre: string) {
+    this._movieService.fetchAllByGenre(genre).subscribe(movies => this.movies = movies)
+  }
 }
