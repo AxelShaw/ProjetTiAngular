@@ -1,6 +1,7 @@
 <h2>Pire film</h2>
 
 <ul class="genre">
+  <li (click)="Tri('')">Tous</li>
   <li (click)="Tri('Action')">Action</li>
   <li (click)="Tri('Animation')">Animation</li>
   <li (click)="Tri('Aventure')">Aventure</li>
@@ -24,7 +25,7 @@
 <div *ngIf="ratings.length; else movieListEmpty">
   <ul class="all">
     <div *ngFor="let rating of ratings | paginate :{
-    itemsPerPage: 16 ,
+    itemsPerPage: item ,
      currentPage: page}
 " class="allMovie">
       <span *ngFor="let movie of movies" >

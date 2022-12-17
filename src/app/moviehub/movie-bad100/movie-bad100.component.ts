@@ -12,6 +12,7 @@ export class MovieBad100Component implements OnInit {
   movies: DtoInputMovie[] = [];
   ratings : DtoInputRatingMovie[] = [];
   page : number ;
+  item : number = 16;
 
   constructor(private _movieService: MovieService) { }
 
@@ -29,6 +30,12 @@ export class MovieBad100Component implements OnInit {
   }
 
   Tri(genre: string) {
-    this._movieService.fetchAllByGenre(genre).subscribe(movies => this.movies = movies)
+    if(genre == ''){
+      this.item = 16;
+      this._movieService.fetchAllMovie().subscribe(movies => this.movies = movies);
+    }else{
+      this.item = 100;
+      this._movieService.fetchAllByGenre(genre).subscribe(movies => this.movies = movies)
+    }
   }
 }
