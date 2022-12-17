@@ -9,18 +9,20 @@ img{
 
 .all{
   background-color: #f5f5f5;
-  flex-wrap: wrap;
   max-width: 1100px;
   width: 100%;
   justify-content: center;
   margin: auto;
-  border: black solid 4px;
+  border: #535f6d solid 4px;
   height: 100%;
   padding: 10px;
+  color: black;
+  box-shadow: 6px 5px 5px black;
 }
 .movieP{
   padding: 10px;
   float: left;
+  width: 100%;
 }
 .movieP>div{
   margin-bottom: 50px;
@@ -30,7 +32,6 @@ img{
 }
 .descrptionP{
   padding: 10px;
-  float: left;
   order: 2;
   margin-top: 1%;
 }
@@ -59,11 +60,14 @@ h2{
 }
 .createCommentAll{
   order: 2;
+  bottom: 0;
+  width: 100%;
 
 }
 .commentList{
-  padding : 15px;
-  float: left;
+  order: 3;
+  bottom: 0;
+  width: 100%;
 }
 
 .createComment{

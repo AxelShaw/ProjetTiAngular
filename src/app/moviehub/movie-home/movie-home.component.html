@@ -1,58 +1,61 @@
-<h2>Sortie du mois</h2>
 
-<div *ngIf="movies.length; else movieListEmpty" class="main_div">
-  <ul class="ulMenu">
-    <div *ngFor="let movie of movies; let i2 = index">
-      <li *ngIf="convert(movie.release_movie) > myDate" class="film">
-        <a routerLink="../detail/{{movie.idMovie}}">
-          <img src="data:image/jpg;base64, {{movie.imageMovie}}" alt="movie image" />
-          <br />
-          <div class="name" >{{movie.nameMovie}}</div>
-          <span *ngFor="let rating of ratings">
-            <span *ngIf="movie.idMovie == rating.movieRefId && rating.numVote != 0" class="ratingSpan">
-              {{rating.average_rating}} / 100
+<div class="main_div">
+  <h2>Sortie du mois</h2>
+  <div *ngIf="movies.length; else movieListEmpty" >
+    <ul class="ulMenu">
+      <div *ngFor="let movie of movies; let i2 = index">
+        <li *ngIf="convert(movie.release_movie) > myDate" class="film">
+          <a routerLink="../detail/{{movie.idMovie}}">
+            <img src="data:image/jpg;base64, {{movie.imageMovie}}" alt="movie image" />
+            <br />
+            <div class="name" >{{movie.nameMovie}}</div>
+            <span *ngFor="let rating of ratings">
+              <span *ngIf="movie.idMovie == rating.movieRefId && rating.numVote != 0" class="ratingSpan">
+                {{rating.average_rating}} / 100
+              </span>
             </span>
-          </span>
-        </a>
-      </li>
-    </div>
-  </ul>
-</div>
+          </a>
+        </li>
+      </div>
+    </ul>
+  </div>
+  <br >
 
-<h2>Meilleur sortie du moment</h2>
-<div *ngIf="ratingsTop.length; else movieListEmpty" class="main_div">
-  <ul class="ulMenu">
-    <div *ngFor="let rating of ratingsTop">
-      <span *ngFor="let movie of movies" >
-          <li *ngIf="movie.idMovie == rating.movieRefId && convert(movie.release_movie) > myDateMoment" class="film">
-            <a routerLink="../detail/{{movie.idMovie}}">
-              <img src="data:image/jpg;base64, {{movie.imageMovie}}" alt="movie image">
-              <br />
-              <span class="name">{{movie.nameMovie}}</span>
-              <span class="ratingSpan">{{rating.average_rating}} / 100</span>
-            </a>
-          </li>
-      </span>
-    </div>
-  </ul>
-</div>
+  <h2>Meilleur sortie du moment</h2>
+  <div *ngIf="ratingsTop.length; else movieListEmpty" >
+    <ul class="ulMenu">
+      <div *ngFor="let rating of ratingsTop">
+        <span *ngFor="let movie of movies" >
+            <li *ngIf="movie.idMovie == rating.movieRefId && convert(movie.release_movie) > myDateMoment" class="film">
+              <a routerLink="../detail/{{movie.idMovie}}">
+                <img src="data:image/jpg;base64, {{movie.imageMovie}}" alt="movie image">
+                <br />
+                <span class="name">{{movie.nameMovie}}</span>
+                <span class="ratingSpan">{{rating.average_rating}} / 100</span>
+              </a>
+            </li>
+        </span>
+      </div>
+    </ul>
+  </div>
 
-<h2>Pire sortie du moment</h2>
-<div *ngIf="ratingsDown.length; else movieListEmpty" class="main_div">
-  <ul class="ulMenu">
-    <div *ngFor="let rating of ratingsDown">
-      <span *ngFor="let movie of movies" >
-          <li *ngIf="movie.idMovie == rating.movieRefId && convert(movie.release_movie) > myDateMoment" class="film">
-            <a routerLink="../detail/{{movie.idMovie}}">
-              <img src="data:image/jpg;base64, {{movie.imageMovie}}" alt="movie image">
-              <br />
-              <span class="name">{{movie.nameMovie}}</span>
-              <span class="ratingSpan">{{rating.average_rating}} / 100</span>
-            </a>
-          </li>
-      </span>
-    </div>
-  </ul>
+  <h2>Pire sortie du moment</h2>
+  <div *ngIf="ratingsDown.length; else movieListEmpty" >
+    <ul class="ulMenu">
+      <div *ngFor="let rating of ratingsDown">
+        <span *ngFor="let movie of movies" >
+            <li *ngIf="movie.idMovie == rating.movieRefId && convert(movie.release_movie) > myDateMoment" class="film">
+              <a routerLink="../detail/{{movie.idMovie}}">
+                <img src="data:image/jpg;base64, {{movie.imageMovie}}" alt="movie image">
+                <br />
+                <span class="name">{{movie.nameMovie}}</span>
+                <span class="ratingSpan">{{rating.average_rating}} / 100</span>
+              </a>
+            </li>
+        </span>
+      </div>
+    </ul>
+  </div>
 </div>
 
 

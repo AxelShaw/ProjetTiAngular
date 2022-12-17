@@ -34,7 +34,10 @@ li{
   width: 100%;
   justify-content: center;
   margin: auto;
-  border: black solid 4px;
+  border: #535f6d solid 4px;
+  opacity: 0.9;
+  box-shadow: 6px 5px 5px black;
+  color: black;
 }
 h2{
   text-align: center;
@@ -48,7 +51,7 @@ h2{
   flex-wrap: inherit ;
   width: 85%;
   list-style: none;
-  scrollbar-color: blank grise;
+  scrollbar-color: #00c1b8 #535f6d ;
   scrollbar-width: thin;
 }
 

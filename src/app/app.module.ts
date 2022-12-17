@@ -17,6 +17,7 @@ import { MovieAdminComponent } from './adminhub/movie-admin/movie-admin.componen
 import { MovieUserComponent } from './adminhub/movie-user/movie-user.component';
 import {NgxPaginationModule} from "ngx-pagination";
 import {SwiperModule} from "swiper/angular";
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import {SwiperModule} from "swiper/angular";
     MovieBad100Component,
     MovieAdminComponent,
     MovieUserComponent,
+    FooterComponent,
 
 
   ],
