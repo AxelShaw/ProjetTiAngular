@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {DtoInputMovie} from "../dtos/dto-input-movie";
 import {AdminService} from "../admin.service";
 import {DtoInputUser} from "../dtos/dto-input-user";
+import {DtoInputComments} from "../../moviehub/dtos/dto-input-comments";
 
 @Component({
   selector: 'app-movie-user',
@@ -10,7 +11,8 @@ import {DtoInputUser} from "../dtos/dto-input-user";
 })
 export class MovieUserComponent implements OnInit {
   searchUsers: DtoInputUser[] = [];
-
+  comments: DtoInputComments [] = [];
+  ratings: DtoInputComments [] = [];
   users: DtoInputUser[] = [];
 
   constructor( private _adminService: AdminService) { }
@@ -36,6 +38,21 @@ export class MovieUserComponent implements OnInit {
         this.searchUsers = [];
       }
     }, delay);
+  }
+  emitUserDeleted(user: DtoInputUser){
+    if (confirm("Êtes-vous sur de vouloir bannir cet utilisateur ? ")) {
+
+      this._adminService.deleteCommentMovie(user.idUser).subscribe(() => {
+        this.comments = this.comments.filter(comments => comments.idUserRef !== user.idUser);
+      });
+
+
+    }
+
+    this._adminService.deleteUser(user.idUser).subscribe(() => {
+      this.users = this.users.filter(users => users.idUser !== users.idUser);
+    });
+    this.searchUsers = [];
   }
 
 }

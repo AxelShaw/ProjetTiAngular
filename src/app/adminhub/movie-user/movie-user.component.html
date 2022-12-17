@@ -16,7 +16,7 @@
     <li *ngFor="let user of searchUsers" class="list-movie">
       {{user.idUser}}
       {{user.nickname}}
-<!--      <button (click)="emitMovieDeleted(movie)">ban</button>-->
+      <button (click)="emitUserDeleted(user)">ban</button>
     </li>
   </div>
 

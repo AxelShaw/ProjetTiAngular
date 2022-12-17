@@ -48,12 +48,15 @@ export class AdminService {
     return this._httpClient.delete(AdminService.ENTRY_POINT_RATING_MOVIE + "/" + id);
   }
   deleteCommentMovie(id: number):Observable<any>{
-    return this._httpClient.delete(AdminService.ENTRY_POINT_COMMENT + "/" + id);
+    return this._httpClient.delete(AdminService.ENTRY_POINT_COMMENT + "/deletebyuser/" + id);
   }
   fetchByIdComment(id: number): Observable<DtoInputComments[]> {
     return this._httpClient.get<DtoInputComments[]>(`${AdminService.ENTRY_POINT_COMMENT}/${id}`);
   }
   fetchByNameUser(nickname : string):Observable<DtoInputUser>{
     return this._httpClient.get<DtoInputUser>(`${AdminService.ENTRY_POINT_USER}/${nickname}`);
+  }
+  deleteUser(id: number):Observable<any>{
+    return this._httpClient.delete(AdminService.ENTRY_POINT_USER + "/" + id);
   }
 }
