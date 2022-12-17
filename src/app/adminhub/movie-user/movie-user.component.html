@@ -1,1 +1,23 @@
-<p>movie-user works!</p>
+<h2>rechercher un utilisateur</h2>
+<div>
+  <input
+    type="text"
+    id="tempo"
+    #inputSearch
+    class="form-control"
+    (keyup)="search(inputSearch)"
+  >
+
+
+
+
+  <div *ngIf="users">
+    <li *ngFor="let user of searchUsers" class="list-movie">
+      {{user.idUser}}
+      {{user.nickname}}
+<!--      <button (click)="emitMovieDeleted(movie)">supprimer</button>-->
+    </li>
+  </div>
+
+
+</div>

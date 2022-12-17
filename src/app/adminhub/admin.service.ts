@@ -10,6 +10,7 @@ import {DtoOutputCreateCommentmovie} from "./dtos/dto-output-create-commentmovie
 import {DtoInputCommentmovie} from "./dtos/dto-input-commentmovie";
 import {DtoInputRatingMovie} from "../moviehub/dtos/dto-input-rating-movie";
 import {DtoInputComments} from "../moviehub/dtos/dto-input-comments";
+import {DtoInputUser} from "./dtos/dto-input-user";
 
 @Injectable({
   providedIn: 'root'
@@ -51,5 +52,8 @@ export class AdminService {
   }
   fetchByIdComment(id: number): Observable<DtoInputComments[]> {
     return this._httpClient.get<DtoInputComments[]>(`${AdminService.ENTRY_POINT_COMMENT}/${id}`);
+  }
+  fetchByNameUser(nickname : string):Observable<DtoInputUser>{
+    return this._httpClient.get<DtoInputUser>(`${AdminService.ENTRY_POINT_USER}/${nickname}`);
   }
 }
