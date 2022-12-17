@@ -1,5 +1,6 @@
-<h2>rechercher un utilisateur</h2>
-<div>
+
+<div class="rechercheUser">
+  <h2>rechercher un utilisateur</h2>
   <input
     type="text"
     id="tempo"
@@ -15,7 +16,7 @@
     <li *ngFor="let user of searchUsers" class="list-movie">
       {{user.idUser}}
       {{user.nickname}}
-<!--      <button (click)="emitMovieDeleted(movie)">supprimer</button>-->
+<!--      <button (click)="emitMovieDeleted(movie)">ban</button>-->
     </li>
   </div>
 

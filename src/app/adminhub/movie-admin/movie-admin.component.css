@@ -42,3 +42,12 @@ label{
   margin-right: 5px;
   margin-bottom: 5px;
 }
+.adminmovie{
+  width: 100%;
+  min-height: 300px;
+  height: 100%;
+  margin-top: -300px;
+}
+.recherchemovie{
+  margin: 50px;
+}

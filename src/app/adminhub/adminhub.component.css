@@ -2,9 +2,22 @@
   list-style-type: none;
   display: flex;
   padding: 0;
-  display: flex;
   justify-content: center;
+  min-height: 400px;
+  height: 100%;
+
 }
+
 a{
   margin-right: 10px;
+  background-color: #ff3b3b;
+  padding: 10PX;
+  color: #ffffff;
+  text-decoration: none;
+}
+a:hover{
+
+  background-color: #00c1b8;
+  padding: 15PX;
+  color: black;
 }

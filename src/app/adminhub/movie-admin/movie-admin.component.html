@@ -1,19 +1,23 @@
-<form [formGroup]="form" (ngSubmit)="emitMovieCreated()">
-  <div>
-    <label>
-      movie name: <input type="text" formControlName="nameMovie" required class="moyen">
-    </label>
-    <div *ngIf="control('nameMovie')?.dirty && control('nameMovie')?.invalid">
-      Please, you have to provide a name for the movie.
+<div class="adminmovie">
+  <h2>ajout d'un film</h2>
+  <form [formGroup]="form" (ngSubmit)="emitMovieCreated()">
+    <div>
+      <label>
+        movie name: <input type="text" formControlName="nameMovie" required class="moyen">
+      </label>
+      <div *ngIf="control('nameMovie')?.dirty && control('nameMovie')?.invalid">
+        Please, you have to provide a name for the movie.
+      </div>
     </div>
-  </div>
-  <div>
-    <label>
-      runtime minutes: <input type="number" formControlName="runtimeMinute" required class="petit">
-    </label>
-    <div *ngIf="control('runtimeMinute')?.dirty && control('runtimeMinute')?.invalid">
-      You need to provide an amount of minutes for completing the movie.
+    <div>
+      <label>
+        runtime minutes: <input type="number" formControlName="runtimeMinute" required class="petit">
+      </label>
+      <div *ngIf="control('runtimeMinute')?.dirty && control('runtimeMinute')?.invalid">
+        You need to provide an amount of minutes for completing the movie.
+      </div>
     </div>
+<<<<<<< Updated upstream
   </div>
   <div>
     <label>
@@ -26,91 +30,106 @@
     </label>
     <div *ngIf="control('movieType')?.dirty && control('movieType')?.invalid">
       Please, you have to provide a type for the movie.
+=======
+    <div>
+      <label>
+        movie type:
+        <select formControlName="movieType" class="petit">
+          <option value="streaming">streaming</option>
+          <option value="TV">en salle</option>
+          <option value="pasDispo">pas disponible</option>
+        </select>
+      </label>
+      <div *ngIf="control('movieType')?.dirty && control('movieType')?.invalid">
+        Please, you have to provide a type for the movie.
+      </div>
+>>>>>>> Stashed changes
     </div>
-  </div>
-  <div>
-    <label>
-      description movie: <input type="text" formControlName="descriptionMovie" required class="grand">
-    </label>
-    <div *ngIf="control('descriptionMovie')?.dirty && control('descriptionMovie')?.invalid">
-      Please, you have to provide a description for the movie.
+    <div>
+      <label>
+        description movie: <input type="text" formControlName="descriptionMovie" required class="grand">
+      </label>
+      <div *ngIf="control('descriptionMovie')?.dirty && control('descriptionMovie')?.invalid">
+        Please, you have to provide a description for the movie.
+      </div>
     </div>
-  </div>
-  <div>
-    <label>
-      image movie: <input type="file" id="fileInput" required (change)="getImage($event)" required class="image">
-    </label>
-    <div *ngIf="control('imageMovie')?.dirty && control('imageMovie')?.invalid">
-      Please, you have to provide a description for the movie.
+    <div>
+      <label>
+        image movie: <input type="file" id="fileInput" required (change)="getImage($event)" required class="image">
+      </label>
+      <div *ngIf="control('imageMovie')?.dirty && control('imageMovie')?.invalid">
+        Please, you have to provide a description for the movie.
+      </div>
     </div>
-  </div>
-  <div>
-    <label>
-      film genre:
-      <select formControlName="filmGenre" class="petit">
-        <option value="Action">Action</option>
-        <option value="Animation">Animation</option>
-        <option value="Aventure">Aventure</option>
-        <option value="Biopic">Biopic</option>
-        <option value="Comédie">Comédie</option>
-        <option value="Comédie dramatique">Comédie dramatique</option>
-        <option value="Drame">Drame</option>
-        <option value="Epouvante-horreur">Epouvante-horreur</option>
-        <option value="Famille">Famille</option>
-        <option value="Fantastique">Fantastique</option>
-        <option value="Guerre">Guerre</option>
-        <option value="Historique">Historique</option>
-        <option value="Musical">Musical</option>
-        <option value="Policier">Policier</option>
-        <option value="Romance">Romance</option>
-        <option value="Science Fiction">Science Fiction</option>
-        <option value="Thriller">Thriller</option>
-        <option value="Western">Western</option>
-      </select>
-    </label>
-    <div *ngIf="control('filmGenre')?.dirty && control('filmGenre')?.invalid" >
-      Please, you have to provide a genre for the movie.
+    <div>
+      <label>
+        film genre:
+        <select formControlName="filmGenre" class="petit">
+          <option value="Action">Action</option>
+          <option value="Animation">Animation</option>
+          <option value="Aventure">Aventure</option>
+          <option value="Biopic">Biopic</option>
+          <option value="Comédie">Comédie</option>
+          <option value="Comédie dramatique">Comédie dramatique</option>
+          <option value="Drame">Drame</option>
+          <option value="Epouvante-horreur">Epouvante-horreur</option>
+          <option value="Famille">Famille</option>
+          <option value="Fantastique">Fantastique</option>
+          <option value="Guerre">Guerre</option>
+          <option value="Historique">Historique</option>
+          <option value="Musical">Musical</option>
+          <option value="Policier">Policier</option>
+          <option value="Romance">Romance</option>
+          <option value="Science Fiction">Science Fiction</option>
+          <option value="Thriller">Thriller</option>
+          <option value="Western">Western</option>
+        </select>
+      </label>
+      <div *ngIf="control('filmGenre')?.dirty && control('filmGenre')?.invalid" >
+        Please, you have to provide a genre for the movie.
+      </div>
     </div>
-  </div>
-  <div>
-    <label>
-      director: <input type="text" formControlName="director" required class="moyen">
-    </label>
-    <div *ngIf="control('director')?.dirty && control('director')?.invalid">
-      Please, you have to provide a director for the movie.
+    <div>
+      <label>
+        director: <input type="text" formControlName="director" required class="moyen">
+      </label>
+      <div *ngIf="control('director')?.dirty && control('director')?.invalid">
+        Please, you have to provide a director for the movie.
+      </div>
     </div>
-  </div>
-  <div>
-    <label>
-      release movie: <input type="text" formControlName="release_movie" required class="petit">
-    </label>
-    <div *ngIf="control('release_movie')?.dirty && control('release_movie')?.invalid">
-      Please, you have to provide a release movie for the movie.
+    <div>
+      <label>
+        release movie: <input type="text" formControlName="release_movie" required class="petit">
+      </label>
+      <div *ngIf="control('release_movie')?.dirty && control('release_movie')?.invalid">
+        Please, you have to provide a release movie for the movie.
+      </div>
     </div>
-  </div>
-  <input type="submit" [disabled]="form.invalid" *ngIf="rating == false" >
-</form>
-<input type="submit" *ngIf="rating" value="Click to continue" (click)="ratingSet()">
-<div>
-  <input
-    type="text"
-    id="tempo"
-    #inputSearch
-    class="form-control"
-    (keyup)="search(inputSearch)"
-  >
+    <input type="submit" [disabled]="form.invalid" *ngIf="rating == false" >
+  </form>
+  <input type="submit" *ngIf="rating" value="Click to continue" (click)="ratingSet()">
+  <h2>recherche d'un film</h2>
+  <div class="recherchemovie">
+    <input
+      type="text"
+      id="tempo"
+      #inputSearch
+      class="form-control"
+      (keyup)="search(inputSearch)"
+    >
 
 
 
 
-  <div *ngIf="movies">
-    <li *ngFor="let movie of searchMovies" class="list-movie">
-      {{movie.idMovie}}
-      {{movie.nameMovie}}
-      <button (click)="emitMovieDeleted(movie)">supprimer</button>
-    </li>
+    <div *ngIf="movies">
+      <li *ngFor="let movie of searchMovies" class="list-movie">
+        {{movie.idMovie}}
+        {{movie.nameMovie}}
+        <button (click)="emitMovieDeleted(movie)">supprimer</button>
+      </li>
+    </div>
+
+
   </div>
-
-
 </div>
 
