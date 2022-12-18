@@ -144,6 +144,7 @@ export class MovieDetailComponent implements OnInit {
       this._movieService.createFavorie(this.createFavorie).subscribe(fav => this.favories.push(fav))
     } else {
       if (confirm("Êtes-vous sur de vouloir supprimer ce favories ? ")) {
+        document.getElementById("star2") as HTMLImageElement;
         this._movieService.deleteIdFavorie(id).subscribe(() => {
           this.favories = this.favories.filter(fav => fav.idFav !== idMovie);
         });
