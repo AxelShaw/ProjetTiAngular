@@ -3,6 +3,9 @@ import {AbstractControl, FormBuilder, FormControl, FormGroup} from "@angular/for
 import {AdminService} from "../admin.service";
 import {DatePipe, formatDate} from "@angular/common";
 import {DtoInputMovie} from "../dtos/dto-input-movie";
+import {DtoOutputCreateMovie} from "../dtos/dto-output-create-movie";
+import {DtoOutputCreateActu} from "../dtos/dto-output-create-actu";
+import {DtoInputActu} from "../dtos/dto-intput-actu";
 
 @Component({
   selector: 'app-movie-actu',
@@ -14,6 +17,8 @@ export class MovieActuComponent implements OnInit {
   maDate = new Date();
   searchMovies: DtoInputMovie[] = [];
   movies: DtoInputMovie[] = [];
+  actuCreated: DtoOutputCreateActu | null = null;
+  actus: DtoInputActu[] = [];
 
   movieName : string = "";
   idMovie : number = 0;
@@ -39,6 +44,9 @@ export class MovieActuComponent implements OnInit {
     this.form.controls['release_actu'].setValue(this.maDate.toLocaleDateString());
     this.form.controls['idMovieRef'].setValue(this.idMovie);
     console.log(this.form.value);
+    this.actuCreated = this.form.value;
+    this._adminService.createActu(this.actuCreated).subscribe(actu => this.actus.push(actu));
+
     this.form.reset();
   }
 
