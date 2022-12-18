@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {DtoInputMovie} from "./dtos/dto-input-movie";
 import {AdminService} from "./admin.service";
 import {DtoOutputCreateMovie} from "./dtos/dto-output-create-movie";
@@ -6,6 +6,9 @@ import {DtoOutputCreateRatingmovie} from "./dtos/dto-output-create-ratingmovie";
 import {DtoInputRatingmovie} from "./dtos/dto-input-ratingmovie";
 import {DtoOutputCreateCommentmovie} from "./dtos/dto-output-create-commentmovie";
 import {DtoInputCommentmovie} from "./dtos/dto-input-commentmovie";
+import {FavorieService} from "../favorihub/favorie.service";
+import {DtoInputFavorie} from "../favorihub/dtos/dto-input-favorie";
+import {DtoInputRatingMovie} from "../moviehub/dtos/dto-input-rating-movie";
 
 @Component({
   selector: 'app-adminhub',
@@ -18,4 +21,5 @@ export class AdminhubComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 }

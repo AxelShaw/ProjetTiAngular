@@ -21,4 +21,7 @@ export class FavorieService {
   fetchAllMovie(): Observable<DtoInputMovie[]> {
     return this._httpClient.get<DtoInputMovie[]>(FavorieService.ENTRY_POINT_MOVIE);
   }
+  deleteFavoriteById(id: number):Observable<any>{
+    return this._httpClient.delete(FavorieService.ENTRY_POINT + "/" + id);
+  }
 }

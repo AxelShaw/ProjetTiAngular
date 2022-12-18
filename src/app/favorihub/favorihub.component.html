@@ -6,9 +6,12 @@
           <a routerLink="../detail/{{movie.idMovie}}">
             <img src="data:image/jpg;base64, {{movie.imageMovie}}" alt="movie image" class="image">
             {{movie.nameMovie}}
+
           </a>
+          <button (click)="emitFavoriDeleted(favorie.idFav, movie.idMovie)">supprimer</button>
         </span>
       </span>
+
     </li>
   </ul>
 </div>
