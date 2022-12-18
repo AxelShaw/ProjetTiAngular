@@ -1,0 +1,36 @@
+<div class="adminmovie">
+  <h2>ajout d'une actualité</h2>
+
+  <div class="recherchemovie">
+    <input
+      type="text"
+      id="tempo"
+      #inputSearch
+      class="form-control"
+      (keyup)="search(inputSearch)"
+    >
+    {{movieName}}
+    <div *ngIf="movies">
+      <li *ngFor="let movie of searchMovies" class="list-movie">
+        {{movie.idMovie}}
+        {{movie.nameMovie}}
+        <button (click)="select(movie)">Select</button>
+      </li>
+    </div>
+
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="emitActuCreated()">
+    <div>
+      <label>
+        News: <input type="text" formControlName="newsActu" required class="grand">
+      </label>
+      <div *ngIf="control('newsActu')?.dirty && control('newsActu')?.invalid">
+        Please, you have to provide a news for the movie.
+      </div>
+    </div>
+
+
+    <input type="submit" [disabled]="form.invalid" (click)="endInput()">
+  </form>
+</div>

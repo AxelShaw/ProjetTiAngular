@@ -1,5 +1,5 @@
 <div class="adminmovie">
-  <h2>ajout d'un film</h2>
+  <h2>Ajout d'un film</h2>
   <form [formGroup]="form" (ngSubmit)="emitMovieCreated()">
     <div>
       <label>
@@ -20,7 +20,7 @@
     <div>
     <label>
       movie type:
-      <select formControlName="movieType" class="petit">
+      <select formControlName="movieType" class="petit" required>
         <option value="streaming">streaming</option>
         <option value="en salle">en salle</option>
         <option value="pasDispo">pas disponible</option>
@@ -42,14 +42,12 @@
       <label>
         image movie: <input type="file" id="fileInput" required (change)="getImage($event)" required class="image">
       </label>
-      <div *ngIf="control('imageMovie')?.dirty && control('imageMovie')?.invalid">
-        Please, you have to provide a description for the movie.
-      </div>
+
     </div>
     <div>
       <label>
         film genre:
-        <select formControlName="filmGenre" class="petit">
+        <select formControlName="filmGenre" class="petit" required>
           <option value="Action">Action</option>
           <option value="Animation">Animation</option>
           <option value="Aventure">Aventure</option>

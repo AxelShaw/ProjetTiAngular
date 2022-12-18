@@ -19,6 +19,7 @@ import {NgxPaginationModule} from "ngx-pagination";
 import {SwiperModule} from "swiper/angular";
 import { FooterComponent } from './footer/footer.component';
 import { FavorihubComponent } from './favorihub/favorihub.component';
+import { MovieActuComponent } from './adminhub/movie-actu/movie-actu.component';
 
 
 
@@ -37,6 +38,7 @@ import { FavorihubComponent } from './favorihub/favorihub.component';
     MovieUserComponent,
     FooterComponent,
     FavorihubComponent,
+    MovieActuComponent,
 
 
   ],
