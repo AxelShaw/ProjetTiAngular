@@ -1,0 +1,19 @@
+<div *ngIf="favories; else favorieNotFound" class="movieP">
+  <ul>
+    <li *ngFor="let favorie of favories" >
+      <span *ngFor="let movie of movies">
+        <span *ngIf="favorie.idMovieRef == movie.idMovie">
+          <a routerLink="../detail/{{movie.idMovie}}">
+            <img src="data:image/jpg;base64, {{movie.imageMovie}}" alt="movie image" class="image">
+            {{movie.nameMovie}}
+          </a>
+        </span>
+      </span>
+    </li>
+  </ul>
+</div>
+
+
+<ng-template #favorieNotFound>
+  Pas de favorie
+</ng-template>

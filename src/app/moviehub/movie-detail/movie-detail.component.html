@@ -2,11 +2,12 @@
   <div *ngIf="movie; else movieNotFound" class="movieP">
       <h2 class="titre">{{movie.nameMovie}}</h2>
 
-
       <div  class="infoP">
         <div class="imgP">
           <img src="data:image/jpg;base64, {{movie.imageMovie}}" alt="img movie">
         </div>
+
+        <button>Favorie</button>
 
         <div>
           {{movie.release_movie | date:"dd/MM/yyyy"}} - {{movie.movieType}} / {{movie.runtimeMinute}} min / {{movie.filmGenre}} <br />

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {DtoInputMovie} from "../dtos/dto-input-movie";
 import {AdminService} from "../admin.service";
 import {DtoInputUser} from "../dtos/dto-input-user";
 import {DtoInputComments} from "../../moviehub/dtos/dto-input-comments";

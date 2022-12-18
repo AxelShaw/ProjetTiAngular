@@ -10,6 +10,7 @@ import {MovieTop100Component} from "./moviehub/movie-top100/movie-top100.compone
 import {MovieBad100Component} from "./moviehub/movie-bad100/movie-bad100.component";
 import {MovieAdminComponent} from "./adminhub/movie-admin/movie-admin.component";
 import {MovieUserComponent} from "./adminhub/movie-user/movie-user.component";
+import {FavorihubComponent} from "./favorihub/favorihub.component";
 
 const routes: Routes = [
   {
@@ -42,6 +43,9 @@ const routes: Routes = [
   },
   {
     path: 'bad100', component: MovieBad100Component
+  },
+  {
+    path: 'favorie', component: FavorihubComponent
   }
 ];
 
