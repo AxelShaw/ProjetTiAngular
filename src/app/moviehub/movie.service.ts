@@ -8,6 +8,8 @@ import {DtoInputComments} from "./dtos/dto-input-comments";
 import {DtoInputUser} from "./dtos/dto-input-user";
 import {DtoOutputCreateComment} from "./dtos/dto-output-create-comment";
 import {DtoOutputUpdateRating} from "./dtos/dto-output-update-rating";
+import {DtoInputFavorie} from "../favorihub/dtos/dto-input-favorie";
+import {DtoOutputCreateFavorie} from "./dtos/dto-output-create-favorie";
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +19,7 @@ export class MovieService {
   private static readonly ENTRY_POINT_RATING= environment.apiUrl + "/ratingmovie"
   private static readonly ENTRY_POINT_COMMENT= environment.apiUrl + "/commentmovie"
   private static readonly ENTRY_POINT_USER= environment.apiUrl + "/user"
+  private static readonly ENTRY_POINT_FAVORIE= environment.apiUrl + "/favorie"
   constructor(private _httpClient: HttpClient) { }
 
   fetchAllMovie(): Observable<DtoInputMovie[]> {
@@ -77,5 +80,17 @@ export class MovieService {
 
   fetchAllByGenre(genre : string):Observable<DtoInputMovie[]>{
     return this._httpClient.get<DtoInputMovie[]>(`${MovieService.ENTRY_POINT}/genre/${genre}`);
+  }
+
+  createFavorie(dto: DtoOutputCreateFavorie | null): Observable<DtoInputFavorie> {
+    return this._httpClient.post<DtoInputFavorie>(MovieService.ENTRY_POINT_FAVORIE, dto);
+  }
+
+  fetchByIdFavorie(id: number): Observable<DtoInputFavorie[]> {
+    return this._httpClient.get<DtoInputFavorie[]>(`${MovieService.ENTRY_POINT_FAVORIE}/${id}`);
+  }
+
+  deleteIdFavorie(id: number): Observable<any> {
+    return this._httpClient.delete(MovieService.ENTRY_POINT_FAVORIE + "/" + id);
   }
 }

@@ -9,6 +9,8 @@ import {DtoOutputCreateComment} from "../dtos/dto-output-create-comment";
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {DtoOutputUpdateRating} from "../dtos/dto-output-update-rating";
 import {observable, Observable, Subject} from "rxjs";
+import {DtoOutputCreateFavorie} from "../dtos/dto-output-create-favorie";
+import {DtoInputFavorie} from "../dtos/dto-input-favorie";
 
 @Component({
   selector: 'app-movie-detail',
@@ -19,10 +21,13 @@ export class MovieDetailComponent implements OnInit {
   movie: DtoInputMovie | null = null;
   rating: DtoInputRatingMovie | null = null;
   users: DtoInputUser [] = [];
+  favories: DtoInputFavorie [] = [];
   comments : DtoInputComments[] = [];
   createComment : DtoOutputCreateComment | null = null;
+  createFavorie : DtoOutputCreateFavorie | null = null;
   updateRating : DtoOutputUpdateRating | null = null;
   form : FormGroup;
+  formFavorie : FormGroup;
   val : boolean = true;
 
   constructor(private _movieService: MovieService, private _route: ActivatedRoute, private _fb: FormBuilder) {
@@ -31,7 +36,12 @@ export class MovieDetailComponent implements OnInit {
       commentText: new FormControl(''),
       idMovieRef: 0,
       idUserRef: 1
-    })
+    });
+
+    this.formFavorie = this._fb.group({
+      idMovieRef: 0,
+      idUserRef: 1,
+    });
   }
 
   ngOnInit(): void {
@@ -42,6 +52,7 @@ export class MovieDetailComponent implements OnInit {
         this.fetchByRating(movieId);
         this.fetchAllCommentById(movieId);
       }
+      this.fetchAllFavorie(1);
       this.fetchAllUser();
     });
   }
@@ -116,4 +127,47 @@ export class MovieDetailComponent implements OnInit {
   control(nameMovie: string): AbstractControl | null {
     return this.form.get(nameMovie);
   }
+
+  addFavorie(idMovie: number) {
+    let stop: number = 0;
+    let id: number = 0;
+    for (let i = 0; i < this.favories.length; i++) {
+      if (this.favories[i].idMovieRef == idMovie && this.favories[i].idUserRef == 1) {
+        stop = 1;
+        id = this.favories[i].idFav;
+      }
+    }
+    if (stop == 0) {
+      this.formFavorie.controls['idMovieRef'].setValue(idMovie);
+      this.createFavorie = this.formFavorie.value;
+      this._movieService.createFavorie(this.createFavorie).subscribe(fav => this.favories.push(fav))
+    } else {
+      if (confirm("Êtes-vous sur de vouloir supprimer ce favories ? ")) {
+        this._movieService.deleteIdFavorie(id).subscribe(() => {
+          this.favories = this.favories.filter(fav => fav.idFav !== idMovie);
+        });
+      }
+    }
+  }
+
+  private fetchAllFavorie(id : number) {
+    this._movieService
+      .fetchByIdFavorie(id)
+      .subscribe(fav => this.favories = fav);
+  }
+
+  alreadyFav(idMovie: number){
+    let stop: number = 0;
+
+    for (let i = 0; i < this.favories.length; i++) {
+      if (this.favories[i].idMovieRef == idMovie && this.favories[i].idUserRef == 1) {
+        stop = 1;
+      }
+    }
+    if (stop == 0) {
+      return true;
+    } else {
+      return false;
+      }
+    }
 }

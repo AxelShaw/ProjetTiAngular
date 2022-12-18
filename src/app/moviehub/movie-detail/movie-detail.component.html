@@ -6,8 +6,10 @@
         <div class="imgP">
           <img src="data:image/jpg;base64, {{movie.imageMovie}}" alt="img movie">
         </div>
+        <span *ngIf="alreadyFav(movie.idMovie); else favIsFav">
+          <button (click)="addFavorie(movie.idMovie)">Favorie</button>
+        </span>
 
-        <button>Favorie</button>
 
         <div>
           {{movie.release_movie | date:"dd/MM/yyyy"}} - {{movie.movieType}} / {{movie.runtimeMinute}} min / {{movie.filmGenre}} <br />
@@ -70,5 +72,8 @@
   </ng-template>
   <ng-template #commentNotFound>
     No comment yet.
+  </ng-template>
+  <ng-template #favIsFav>
+    <button (click)="addFavorie(movie.idMovie)">Supprimer favorie</button>
   </ng-template>
 </div>
