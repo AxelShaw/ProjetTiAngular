@@ -82,7 +82,7 @@ export class MovieDetailComponent implements OnInit {
 
   DeleteComment(comment: DtoInputComments, rate : DtoInputRatingMovie) {
     if (confirm("Êtes-vous sur de vouloir supprimer ce commentaire ? ")) {
-      this._movieService.deleteComment(comment.idComMovie).subscribe(() => {
+      this._movieService.deleteCommentById(comment.idComMovie).subscribe(() => {
         this.comments = this.comments.filter(comments => comments.idComMovie !== comment.idComMovie);
 
         this.updateRating = rate;
