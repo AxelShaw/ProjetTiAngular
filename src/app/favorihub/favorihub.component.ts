@@ -28,12 +28,13 @@ export class FavorihubComponent implements OnInit {
   private fetchAllMovie() {
     this._favorieService.fetchAllMovie().subscribe(movie => this.movies = movie);
   }
-  emitFavoriDeleted(id:number, idMovie:number) {
-    if (confirm("Êtes-vous sur de vouloir supprimer ce film ? ")) {
-      this._favorieService.deleteFavoriteById(id).subscribe(() => {
-        this.favories = this.favories.filter(favories => favories.idFav !== idMovie);
-      });
 
+
+  emitFavoriDeleted(favorie: DtoInputFavorie) {
+    if (confirm("Êtes-vous sur de vouloir supprimer ce favorie ? ")) {
+      this._favorieService.deleteFavoriteById(favorie.idFav).subscribe(() => {
+        this.favories = this.favories.filter(favories => favories.idFav !== favorie.idFav);
+      });
     }
   }
 }
