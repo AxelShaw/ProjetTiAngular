@@ -67,4 +67,7 @@ export class AdminService {
   deleteFavovieByUser(id: number):Observable<any>{
     return this._httpClient.delete(AdminService.ENTRY_POINT_FAVORIE + "/deletebyuser/" + id);
   }
+  fetchAllUsers(): Observable<DtoInputUser[]> {
+    return this._httpClient.get<DtoInputUser[]>(AdminService.ENTRY_POINT_USER);
+  }
 }

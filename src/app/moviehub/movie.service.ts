@@ -93,5 +93,9 @@ export class MovieService {
   deleteIdFavorie(id: number): Observable<any> {
     return this._httpClient.delete(MovieService.ENTRY_POINT_FAVORIE + "/" + id);
   }
+
+  deleteCommentById(id: number):Observable<any>{
+    return this._httpClient.delete(MovieService.ENTRY_POINT_COMMENT + "/id/" + id);
+  }
 }
 
