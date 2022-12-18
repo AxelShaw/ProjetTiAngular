@@ -9,6 +9,7 @@ import {Observable, Subscriber} from "rxjs";
 import {DtoInputComments} from "../../moviehub/dtos/dto-input-comments";
 import {DtoOutputUpdateMovie} from "../dtos/dto-output-update-movie";
 import {DtoInputFavorie} from "../../favorihub/dtos/dto-input-favorie";
+import {DtoInputActu} from "../dtos/dto-intput-actu";
 
 @Component({
   selector: 'app-movie-admin',
@@ -21,6 +22,7 @@ export class MovieAdminComponent implements OnInit {
   ratings: DtoInputRatingMovie [] = [];
   comments: DtoInputComments [] = [];
   favories: DtoInputFavorie [] = [];
+  actus: DtoInputActu [] = [];
   movieCreated: DtoOutputCreateMovie | null = null;
   ratingCreated: DtoOutputCreateRatingmovie | null = null;
   form : FormGroup;
@@ -112,6 +114,10 @@ export class MovieAdminComponent implements OnInit {
 
       this._adminService.deleteFavovieByMovie(movie.idMovie).subscribe(() => {
         this.favories = this.favories.filter(favories => favories.idMovieRef !== movie.idMovie);
+      });
+
+      this._adminService.deleteActu(movie.idMovie).subscribe(() => {
+        this.actus = this.actus.filter(actus => actus.idMovieRef !== movie.idMovie);
       });
     }
 

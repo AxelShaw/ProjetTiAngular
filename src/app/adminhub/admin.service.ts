@@ -11,6 +11,8 @@ import {DtoInputCommentmovie} from "./dtos/dto-input-commentmovie";
 import {DtoInputRatingMovie} from "../moviehub/dtos/dto-input-rating-movie";
 import {DtoInputComments} from "../moviehub/dtos/dto-input-comments";
 import {DtoInputUser} from "./dtos/dto-input-user";
+import {DtoOutputCreateActu} from "./dtos/dto-output-create-actu";
+import {DtoInputActu} from "./dtos/dto-intput-actu";
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +23,7 @@ export class AdminService {
   private static readonly ENTRY_POINT_USER = environment.apiUrl + "/user"
   private static readonly ENTRY_POINT_COMMENT= environment.apiUrl + "/commentmovie"
   private static readonly ENTRY_POINT_FAVORIE= environment.apiUrl + "/favorie"
+  private static readonly ENTRY_POINT_ACTU= environment.apiUrl + "/actu"
 
 
 
@@ -33,6 +36,10 @@ export class AdminService {
     return this._httpClient.post<DtoInputMovie>(AdminService.ENTRY_POINT, dto);
   }
 
+  createActu(dto: DtoOutputCreateActu | null): Observable<DtoInputActu> {
+    return this._httpClient.post<DtoInputActu>(AdminService.ENTRY_POINT_ACTU, dto);
+  }
+
   fetchByName(name : string):Observable<DtoInputMovie>{
     return this._httpClient.get<DtoInputMovie>(`${AdminService.ENTRY_POINT}/${name}`);
   }
@@ -42,6 +49,9 @@ export class AdminService {
   }
   deleteMovie(id: number):Observable<any>{
     return this._httpClient.delete(AdminService.ENTRY_POINT + "/" + id);
+  }
+  deleteActu(id: number):Observable<any>{
+    return this._httpClient.delete(AdminService.ENTRY_POINT_ACTU + "/" + id);
   }
   deleteRatingMovie(id: number):Observable<any>{
     return this._httpClient.delete(AdminService.ENTRY_POINT_RATING_MOVIE + "/" + id);
