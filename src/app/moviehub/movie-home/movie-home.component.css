@@ -20,6 +20,9 @@ img{
 li{
   width: 250px;
 }
+a{
+  color: black;
+}
 
 .name{
   overflow: hidden;
@@ -59,11 +62,11 @@ h2{
   margin-bottom: 10px;
 }
 
-.film:hover{
+.film:hover, .film:focus{
   -ms-transform: scale(1.05);
   -webkit-transform: scale(1.05);
   transform: scale(1.05);
-
+  transition: all .5s;
 
 }
 

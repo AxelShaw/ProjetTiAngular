@@ -113,4 +113,14 @@ h2{
   width: 20px;
   height: 20px;
 }
+.commentList>ul{
+  list-style: none;
+}
+.commentList>ul li{
+  border-bottom: solid black 2PX;
+}
+textarea {
+  resize: none;
+}
+
 

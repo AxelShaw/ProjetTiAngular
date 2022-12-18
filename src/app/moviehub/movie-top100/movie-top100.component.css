@@ -39,6 +39,7 @@ img{
   -ms-transform: scale(1.05);
   -webkit-transform: scale(1.05);
   transform: scale(1.05);
+  transition: all .5s;
 }
 
 .Page{
@@ -58,6 +59,10 @@ img{
 
 .genre li{
   margin-top: 10px;
+}
+a{
+  color: white;
+  font-size: 18px;
 }
 
 

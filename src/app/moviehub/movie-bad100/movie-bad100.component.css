@@ -10,11 +10,18 @@
 .film{
   margin-left:15px;
   margin-bottom:15px;
+
 }
 
 li{
   width: 250px;
+
 }
+a{
+  color: white;
+  font-size: 18px;
+}
+
 
 .name{
   overflow: hidden;
@@ -37,6 +44,7 @@ img{
   -ms-transform: scale(1.05);
   -webkit-transform: scale(1.05);
   transform: scale(1.05);
+  transition: all .5s;
 }
 
 .Page{
