@@ -12,7 +12,7 @@ export class MovieTop100Component implements OnInit {
   movies: DtoInputMovie[] = [];
   ratings : DtoInputRatingMovie[] = [];
   page : number ;
-  item : number = 16;
+  item : number = 12;
 
   constructor(private _movieService: MovieService) {
 
@@ -33,7 +33,7 @@ export class MovieTop100Component implements OnInit {
 
   Tri(genre: string) {
     if(genre == ''){
-      this.item = 16;
+      this.item = 12;
       this._movieService.fetchAllMovie().subscribe(movies => this.movies = movies);
     }else{
       this.item = 100;

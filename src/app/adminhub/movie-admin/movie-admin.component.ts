@@ -7,6 +7,7 @@ import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "
 import {DtoInputRatingMovie} from "../../moviehub/dtos/dto-input-rating-movie";
 import {Observable, Subscriber} from "rxjs";
 import {DtoInputComments} from "../../moviehub/dtos/dto-input-comments";
+import {DtoOutputUpdateMovie} from "../dtos/dto-output-update-movie";
 
 @Component({
   selector: 'app-movie-admin',
@@ -15,6 +16,7 @@ import {DtoInputComments} from "../../moviehub/dtos/dto-input-comments";
 })
 export class MovieAdminComponent implements OnInit {
   movies: DtoInputMovie[] = [];
+  moviesUpdated: DtoOutputUpdateMovie | null = null;
   ratings: DtoInputRatingMovie [] = [];
   comments: DtoInputComments [] = [];
   movieCreated: DtoOutputCreateMovie | null = null;
@@ -65,6 +67,32 @@ export class MovieAdminComponent implements OnInit {
     this.setRating();
     this.movieCreated = null;
   }
+  emitMovieUpdated(update : DtoInputMovie, FormGroup: any){
+    this.moviesUpdated = update;
+    if (confirm("Êtes-vous sur de vouloir modifier ce film ? ")) {
+      if(FormGroup.invalid==true){
+        this.form.controls['nameMovie'].setValue(this.moviesUpdated.nameMovie);
+        this.form.controls['runtimeMinute'].setValue(this.moviesUpdated.runtimeMinute);
+        this.form.controls['descriptionMovie'].setValue(this.moviesUpdated.descriptionMovie);
+        this.form.controls['movieType'].setValue(this.moviesUpdated.movieType);
+        this.form.controls['imageMovie'].setValue(this.moviesUpdated.imageMovie);
+        this.form.controls['release_movie'].setValue(this.moviesUpdated.release_movie);
+        this.form.controls['director'].setValue(this.moviesUpdated.director);
+        this.form.controls['filmGenre'].setValue(this.moviesUpdated.filmGenre);
+      }
+    }
+    this.moviesUpdated.nameMovie = FormGroup.value.nameMovie;
+    this.moviesUpdated.runtimeMinute = FormGroup.value.runtimeMinute;
+    this.moviesUpdated.descriptionMovie = FormGroup.value.descriptionMovie;
+    this.moviesUpdated.movieType = FormGroup.value.movieType;
+    this.moviesUpdated.imageMovie = FormGroup.value.imageMovie;
+    this.moviesUpdated.release_movie = FormGroup.value.release_movie;
+    this.moviesUpdated.director = FormGroup.value.director;
+    this.moviesUpdated.filmGenre = FormGroup.value.filmGenre;
+
+    this._adminService.update(this.moviesUpdated).subscribe();
+  }
+
 
   emitMovieDeleted(movie: DtoInputMovie){
     if (confirm("Êtes-vous sur de vouloir supprimer ce film ? ")) {

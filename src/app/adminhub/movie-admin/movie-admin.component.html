@@ -32,19 +32,6 @@
     </div>
     <div>
       <label>
-        movie type:
-        <select formControlName="movieType" class="petit">
-          <option value="streaming">streaming</option>
-          <option value="TV">en salle</option>
-          <option value="pasDispo">pas disponible</option>
-        </select>
-      </label>
-      <div *ngIf="control('movieType')?.dirty && control('movieType')?.invalid">
-        Please, you have to provide a type for the movie.
-      </div>
-    </div>
-    <div>
-      <label>
         description movie: <input type="text" formControlName="descriptionMovie" required class="grand">
       </label>
       <div *ngIf="control('descriptionMovie')?.dirty && control('descriptionMovie')?.invalid">
@@ -121,9 +108,11 @@
 
     <div *ngIf="movies">
       <li *ngFor="let movie of searchMovies" class="list-movie">
+
         {{movie.idMovie}}
         {{movie.nameMovie}}
         <button (click)="emitMovieDeleted(movie)">supprimer</button>
+        <button (click)= "emitMovieUpdated(movie, form)">change</button>
       </li>
     </div>
 

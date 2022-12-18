@@ -51,3 +51,7 @@ label{
 .recherchemovie{
   margin: 50px;
 }
+.list-movie{
+  list-style:none;
+  font-size: 16px;
+}

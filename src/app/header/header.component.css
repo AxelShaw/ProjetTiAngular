@@ -58,7 +58,8 @@ input{
   list-style:none;
   text-decoration: none;
   color: black;
-  position:absolute;
+  position: absolute;
+  z-index: 1;
   display:block;
 }
 

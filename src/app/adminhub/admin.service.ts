@@ -31,9 +31,7 @@ export class AdminService {
   createMovie(dto: DtoOutputCreateMovie | null): Observable<DtoInputMovie> {
     return this._httpClient.post<DtoInputMovie>(AdminService.ENTRY_POINT, dto);
   }
-  createUser(dto: DtoOutputCreateMovie | null): Observable<DtoInputMovie> {
-    return this._httpClient.post<DtoInputMovie>(AdminService.ENTRY_POINT, dto);
-  }
+
   fetchByName(name : string):Observable<DtoInputMovie>{
     return this._httpClient.get<DtoInputMovie>(`${AdminService.ENTRY_POINT}/${name}`);
   }
@@ -58,5 +56,8 @@ export class AdminService {
   }
   deleteUser(id: number):Observable<any>{
     return this._httpClient.delete(AdminService.ENTRY_POINT_USER + "/" + id);
+  }
+  update(dto : DtoOutputCreateMovie | null): Observable<any>{
+    return this._httpClient.put(AdminService.ENTRY_POINT, dto);
   }
 }
