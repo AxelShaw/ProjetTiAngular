@@ -34,3 +34,17 @@
     <input type="submit" [disabled]="form.invalid" (click)="endInput()">
   </form>
 </div>
+
+<div>
+  <ul *ngIf="actus">
+    <li *ngFor="let actu of actus">
+      <span *ngFor="let movie of movies">
+        <span *ngIf=" actu.idMovieRef == movie.idMovie">
+          {{movie.nameMovie}}
+        </span>
+      </span>
+      - {{actu.release_actu}} - {{actu.newsActu.slice(0,15) }}...
+      <button (click)="emitActuDeleted(actu)">supprimer</button>
+    </li>
+  </ul>
+</div>

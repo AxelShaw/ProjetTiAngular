@@ -47,11 +47,17 @@ export class AdminService {
   fetchAllMovie(): Observable<DtoInputMovie[]> {
     return this._httpClient.get<DtoInputMovie[]>(AdminService.ENTRY_POINT);
   }
+  fetchAllActu(): Observable<DtoInputActu[]> {
+    return this._httpClient.get<DtoInputActu[]>(AdminService.ENTRY_POINT_ACTU);
+  }
   deleteMovie(id: number):Observable<any>{
     return this._httpClient.delete(AdminService.ENTRY_POINT + "/" + id);
   }
   deleteActu(id: number):Observable<any>{
     return this._httpClient.delete(AdminService.ENTRY_POINT_ACTU + "/" + id);
+  }
+  deleteActuById(id: number):Observable<any>{
+    return this._httpClient.delete(AdminService.ENTRY_POINT_ACTU + "/id/" + id);
   }
   deleteRatingMovie(id: number):Observable<any>{
     return this._httpClient.delete(AdminService.ENTRY_POINT_RATING_MOVIE + "/" + id);

@@ -34,10 +34,14 @@ export class MovieActuComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchAll();
+    this.fetchAllActu();
   }
 
   private fetchAll() {
     this._adminService.fetchAllMovie().subscribe(movies => this.movies = movies);
+  }
+  private fetchAllActu() {
+    this._adminService.fetchAllActu().subscribe(actus => this.actus = actus);
   }
 
   emitActuCreated() {
@@ -82,5 +86,13 @@ export class MovieActuComponent implements OnInit {
   endInput() {
     this.searchMovies = [];
     this.movieName = "";
+  }
+
+  emitActuDeleted(actu: DtoInputActu) {
+    if (confirm("Êtes-vous sur de vouloir supprimer cette actualité ? ")) {
+      this._adminService.deleteActuById(actu.idActu).subscribe(() => {
+        this.actus = this.actus.filter(actus => actus.idActu !== actu.idActu);
+      });
+    }
   }
 }
