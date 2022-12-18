@@ -19,7 +19,7 @@ export class MovieUserComponent implements OnInit {
   constructor( private _adminService: AdminService) { }
 
   ngOnInit(): void {
-
+    this.fetchAllUser();
   }
   search(chaine: HTMLInputElement , delay = 700) {
     let time;
@@ -58,6 +58,10 @@ export class MovieUserComponent implements OnInit {
       this.users = this.users.filter(users => users.idUser !== users.idUser);
     });
     this.searchUsers = [];
+  }
+
+  fetchAllUser(){
+    this._adminService.fetchAllUsers().subscribe(user => this.users = user);
   }
 
 }
