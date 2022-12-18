@@ -20,6 +20,7 @@ import {SwiperModule} from "swiper/angular";
 import { FooterComponent } from './footer/footer.component';
 import { FavorihubComponent } from './favorihub/favorihub.component';
 import { MovieActuComponent } from './adminhub/movie-actu/movie-actu.component';
+import { Nl2brPipe } from './nl2br.pipe';
 
 
 
@@ -39,6 +40,7 @@ import { MovieActuComponent } from './adminhub/movie-actu/movie-actu.component';
     FooterComponent,
     FavorihubComponent,
     MovieActuComponent,
+    Nl2brPipe,
 
 
   ],

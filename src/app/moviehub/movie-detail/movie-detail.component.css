@@ -122,5 +122,15 @@ h2{
 textarea {
   resize: none;
 }
+.commentList{
+  width: 100%;
+}
+.textcomment{
+  text-align: justify;
+  font-size: 14px;
+
+  width: 700px;
+
+}
 
 
