@@ -94,3 +94,4 @@ export class MovieService {
     return this._httpClient.delete(MovieService.ENTRY_POINT_FAVORIE + "/" + id);
   }
 }
+

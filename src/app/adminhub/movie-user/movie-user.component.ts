@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AdminService} from "../admin.service";
 import {DtoInputUser} from "../dtos/dto-input-user";
 import {DtoInputComments} from "../../moviehub/dtos/dto-input-comments";
+import {DtoInputFavorie} from "../../favorihub/dtos/dto-input-favorie";
 
 @Component({
   selector: 'app-movie-user',
@@ -13,6 +14,7 @@ export class MovieUserComponent implements OnInit {
   comments: DtoInputComments [] = [];
   ratings: DtoInputComments [] = [];
   users: DtoInputUser[] = [];
+  favories: DtoInputFavorie [] = [];
 
   constructor( private _adminService: AdminService) { }
 
@@ -43,6 +45,10 @@ export class MovieUserComponent implements OnInit {
 
       this._adminService.deleteCommentMovie(user.idUser).subscribe(() => {
         this.comments = this.comments.filter(comments => comments.idUserRef !== user.idUser);
+
+        this._adminService.deleteFavovieByUser(user.idUser).subscribe(() => {
+          this.favories = this.favories.filter(favories => favories.idMovieRef !== user.idUser);
+        });
       });
 
 

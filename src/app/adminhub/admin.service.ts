@@ -20,6 +20,7 @@ export class AdminService {
   private static readonly ENTRY_POINT_RATING_MOVIE = environment.apiUrl + "/ratingmovie"
   private static readonly ENTRY_POINT_USER = environment.apiUrl + "/user"
   private static readonly ENTRY_POINT_COMMENT= environment.apiUrl + "/commentmovie"
+  private static readonly ENTRY_POINT_FAVORIE= environment.apiUrl + "/favorie"
 
 
 
@@ -48,8 +49,8 @@ export class AdminService {
   deleteCommentMovie(id: number):Observable<any>{
     return this._httpClient.delete(AdminService.ENTRY_POINT_COMMENT + "/deletebyuser/" + id);
   }
-  fetchByIdComment(id: number): Observable<DtoInputComments[]> {
-    return this._httpClient.get<DtoInputComments[]>(`${AdminService.ENTRY_POINT_COMMENT}/${id}`);
+  deleteCommentByMovie(id: number):Observable<any>{
+    return this._httpClient.delete(AdminService.ENTRY_POINT_COMMENT + "/" + id);
   }
   fetchByNameUser(nickname : string):Observable<DtoInputUser>{
     return this._httpClient.get<DtoInputUser>(`${AdminService.ENTRY_POINT_USER}/${nickname}`);
@@ -59,5 +60,11 @@ export class AdminService {
   }
   update(dto : DtoOutputCreateMovie | null): Observable<any>{
     return this._httpClient.put(AdminService.ENTRY_POINT, dto);
+  }
+  deleteFavovieByMovie(id: number):Observable<any>{
+    return this._httpClient.delete(AdminService.ENTRY_POINT_FAVORIE + "/movie/" + id);
+  }
+  deleteFavovieByUser(id: number):Observable<any>{
+    return this._httpClient.delete(AdminService.ENTRY_POINT_FAVORIE + "/deletebyuser/" + id);
   }
 }

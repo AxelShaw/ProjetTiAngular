@@ -8,6 +8,7 @@ import {DtoInputRatingMovie} from "../../moviehub/dtos/dto-input-rating-movie";
 import {Observable, Subscriber} from "rxjs";
 import {DtoInputComments} from "../../moviehub/dtos/dto-input-comments";
 import {DtoOutputUpdateMovie} from "../dtos/dto-output-update-movie";
+import {DtoInputFavorie} from "../../favorihub/dtos/dto-input-favorie";
 
 @Component({
   selector: 'app-movie-admin',
@@ -19,6 +20,7 @@ export class MovieAdminComponent implements OnInit {
   moviesUpdated: DtoOutputUpdateMovie | null = null;
   ratings: DtoInputRatingMovie [] = [];
   comments: DtoInputComments [] = [];
+  favories: DtoInputFavorie [] = [];
   movieCreated: DtoOutputCreateMovie | null = null;
   ratingCreated: DtoOutputCreateRatingmovie | null = null;
   form : FormGroup;
@@ -104,6 +106,13 @@ export class MovieAdminComponent implements OnInit {
         this.comments = this.comments.filter(comments => comments.idMovieRef !== movie.idMovie);
       });
 
+      this._adminService.deleteCommentByMovie(movie.idMovie).subscribe(() => {
+        this.comments = this.comments.filter(comments => comments.idMovieRef !== movie.idMovie);
+      });
+
+      this._adminService.deleteFavovieByMovie(movie.idMovie).subscribe(() => {
+        this.favories = this.favories.filter(favories => favories.idMovieRef !== movie.idMovie);
+      });
     }
 
     this._adminService.deleteMovie(movie.idMovie).subscribe(() => {
