@@ -21,6 +21,7 @@ import { FooterComponent } from './footer/footer.component';
 import { FavorihubComponent } from './favorihub/favorihub.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

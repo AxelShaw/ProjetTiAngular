@@ -12,6 +12,7 @@ import {observable, Observable, Subject} from "rxjs";
 import {DtoOutputCreateFavorie} from "../dtos/dto-output-create-favorie";
 import {DtoInputFavorie} from "../dtos/dto-input-favorie";
 
+
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',

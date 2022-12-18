@@ -5,10 +5,13 @@
       <div  class="infoP">
         <div class="imgP">
           <img src="data:image/jpg;base64, {{movie.imageMovie}}" alt="img movie">
+          <span  *ngIf="alreadyFav(movie.idMovie); else favIsFav">
+           <button class="material-symbols-outlined" (click)="addFavorie(movie.idMovie)" >
+             star
+           </button>
+          </span>
         </div>
-        <span *ngIf="alreadyFav(movie.idMovie); else favIsFav">
-          <button (click)="addFavorie(movie.idMovie)">Favorie</button>
-        </span>
+
 
 
         <div>

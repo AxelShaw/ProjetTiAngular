@@ -1,3 +1,14 @@
+
+.material-symbols-outlined {
+  background-color: yellow;
+  border-radius: 50px;
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
+}
+
 img{
   width: 300px;
   inline : block;
@@ -87,5 +98,9 @@ h2{
   margin-left: auto;
   display: block;
   margin-right: 5%;
+}
+.favori{
+  width: 20px;
+  height: 20px;
 }
 
