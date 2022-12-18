@@ -6,7 +6,10 @@
         <span *ngIf="favorie.idMovieRef == movie.idMovie">
           <a routerLink="../detail/{{movie.idMovie}}">
             <img src="data:image/jpg;base64, {{movie.imageMovie}}" alt="movie image" class="image">
-            {{movie.nameMovie}}
+            <span class="movienamesp">
+              {{movie.nameMovie}}
+            </span>
+
 
           </a>
           <button class="btnremove" (click)="emitFavoriDeleted(favorie)">X</button>

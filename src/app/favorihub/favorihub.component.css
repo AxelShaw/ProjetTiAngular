@@ -17,6 +17,7 @@ ul>li{
   margin-right: 50PX;
   width: 200px;
   display:inline-block;
+
 }
 h2{
   text-align: center;
@@ -28,9 +29,17 @@ a{
   text-decoration: none;
   text-align: center;
   background-color: #3a424c;
-  border-radius: 30PX;
   opacity: 0.8 ;
-  margin-right: 10px;
+  margin: auto 10px auto auto;
+  padding-top: 3px;
+}
+.movienamesp{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 80%;
+  display:inline-block;
+  width: 170px;
 }
 .btnremove{
   background-color: #3a424c;

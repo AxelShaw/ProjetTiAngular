@@ -21,6 +21,8 @@ import { FooterComponent } from './footer/footer.component';
 import { FavorihubComponent } from './favorihub/favorihub.component';
 import { MovieActuComponent } from './adminhub/movie-actu/movie-actu.component';
 import { Nl2brPipe } from './nl2br.pipe';
+import { LoginhubComponent } from './loginhub/loginhub.component';
+import { RegisterhubComponent } from './registerhub/registerhub.component';
 
 
 
@@ -41,6 +43,8 @@ import { Nl2brPipe } from './nl2br.pipe';
     FavorihubComponent,
     MovieActuComponent,
     Nl2brPipe,
+    LoginhubComponent,
+    RegisterhubComponent,
 
 
   ],
