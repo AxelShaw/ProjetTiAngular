@@ -23,7 +23,7 @@
   <form [formGroup]="form" (ngSubmit)="emitActuCreated()">
     <div>
       <label>
-        News: <input type="text" formControlName="newsActu" required class="grand">
+        News: <textarea type="text" formControlName="newsActu" required class="grand"></textarea>
       </label>
       <div *ngIf="control('newsActu')?.dirty && control('newsActu')?.invalid">
         Please, you have to provide a news for the movie.

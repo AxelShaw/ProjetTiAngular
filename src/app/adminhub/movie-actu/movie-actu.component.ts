@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {AdminService} from "../admin.service";
-import {DatePipe, formatDate} from "@angular/common";
 import {DtoInputMovie} from "../dtos/dto-input-movie";
-import {DtoOutputCreateMovie} from "../dtos/dto-output-create-movie";
 import {DtoOutputCreateActu} from "../dtos/dto-output-create-actu";
 import {DtoInputActu} from "../dtos/dto-intput-actu";
 
@@ -19,6 +17,7 @@ export class MovieActuComponent implements OnInit {
   movies: DtoInputMovie[] = [];
   actuCreated: DtoOutputCreateActu | null = null;
   actus: DtoInputActu[] = [];
+  myDate = new Date();
 
   movieName : string = "";
   idMovie : number = 0;
@@ -45,13 +44,22 @@ export class MovieActuComponent implements OnInit {
   }
 
   emitActuCreated() {
-    this.form.controls['release_actu'].setValue(this.maDate.toLocaleDateString());
+    this.form.controls['release_actu'].setValue(this.maDate.toUTCString());
     this.form.controls['idMovieRef'].setValue(this.idMovie);
     console.log(this.form.value);
     this.actuCreated = this.form.value;
     this._adminService.createActu(this.actuCreated).subscribe(actu => this.actus.push(actu));
-
     this.form.reset();
+
+
+    this.myDate.setMinutes(this.myDate.getMinutes() - 10080 );
+    for (let i = 0; i < this.actus.length; i++){
+      if(new Date(this.actus[i].release_actu) < this.myDate){
+        this._adminService.deleteActuById(this.actus[i].idActu).subscribe(() => {
+          this.actus = this.actus.filter(actus => actus.idActu !== this.actus[i].idActu);
+        });
+      }
+    }
   }
 
   control(nameMovie: string): AbstractControl | null {

@@ -32,7 +32,7 @@
     </div>
     <div>
       <label>
-        description movie: <input type="text" formControlName="descriptionMovie" required class="grand">
+        description movie: <textarea type="text" formControlName="descriptionMovie" required class="grand"></textarea>
       </label>
       <div *ngIf="control('descriptionMovie')?.dirty && control('descriptionMovie')?.invalid">
         Please, you have to provide a description for the movie.

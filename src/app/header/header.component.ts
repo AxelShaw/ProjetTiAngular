@@ -1,6 +1,8 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {DtoInputMovie} from "../moviehub/dtos/dto-input-movie";
 import {MovieService} from "../moviehub/movie.service";
+import {DtoInputActu} from "../adminhub/dtos/dto-intput-actu";
+import {AdminService} from "../adminhub/admin.service";
 
 @Component({
   selector: 'app-header',
@@ -9,11 +11,14 @@ import {MovieService} from "../moviehub/movie.service";
 })
 export class HeaderComponent implements OnInit {
   searchMovies: DtoInputMovie[] = [];
+  actus: DtoInputActu[] = [];
+  myDate = new Date();
 
-  constructor(private _movieService: MovieService) { }
+  constructor(private _movieService: MovieService, private _adminService: AdminService) { }
 
   ngOnInit(): void {
     this.searchMovies = [];
+    this.fetchAllActu();
   }
 
 
@@ -45,5 +50,9 @@ export class HeaderComponent implements OnInit {
     time = setTimeout(() => {
       this.searchMovies = [];
     }, delay);
+  }
+
+  private fetchAllActu() {
+    this._adminService.fetchAllActu().subscribe(actus => this.actus = actus);
   }
 }

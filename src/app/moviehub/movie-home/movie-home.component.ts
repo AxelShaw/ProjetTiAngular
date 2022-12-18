@@ -22,7 +22,6 @@ export class MovieHomeComponent implements OnInit {
   myDateMoment = new Date();
   ratingsTop : DtoInputRatingMovie[] = [];
   ratingsDown : DtoInputRatingMovie[] = [];
-  temp: number = -1;
 
   constructor(private _movieService: MovieService) {
   }
