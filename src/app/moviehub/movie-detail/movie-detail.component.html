@@ -5,22 +5,26 @@
       <div  class="infoP">
         <div class="imgP">
           <img src="data:image/jpg;base64, {{movie.imageMovie}}" alt="img movie">
-          <span  *ngIf="alreadyFav(movie.idMovie); else favIsFav">
-           <button class="material-symbols-outlined" (click)="addFavorie(movie.idMovie)" >
-             star
-           </button>
-          </span>
+
         </div>
 
 
 
         <div>
+
           {{movie.release_movie | date:"dd/MM/yyyy"}} - {{movie.movieType}} / {{movie.runtimeMinute}} min / {{movie.filmGenre}} <br />
           De {{movie.director}}
         </div>
         <div *ngIf="rating; else ratingNotFound">
             {{rating.average_rating}} / 100 - {{rating.numVote}} votes
         </div>
+        <div>
+          <span  *ngIf="alreadyFav(movie.idMovie); else favIsFav">
+           <button class="star" id="star2"  (click)="addFavorie(movie.idMovie)" >
+           </button>
+          </span>
+        </div>
+
       </div>
 
       <div class="descrptionP">
@@ -77,6 +81,8 @@
     No comment yet.
   </ng-template>
   <ng-template #favIsFav>
-    <button (click)="addFavorie(movie.idMovie)">Supprimer favorie</button>
+    <button class="starfill" (click)="addFavorie(movie.idMovie)">
+
+    </button>
   </ng-template>
 </div>
