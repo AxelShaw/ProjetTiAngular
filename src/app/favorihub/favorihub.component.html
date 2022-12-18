@@ -1,4 +1,5 @@
-<div *ngIf="favories; else favorieNotFound" class="movieP">
+<h2>Vos favories</h2>
+<div *ngIf="favories; else favorieNotFound" class="movieF">
   <ul>
     <li *ngFor="let favorie of favories" >
       <span *ngFor="let movie of movies">
@@ -8,7 +9,7 @@
             {{movie.nameMovie}}
 
           </a>
-          <button (click)="emitFavoriDeleted(favorie)">supprimer</button>
+          <button class="btnremove" (click)="emitFavoriDeleted(favorie)">X</button>
         </span>
       </span>
 

@@ -1,7 +1,59 @@
 .image{
-  width: 50px;
+  width: 200px;
+  border: #3a424c solid 5px;
+}
+.image:hover{
+  border: #ff3b3b solid 5px;
 }
 
 ul{
   list-style: none;
+  float: left;
+
+
+}
+ul>li{
+  margin-bottom: 30px;
+  margin-right: 50PX;
+  width: 200px;
+  display:inline-block;
+}
+h2{
+  text-align: center;
+
+}
+a{
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  text-align: center;
+  background-color: #3a424c;
+  border-radius: 30PX;
+  opacity: 0.8 ;
+  margin-right: 10px;
+}
+.btnremove{
+  background-color: #3a424c;
+  color: white;
+  border-radius: 50%;
+}
+.btnremove:hover{
+  background-color: #ff3b3b;
+  color: black;
+}
+
+a:hover{
+  background-color: #ff3b3b;
+  color: black;
+}
+
+.movieF{
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+  min-height: 400px;
+  min-height: 400px;
+  height: 100%;
+  width: 100%;
+
 }
