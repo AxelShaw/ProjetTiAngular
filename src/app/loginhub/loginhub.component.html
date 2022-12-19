@@ -8,18 +8,18 @@
         </p>
         <input type="text"  formControlName="mail" placeholder="exemple@mail.com"
                size="30" required >
-        <span *ngIf="control('mail')?.dirty && control('mail')?.invalid">
+        <p *ngIf="control('mail')?.dirty && control('mail')?.invalid">
           mail requis*
-        </span>
+        </p>
       </div>
       <div>
         <p>
           mot de passe :
         </p>
-        <input type="password" formControlName="password" required >
-        <span *ngIf="control('password')?.dirty && control('password')?.invalid">
+        <input size="30" type="password" formControlName="password" required >
+        <p *ngIf="control('password')?.dirty && control('password')?.invalid">
           mot de passe requis*
-        </span>
+        </p>
 
       </div>
       <div class="submitbtn">
