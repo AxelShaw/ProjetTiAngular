@@ -13,6 +13,8 @@ export class NotificationHubComponent implements OnInit {
   actus: DtoInputActu[] = [];
   movies: DtoInputMovie[] = [];
   favories : DtoInputFavorie[] = [];
+  DeleteNot : number[] = [];
+  seeNot : number[] = [];
 
   constructor(private _adminService: AdminService) { }
 
@@ -20,6 +22,14 @@ export class NotificationHubComponent implements OnInit {
     this.fetchAllActu();
     this.fetchAll();
     this.fetchAllFavorieById(1);
+    if(localStorage.getItem('DeleteNot') != null){
+      // @ts-ignore
+      this.DeleteNot = JSON.parse(localStorage.getItem(`DeleteNot`));
+    }
+    if(localStorage.getItem('seeNot') != null){
+      // @ts-ignore
+      this.seeNot = JSON.parse(localStorage.getItem(`seeNot`));
+    }
   }
 
   private fetchAllActu() {
@@ -33,5 +43,17 @@ export class NotificationHubComponent implements OnInit {
     this._adminService
       .fetchByIdFavorie(id)
       .subscribe(fav => this.favories = fav);
+  }
+
+  saveDelete(idActu: number) {
+    this.DeleteNot.push(idActu);
+    localStorage.setItem('DeleteNot', JSON.stringify(this.DeleteNot));
+    console.log(this.DeleteNot);
+  }
+
+  saveSee(idActu: number) {
+    this.seeNot.push(idActu);
+    localStorage.setItem('seeNot', JSON.stringify(this.seeNot));
+    console.log(this.seeNot);
   }
 }

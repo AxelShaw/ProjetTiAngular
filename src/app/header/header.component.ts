@@ -15,6 +15,9 @@ export class HeaderComponent implements OnInit {
   actus: DtoInputActu[] = [];
   favories : DtoInputFavorie[] = [];
   temp : number = 0;
+  DeleteNot : number[] = [];
+  seeNot : number[] = [];
+
 
   constructor(private _movieService: MovieService) {
   }
@@ -23,6 +26,15 @@ export class HeaderComponent implements OnInit {
     this.searchMovies = [];
     this.fetchAllActu();
     this.fetchAllFavorieById(1);
+
+    if(localStorage.getItem('DeleteNot') != null){
+      // @ts-ignore
+      this.DeleteNot = JSON.parse(localStorage.getItem(`DeleteNot`));
+    }
+    if(localStorage.getItem('seeNot') != null){
+      // @ts-ignore
+      this.seeNot = JSON.parse(localStorage.getItem(`seeNot`));
+    }
   }
 
   private fetchAllActu() {
@@ -64,7 +76,9 @@ export class HeaderComponent implements OnInit {
       for(let i = 0; i < this.actus.length; i++){
         for(let j = 0; j < this.favories.length; j++){
           if(this.actus[i].idMovieRef == this.favories[j].idMovieRef){
-            this.temp = this.temp +1;
+            if(!this.seeNot.includes(this.actus[i].idActu) && !this.DeleteNot.includes(this.actus[i].idActu)) {
+                this.temp = this.temp +1;
+            }
           }
         }
       }
