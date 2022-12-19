@@ -11,7 +11,9 @@
               </span>
             </span> - {{actu.release_actu}}
             <button (click)="saveDelete(actu.idActu)">X</button>
-            <button (click)="saveSee(actu.idActu)">V</button>
+            <span *ngIf="seeNot.includes(actu.idActu) == false">
+              <button (click)="saveSee(actu.idActu)">V</button>
+            </span >
         </p>
           {{actu.newsActu}}
         </span>
