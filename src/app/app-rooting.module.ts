@@ -16,6 +16,7 @@ import {NotificationHubComponent} from "./notification-hub/notification-hub.comp
 import {LoginhubComponent} from "./loginhub/loginhub.component";
 
 const routes: Routes = [
+  {path: '',redirectTo:'home', pathMatch:'full'},
   {
     path: 'movies', component: MoviehubComponent,
     children: [
