@@ -1,7 +1,11 @@
 <ul *ngIf="actus">
   <li *ngFor="let actu of actus">
     <p>
-      {{actu.idMovieRef}} - {{actu.release_actu}}
+      <span *ngFor="let movie of movies">
+        <span *ngIf=" actu.idMovieRef == movie.idMovie">
+          {{movie.nameMovie}}
+        </span>
+      </span> - {{actu.release_actu}}
     </p>
     {{actu.newsActu}}
   </li>

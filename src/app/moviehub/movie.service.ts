@@ -10,6 +10,7 @@ import {DtoOutputCreateComment} from "./dtos/dto-output-create-comment";
 import {DtoOutputUpdateRating} from "./dtos/dto-output-update-rating";
 import {DtoInputFavorie} from "../favorihub/dtos/dto-input-favorie";
 import {DtoOutputCreateFavorie} from "./dtos/dto-output-create-favorie";
+import {DtoInputActu} from "../adminhub/dtos/dto-intput-actu";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,12 @@ export class MovieService {
   private static readonly ENTRY_POINT_COMMENT= environment.apiUrl + "/commentmovie"
   private static readonly ENTRY_POINT_USER= environment.apiUrl + "/user"
   private static readonly ENTRY_POINT_FAVORIE= environment.apiUrl + "/favorie"
+  private static readonly ENTRY_POINT_ACTU= environment.apiUrl + "/actu"
   constructor(private _httpClient: HttpClient) { }
+
+  fetchAllActu(): Observable<DtoInputActu[]> {
+    return this._httpClient.get<DtoInputActu[]>(MovieService.ENTRY_POINT_ACTU);
+  }
 
   fetchAllMovie(): Observable<DtoInputMovie[]> {
     return this._httpClient.get<DtoInputMovie[]>(MovieService.ENTRY_POINT);
