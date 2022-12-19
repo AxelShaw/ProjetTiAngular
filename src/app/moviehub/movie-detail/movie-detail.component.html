@@ -61,7 +61,12 @@
       <li *ngFor="let comment of comments">
         <span *ngFor="let user of users">
           <span *ngIf="comment.idUserRef == user.idUser">
-            {{user.nickname}}
+
+            <p class="Puser">
+              <img src="data:image/jpg;base64, {{user.profil_picture}}" alt="img profile" class="imguser">
+              {{user.nickname}}
+            </p>
+
           </span>
         </span>
         {{comment.rating}} / 100<br>
@@ -72,7 +77,7 @@
 
 
         <div *ngIf="rating">
-          <button (click)="DeleteComment(comment, rating)">supprimer</button>
+          <button (click)="DeleteComment(comment, rating)" class="suppbtn">supprimer</button>
         </div>
       </li>
     </ul>

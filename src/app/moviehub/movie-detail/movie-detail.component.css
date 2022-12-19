@@ -19,13 +19,26 @@
   background-color: #f5f5f5;
 }
 
-img{
+.imgP>img{
   width: 300px;
   inline : block;
   margin-right: 10px;
   text-align: center;
-  border: black solid 2px;
+  border: #3a424c solid 4px;
   order: 1;
+}
+.suppbtn{
+  margin-bottom: 5px;
+}
+.imguser{
+  height: 75PX;
+  width: 75PX;
+  border-radius: 50%;
+  border: #008680 solid 4PX;
+}
+.Puser{
+  font-size: 18px;
+  color: #008680;
 }
 
 .all{
