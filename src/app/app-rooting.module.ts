@@ -13,6 +13,7 @@ import {FavorihubComponent} from "./favorihub/favorihub.component";
 import {MovieActuComponent} from "./adminhub/movie-actu/movie-actu.component";
 import {RegisterhubComponent} from "./registerhub/registerhub.component";
 import {NotificationHubComponent} from "./notification-hub/notification-hub.component";
+import {LoginhubComponent} from "./loginhub/loginhub.component";
 
 const routes: Routes = [
   {
@@ -31,6 +32,9 @@ const routes: Routes = [
   },
   {
     path: 'registerhub', component: RegisterhubComponent
+  },
+  {
+    path: 'loginhub', component: LoginhubComponent
   },
   {
     path: 'admin', component: AdminhubComponent,

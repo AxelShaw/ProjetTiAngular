@@ -64,10 +64,6 @@ export class MovieService {
     return this._httpClient.get<DtoInputUser[]>(`${MovieService.ENTRY_POINT_USER}`);
   }
 
-  deleteComment(id: number):Observable<any>{
-    return this._httpClient.delete(MovieService.ENTRY_POINT_COMMENT + "/" + id);
-  }
-
   createComment(dto: DtoOutputCreateComment | null): Observable<DtoInputComments> {
     return this._httpClient.post<DtoInputComments>(MovieService.ENTRY_POINT_COMMENT, dto);
   }

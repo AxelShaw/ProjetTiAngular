@@ -1,0 +1,51 @@
+.registeruserAll{
+  width: 400PX;
+  margin: auto;
+  background-color: #ebebeb;
+  opacity: 0.9;
+  border: #4a5662 solid 3PX;
+  box-shadow: 6px 5px 5px black;
+  min-height: 300PX;
+  color: #008680;
+}
+H2{
+  text-align: center;
+}
+.all{
+  width: 100%;
+  min-height: 400PX;
+}
+form>div{
+  flex-direction: column;
+  margin-bottom: 10PX;
+  text-align: center;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.submitbtn{
+  width: 100%;
+  float: left;
+  text-align: center;
+}
+p{
+  color: #008680;
+}
+input{
+  padding: 5PX;
+}
+form>div .divname{
+  display: inline-grid;
+  margin-right: 10PX;
+  margin-bottom: 5PX;
+}
+.aInscription{
+  background-color: #008680;
+  color: white;
+  padding: 5px;
+  text-decoration: none;
+}
+.aInscription:hover{
+  background-color: #00c1b8;
+  color: white;
+}
+

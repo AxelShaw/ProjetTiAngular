@@ -46,16 +46,14 @@
           prénom requis*
         </span>
       </div>
-      <div>
+      <div >
         <P>
           image de profile:
         </P>
         <input accept="image/png, image/jpeg" formControlName="picture" type="file" id="fileInput" required (change)="getImage($event)" required >
 
       </div>
-      <span *ngIf=" control('picture')?.invalid">
-          (change)="getImage($event)
-      </span>
+
       <div class="submitbtn">
         <input type="submit" [disabled]="form.invalid" >
       </div>
