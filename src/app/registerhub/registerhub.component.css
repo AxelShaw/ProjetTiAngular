@@ -1,0 +1,40 @@
+.registeruserAll{
+  width: 400PX;
+  margin: auto;
+  background-color: #ebebeb;
+  opacity: 0.9;
+  border: #4a5662 solid 3PX;
+  box-shadow: 6px 5px 5px black;
+  min-height: 600PX;
+  color: #008680;
+}
+H2{
+  text-align: center;
+}
+.all{
+  width: 100%;
+  min-height: 700PX;
+}
+form>div{
+  flex-direction: column;
+  margin-bottom: 10PX;
+  float: left;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.submitbtn{
+  float: left;
+  width: 100%;
+  text-align: center;
+}
+p{
+  color: #008680;
+}
+input{
+  padding: 5PX;
+}
+form>div .divname{
+  display: inline-grid;
+  margin-right: 10PX;
+  margin-bottom: 5PX;
+}

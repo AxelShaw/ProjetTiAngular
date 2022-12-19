@@ -16,13 +16,14 @@ import { MovieBad100Component } from './moviehub/movie-bad100/movie-bad100.compo
 import { MovieAdminComponent } from './adminhub/movie-admin/movie-admin.component';
 import { MovieUserComponent } from './adminhub/movie-user/movie-user.component';
 import {NgxPaginationModule} from "ngx-pagination";
-import {SwiperModule} from "swiper/angular";
 import { FooterComponent } from './footer/footer.component';
 import { FavorihubComponent } from './favorihub/favorihub.component';
 import { MovieActuComponent } from './adminhub/movie-actu/movie-actu.component';
 import { Nl2brPipe } from './nl2br.pipe';
 import { LoginhubComponent } from './loginhub/loginhub.component';
 import { RegisterhubComponent } from './registerhub/registerhub.component';
+import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
+
 
 
 
@@ -54,8 +55,8 @@ import { RegisterhubComponent } from './registerhub/registerhub.component';
         AppRootingModule,
         ReactiveFormsModule,
         NgxPaginationModule,
-        SwiperModule,
-        FormsModule
+        FormsModule,
+        MdbFormsModule,
     ],
   providers: [],
   bootstrap: [AppComponent]

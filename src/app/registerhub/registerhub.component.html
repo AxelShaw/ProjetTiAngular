@@ -1,1 +1,68 @@
-<p>registerhub works!</p>
+<DIV class="all">
+  <div class="registeruserAll">
+    <h2>Inscrivez-vous</h2>
+    <form [formGroup]="form" (ngSubmit)="emitUserCreated()">
+      <div>
+        <p>
+          Mail :
+        </p>
+        <input type="text"  formControlName="mail" placeholder="exemple@mail.com"
+               size="30" required >
+        <span *ngIf="control('mail')?.dirty && control('mail')?.invalid">
+          mail requis*
+        </span>
+      </div>
+      <div>
+        <p>
+          Pseudo :
+        </p>
+        <input size="20"  type="text" formControlName="nickname" required class="petit">
+        <span *ngIf="control('nickname')?.dirty && control('nickname')?.invalid">
+          Pseudo requis*
+        </span>
+      </div>
+      <div>
+        <p>
+          mot de passe(8 characters) :
+        </p>
+        <input minlength="8" type="password" formControlName="password" required >
+        <span *ngIf="control('password')?.dirty && control('password')?.invalid">
+          mot de passe requis*
+        </span>
+
+      </div>
+      <div>
+       <div class="divname">
+          <input size="20"  placeholder="Last name" type="text" formControlName="last_name" required class="petit">
+       </div>
+        <span *ngIf="control('last_name')?.dirty && control('last_name')?.invalid">
+          nom requis*
+        </span>
+        <div class="divname">
+          <input placeholder="First name" size="20" type="text" formControlName="first_name" required class="petit">
+
+      </div>
+        <span *ngIf="control('first_name')?.dirty && control('first_name')?.invalid">
+          prénom requis*
+        </span>
+      </div>
+      <div>
+        <P>
+          image de profile:
+        </P>
+        <input accept="image/png, image/jpeg" formControlName="picture" type="file" id="fileInput" required (change)="getImage($event)" required >
+
+      </div>
+      <span *ngIf=" control('picture')?.invalid">
+          (change)="getImage($event)
+      </span>
+      <div class="submitbtn">
+        <input type="submit" [disabled]="form.invalid" >
+      </div>
+
+
+    </form>
+
+  </div>
+</DIV>
+

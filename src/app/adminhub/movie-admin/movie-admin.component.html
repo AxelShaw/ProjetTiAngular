@@ -88,7 +88,7 @@
         Please, you have to provide a release movie for the movie.
       </div>
     </div>
-    <input type="submit" [disabled]="form.invalid" *ngIf="rating == false" >
+    <input  type="submit" [disabled]="form.invalid" *ngIf="rating == false" >
   </form>
   <input type="submit" *ngIf="rating" value="Click to continue" (click)="ratingSet()">
   <h2>recherche d'un film</h2>

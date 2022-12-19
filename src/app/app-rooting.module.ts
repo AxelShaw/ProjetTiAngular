@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from "@angular/router";
 import {MovieListComponent} from "./moviehub/movie-list/movie-list.component";
 import {MoviehubComponent} from "./moviehub/moviehub.component";
@@ -12,6 +11,7 @@ import {MovieAdminComponent} from "./adminhub/movie-admin/movie-admin.component"
 import {MovieUserComponent} from "./adminhub/movie-user/movie-user.component";
 import {FavorihubComponent} from "./favorihub/favorihub.component";
 import {MovieActuComponent} from "./adminhub/movie-actu/movie-actu.component";
+import {RegisterhubComponent} from "./registerhub/registerhub.component";
 
 const routes: Routes = [
   {
@@ -27,6 +27,9 @@ const routes: Routes = [
   },
   {
     path: 'home', component: MovieHomeComponent
+  },
+  {
+    path: 'registerhub', component: RegisterhubComponent
   },
   {
     path: 'admin', component: AdminhubComponent,
