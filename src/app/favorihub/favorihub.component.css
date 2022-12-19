@@ -28,7 +28,6 @@ a{
   font-size: 20px;
   text-decoration: none;
   text-align: center;
-  background-color: #3a424c;
   opacity: 0.8 ;
   margin: auto 10px auto auto;
   padding-top: 3px;
@@ -52,8 +51,7 @@ a{
 }
 
 a:hover{
-  background-color: #ff3b3b;
-  color: black;
+  color: #ff3b3b;
 }
 
 .movieF{

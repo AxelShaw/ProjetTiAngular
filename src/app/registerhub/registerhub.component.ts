@@ -26,7 +26,6 @@ export class RegisterhubComponent implements OnInit {
   form : FormGroup;
   imageData : "";
   users: DtoInputUser[] = [];
-  fileValid: Array<boolean> = [false];
 
   constructor(private _fb: FormBuilder, private _registerService: RegisterService) {
     this.form = this._fb.group({
