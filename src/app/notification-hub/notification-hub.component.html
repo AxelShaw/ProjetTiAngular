@@ -1,0 +1,8 @@
+<ul *ngIf="actus">
+  <li *ngFor="let actu of actus">
+    <p>
+      {{actu.idMovieRef}} - {{actu.release_actu}}
+    </p>
+    {{actu.newsActu}}
+  </li>
+</ul>

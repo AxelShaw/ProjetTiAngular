@@ -11,14 +11,11 @@ import {AdminService} from "../adminhub/admin.service";
 })
 export class HeaderComponent implements OnInit {
   searchMovies: DtoInputMovie[] = [];
-  actus: DtoInputActu[] = [];
-  myDate = new Date();
 
-  constructor(private _movieService: MovieService, private _adminService: AdminService) { }
+  constructor(private _movieService: MovieService) { }
 
   ngOnInit(): void {
     this.searchMovies = [];
-    this.fetchAllActu();
   }
 
 
@@ -50,9 +47,5 @@ export class HeaderComponent implements OnInit {
     time = setTimeout(() => {
       this.searchMovies = [];
     }, delay);
-  }
-
-  private fetchAllActu() {
-    this._adminService.fetchAllActu().subscribe(actus => this.actus = actus);
   }
 }

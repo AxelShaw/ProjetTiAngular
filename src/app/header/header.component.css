@@ -80,3 +80,7 @@ input{
   text-decoration: none;
   color: black;
 }
+
+.not{
+  width: 15px;
+}
