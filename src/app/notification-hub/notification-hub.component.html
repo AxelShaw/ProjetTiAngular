@@ -1,12 +1,20 @@
-<ul *ngIf="actus">
-  <li *ngFor="let actu of actus">
-    <p>
-      <span *ngFor="let movie of movies">
-        <span *ngIf=" actu.idMovieRef == movie.idMovie">
-          {{movie.nameMovie}}
+<div *ngIf="favories">
+  <ul *ngIf="actus">
+    <li *ngFor="let actu of actus">
+      <span *ngFor="let favorie of favories">
+        <span *ngIf="actu.idMovieRef == favorie.idMovieRef">
+          <p>
+            <span *ngFor="let movie of movies">
+              <span *ngIf=" actu.idMovieRef == movie.idMovie">
+                {{movie.nameMovie}}
+              </span>
+            </span> - {{actu.release_actu}}
+            <button>X</button>
+            <button>V</button>
+        </p>
+          {{actu.newsActu}}
         </span>
-      </span> - {{actu.release_actu}}
-    </p>
-    {{actu.newsActu}}
-  </li>
-</ul>
+      </span>
+    </li>
+  </ul>
+</div>

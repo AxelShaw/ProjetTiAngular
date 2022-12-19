@@ -13,6 +13,7 @@ import {DtoInputComments} from "../moviehub/dtos/dto-input-comments";
 import {DtoInputUser} from "./dtos/dto-input-user";
 import {DtoOutputCreateActu} from "./dtos/dto-output-create-actu";
 import {DtoInputActu} from "./dtos/dto-intput-actu";
+import {DtoInputFavorie} from "../favorihub/dtos/dto-input-favorie";
 
 @Injectable({
   providedIn: 'root'
@@ -85,5 +86,8 @@ export class AdminService {
   }
   fetchAllUsers(): Observable<DtoInputUser[]> {
     return this._httpClient.get<DtoInputUser[]>(AdminService.ENTRY_POINT_USER);
+  }
+  fetchByIdFavorie(id: number): Observable<DtoInputFavorie[]> {
+    return this._httpClient.get<DtoInputFavorie[]>(`${AdminService.ENTRY_POINT_FAVORIE}/${id}`);
   }
 }

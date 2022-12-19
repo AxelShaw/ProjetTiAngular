@@ -3,6 +3,7 @@ import {DtoInputMovie} from "../moviehub/dtos/dto-input-movie";
 import {MovieService} from "../moviehub/movie.service";
 import {DtoInputActu} from "../adminhub/dtos/dto-intput-actu";
 import {AdminService} from "../adminhub/admin.service";
+import {DtoInputFavorie} from "../favorihub/dtos/dto-input-favorie";
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,7 @@ import {AdminService} from "../adminhub/admin.service";
 export class HeaderComponent implements OnInit {
   searchMovies: DtoInputMovie[] = [];
   actus: DtoInputActu[] = [];
-
+  favories : DtoInputFavorie[] = [];
 
   constructor(private _movieService: MovieService) {
   }
@@ -20,6 +21,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.searchMovies = [];
     this.fetchAllActu();
+    this.fetchAllFavorieById(1);
   }
 
   private fetchAllActu() {
@@ -54,4 +56,25 @@ export class HeaderComponent implements OnInit {
       this.searchMovies = [];
     }, delay);
   }
+
+  nbNot() {
+    let temp = 0;
+    if(this.favories != null && this.actus!= null){
+      for(let i = 0; i < this.actus.length; i++){
+        for(let j = 0; j < this.favories.length; j++){
+          if(this.actus[i].idMovieRef == this.favories[j].idMovieRef){
+            temp = temp +1;
+          }
+        }
+      }
+
+    }
+    return temp;
+  }
+  private fetchAllFavorieById(id : number) {
+    this._movieService
+      .fetchByIdFavorie(id)
+      .subscribe(fav => this.favories = fav);
+  }
+
 }
