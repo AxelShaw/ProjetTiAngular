@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
   searchMovies: DtoInputMovie[] = [];
   actus: DtoInputActu[] = [];
   favories : DtoInputFavorie[] = [];
+  temp : number = 0;
 
   constructor(private _movieService: MovieService) {
   }
@@ -58,18 +59,18 @@ export class HeaderComponent implements OnInit {
   }
 
   nbNot() {
-    let temp = 0;
+    this.temp = 0;
     if(this.favories != null && this.actus!= null){
       for(let i = 0; i < this.actus.length; i++){
         for(let j = 0; j < this.favories.length; j++){
           if(this.actus[i].idMovieRef == this.favories[j].idMovieRef){
-            temp = temp +1;
+            this.temp = this.temp +1;
           }
         }
       }
 
     }
-    return temp;
+    return this.temp;
   }
   private fetchAllFavorieById(id : number) {
     this._movieService

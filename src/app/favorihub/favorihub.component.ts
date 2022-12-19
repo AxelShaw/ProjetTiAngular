@@ -36,5 +36,7 @@ export class FavorihubComponent implements OnInit {
         this.favories = this.favories.filter(favories => favories.idFav !== favorie.idFav);
       });
     }
+
+
   }
 }
