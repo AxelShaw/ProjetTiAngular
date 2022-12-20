@@ -25,11 +25,13 @@ img{
   text-align: center;
   color: white;
   text-decoration: none;
+  transition: all 0.5s ease-out;
 }
+.menuA:hover, .menuA:focus{
 
-.menu a:hover {
   background-color: #00c1b8;
 }
+
 
 .login{
   display:block;
@@ -38,6 +40,7 @@ img{
   color: white;
   text-decoration: none;
   float: right;
+  transition: all 0.5s ease-out;
 }
 .login:hover{
   background-color: #00c1b8;
@@ -79,6 +82,7 @@ input{
 .menuChoix a{
   text-decoration: none;
   color: black;
+
 }
 
 .not{

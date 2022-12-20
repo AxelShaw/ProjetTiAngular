@@ -1,23 +1,34 @@
-<div *ngIf="favories">
-  <ul *ngIf="actus">
-    <li *ngFor="let actu of actus">
-      <span *ngFor="let favorie of favories">
-        <span *ngIf="actu.idMovieRef == favorie.idMovieRef && DeleteNot.includes(actu.idActu) == false">
-          <p>
-            <span *ngIf="seeNot.includes(actu.idActu) == false">New*</span>
-            <span *ngFor="let movie of movies">
-              <span *ngIf=" actu.idMovieRef == movie.idMovie">
-                {{movie.nameMovie}}
-              </span>
-            </span> - {{actu.release_actu}}
-            <button (click)="saveDelete(actu.idActu)">X</button>
-            <span *ngIf="seeNot.includes(actu.idActu) == false">
-              <button (click)="saveSee(actu.idActu)">V</button>
-            </span >
-        </p>
-          {{actu.newsActu}}
+
+<h2>
+  Notification
+</h2>
+<div *ngIf="favories" class="main">
+  <div>
+    <ul *ngIf="actus">
+      <li *ngFor="let actu of actus" class="pnews">
+        <span *ngFor="let favorie of favories">
+          <span *ngIf="actu.idMovieRef == favorie.idMovieRef && DeleteNot.includes(actu.idActu) == false">
+            <p>
+              <span *ngIf="seeNot.includes(actu.idActu) == false">New*</span>
+              <span *ngFor="let movie of movies">
+                <span *ngIf=" actu.idMovieRef == movie.idMovie">
+                  {{movie.nameMovie}}
+                </span>
+              </span> - {{actu.release_actu}}
+              <br>
+              <button (click)="saveDelete(actu.idActu)" class="btnsup">X</button>
+              <span *ngIf="seeNot.includes(actu.idActu) == false">
+                <button (click)="saveSee(actu.idActu)" class="btnvue">V</button>
+              </span >
+              <br>
+              <br>
+              {{actu.newsActu}}
+          </p>
+
+
+          </span>
         </span>
-      </span>
-    </li>
-  </ul>
+      </li>
+    </ul>
+  </div>
 </div>

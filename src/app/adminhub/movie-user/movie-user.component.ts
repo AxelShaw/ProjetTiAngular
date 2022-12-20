@@ -21,6 +21,7 @@ export class MovieUserComponent implements OnInit {
   ngOnInit(): void {
     this.fetchAllUser();
   }
+  //method for search a movie in database
   search(chaine: HTMLInputElement , delay = 700) {
     let time;
     clearTimeout(time);
@@ -40,6 +41,7 @@ export class MovieUserComponent implements OnInit {
       }
     }, delay);
   }
+  //delete user, his comments and his favori
   emitUserDeleted(user: DtoInputUser){
     if (confirm("Êtes-vous sur de vouloir bannir cet utilisateur ? ")) {
 
@@ -59,7 +61,7 @@ export class MovieUserComponent implements OnInit {
     });
     this.searchUsers = [];
   }
-
+  //get all user
   fetchAllUser(){
     this._adminService.fetchAllUsers().subscribe(user => this.users = user);
   }
