@@ -3,7 +3,7 @@ import {
   AbstractControl,
   FormBuilder,
   FormControl,
-  FormGroup,
+  FormGroup, ValidationErrors, ValidatorFn,
 
 
   Validators
@@ -29,13 +29,13 @@ export class RegisterhubComponent implements OnInit {
 
   constructor(private _fb: FormBuilder, private _registerService: RegisterService) {
     this.form = this._fb.group({
-      last_name: new FormControl(),
-      first_name: new FormControl(),
-      mail: new FormControl(),
-      nickname: new FormControl(),
-      password: new FormControl(),
+      last_name: new FormControl('', [Validators.required, this.noWhitespaceValidator()]),
+      first_name: new FormControl('', [Validators.required, this.noWhitespaceValidator()]),
+      mail: new FormControl('', [Validators.required, this.noWhitespaceValidator()]),
+      nickname: new FormControl('', [Validators.required, this.noWhitespaceValidator()]),
+      password: new FormControl('', [Validators.required, this.noWhitespaceValidator()] ),
       role: 'user',
-      profil_picture: new FormControl(Validators.required)
+      profil_picture: new FormControl()
     });
 
   }
@@ -43,6 +43,14 @@ export class RegisterhubComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  noWhitespaceValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const isWhitespace = (control.value as string).indexOf(' ') >= 0;
+      return isWhitespace ? { whitespace: true } : null;
+    };
+  }
+
   emitUserCreated() {
 
     this.form.controls['profil_picture'].setValue(this.imageData);
@@ -95,4 +103,5 @@ export class RegisterhubComponent implements OnInit {
 
     }
   }
+
 }

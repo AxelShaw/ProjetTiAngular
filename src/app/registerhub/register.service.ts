@@ -17,4 +17,7 @@ export class RegisterService {
   createUser(dto: DtoOutputCreateUser | null): Observable<DtoInputUser> {
     return this._httpClient.post<DtoInputUser>(RegisterService.ENTRY_POINT_USER, dto);
   }
+  fetchByNameUser(nickname : string):Observable<DtoInputUser>{
+    return this._httpClient.get<DtoInputUser>(`${RegisterService.ENTRY_POINT_USER}/${nickname}`);
+  }
 }

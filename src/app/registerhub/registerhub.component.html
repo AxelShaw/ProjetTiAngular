@@ -6,10 +6,13 @@
         <p>
           Mail :
         </p>
-        <input type="text"  formControlName="mail" placeholder="exemple@mail.com"
+        <input type="email"  formControlName="mail" placeholder="exemple@mail.com"
                size="30" required >
         <span *ngIf="control('mail')?.dirty && control('mail')?.invalid">
           mail requis*
+        </span>
+        <span *ngIf="control('mail').errors?.['whitespace']">
+          Pas d'espaces
         </span>
       </div>
       <div>
@@ -20,6 +23,10 @@
         <span *ngIf="control('nickname')?.dirty && control('nickname')?.invalid">
           Pseudo requis*
         </span>
+        <span *ngIf="control('nickname').errors?.['whitespace']">
+          Pas d'espaces
+        </span>
+
       </div>
       <div>
         <p>
@@ -28,8 +35,11 @@
         <input minlength="8" type="password" formControlName="password" required >
         <span *ngIf="control('password')?.dirty && control('password')?.invalid">
           mot de passe requis*
-        </span>
 
+        </span>
+        <span *ngIf="control('password').errors?.['whitespace']">
+            Pas d'espaces
+        </span>
       </div>
       <div>
        <div class="divname">
@@ -45,12 +55,15 @@
         <span *ngIf="control('first_name')?.dirty && control('first_name')?.invalid">
           prénom requis*
         </span>
+        <span *ngIf="control('first_name').errors?.['whitespace']">
+          Pas d'espaces
+        </span>
       </div>
       <div >
         <P>
           image de profile:
         </P>
-
+        
         <input accept="image/png, image/jpeg" formControlName="profil_picture" type="file" id="fileInput" required (change)="getImage($event)" required >
 
       </div>

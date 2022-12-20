@@ -12,7 +12,6 @@ import {DtoInputFavorie} from "../../favorihub/dtos/dto-input-favorie";
 export class MovieUserComponent implements OnInit {
   searchUsers: DtoInputUser[] = [];
   comments: DtoInputComments [] = [];
-  ratings: DtoInputComments [] = [];
   users: DtoInputUser[] = [];
   favories: DtoInputFavorie [] = [];
 
