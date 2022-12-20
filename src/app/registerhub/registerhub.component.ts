@@ -35,7 +35,7 @@ export class RegisterhubComponent implements OnInit {
       nickname: new FormControl(),
       password: new FormControl(),
       role: 'user',
-      profil_picture: new FormControl('src/assets/img/user.png')
+      profil_picture: new FormControl()
     });
 
   }

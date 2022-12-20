@@ -26,11 +26,8 @@ export class LoginhubComponent implements OnInit {
   emitUserLogin() {
     console.log(this.form.value);
     this.userLogin = this.form.value;
-
-
-    this._loginService.connexionLogin(this.userLogin).subscribe(login => this.logins.push(login));
+    this._loginService.connexionLogin(this.userLogin).subscribe((login => this.logins.push()));
     this.form.reset();
-    this.userLogin = null;
   }
   control(login: string): AbstractControl | null {
     return this.form.get(login);
