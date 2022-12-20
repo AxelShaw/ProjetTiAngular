@@ -33,6 +33,7 @@ export class MovieAdminComponent implements OnInit {
 
 
   constructor(private _fb: FormBuilder, private _adminService: AdminService) {
+    //set new form for movie
     this.form = this._fb.group({
       nameMovie: new FormControl(),
       runtimeMinute: new FormControl(),
@@ -43,7 +44,7 @@ export class MovieAdminComponent implements OnInit {
       director: new FormControl(),
       release_movie: new FormControl()
     });
-
+    //set new form for rating
     this.formRating = this._fb.group({
       average_rating: new FormControl(),
       numVote: new FormControl(),
@@ -61,6 +62,8 @@ export class MovieAdminComponent implements OnInit {
     this._adminService.fetchAllMovie().subscribe(movies => this.movies = movies);
   }
 
+
+  //create a movie and set rating
   emitMovieCreated() {
 
     this.form.controls['imageMovie'].setValue(this.imageData);
@@ -71,6 +74,7 @@ export class MovieAdminComponent implements OnInit {
     this.setRating();
     this.movieCreated = null;
   }
+  //update movie with value of form
   emitMovieUpdated(update : DtoInputMovie, FormGroup: any){
     this.moviesUpdated = update;
     if (confirm("Êtes-vous sur de vouloir modifier ce film ? ")) {
@@ -97,7 +101,7 @@ export class MovieAdminComponent implements OnInit {
     this._adminService.update(this.moviesUpdated).subscribe();
   }
 
-
+  //delete movie with his ratings, comments, favori and news
   emitMovieDeleted(movie: DtoInputMovie){
     if (confirm("Êtes-vous sur de vouloir supprimer ce film ? ")) {
       this._adminService.deleteRatingMovie(movie.idMovie).subscribe(() => {
@@ -126,11 +130,12 @@ export class MovieAdminComponent implements OnInit {
     });
     this.searchMovies = [];
   }
-
+  //verification if input are dirty or invalid
   control(nameMovie: string): AbstractControl | null {
     return this.form.get(nameMovie);
   }
 
+  //get image and convert to base 64
   getImage(event: Event) {
     const file1=(event.target as HTMLInputElement).files;
     let file;
