@@ -21,11 +21,14 @@
     "@material/icon-button": "^14.0.0",
     "bootstrap": "^5.2.3",
     "font-awesome": "^4.7.0",
+    "jwt-decode": "^3.1.2",
     "mdb-angular-ui-kit": "^3.0.1",
+    "ngx-cookie-service": "^15.0.0",
     "ngx-pagination": "^6.0.3",
     "rxjs": "~7.5.0",
     "swiper": "^8.4.5",
     "tslib": "^2.3.0",
+    "typescript-cookie": "^1.0.4",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

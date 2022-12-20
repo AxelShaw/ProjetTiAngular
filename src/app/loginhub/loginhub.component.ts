@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {DtoOutputLogin} from "./dtos/dto-output-login";
-import {DtoInputLogin} from "./dtos/dto-input-login";
 import {AbstractControl, FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {LoginService} from "./login.service";
 
@@ -11,8 +10,8 @@ import {LoginService} from "./login.service";
 })
 export class LoginhubComponent implements OnInit {
   userLogin: DtoOutputLogin| null = null;
-  logins: DtoInputLogin[] = [];
   form : FormGroup;
+  test : string;
 
   constructor(private _fb: FormBuilder, private _loginService: LoginService) {
     this.form = this._fb.group({
@@ -26,7 +25,7 @@ export class LoginhubComponent implements OnInit {
   emitUserLogin() {
     console.log(this.form.value);
     this.userLogin = this.form.value;
-    this._loginService.connexionLogin(this.userLogin).subscribe((login => this.logins.push()));
+    this._loginService.connexionLogin(this.userLogin).subscribe(login => this.test = login);
     this.form.reset();
   }
   control(login: string): AbstractControl | null {
