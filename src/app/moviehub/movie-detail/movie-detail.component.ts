@@ -89,17 +89,18 @@ export class MovieDetailComponent implements OnInit {
     if (confirm("Êtes-vous sur de vouloir supprimer ce commentaire ? ")) {
       this._movieService.deleteCommentById(comment.idComMovie).subscribe(() => {
         this.comments = this.comments.filter(comments => comments.idComMovie !== comment.idComMovie);
-
-        this.updateRating = rate;
-        if(this.updateRating.numVote == 1){
-          this.updateRating.average_rating = ((this.updateRating.average_rating * this.updateRating.numVote) - comment.rating);
-        }else{
-          this.updateRating.average_rating = ((this.updateRating.average_rating * this.updateRating.numVote) - comment.rating)/(this.updateRating.numVote - 1);
-        }
-
-        this.updateRating.numVote = this.updateRating.numVote - 1;
-        this._movieService.updateRate(this.updateRating).subscribe();
       });
+      this.updateRating = rate;
+      if(this.updateRating.numVote <= 1){
+        this.updateRating.average_rating = 0;
+        this.updateRating.numVote = 0;
+      }else{
+        this.updateRating.average_rating = ((this.updateRating.average_rating * this.updateRating.numVote) - comment.rating)/(this.updateRating.numVote - 1);
+        this.updateRating.numVote = this.updateRating.numVote - 1;
+      }
+
+
+      this._movieService.updateRate(this.updateRating).subscribe();
     }
   }
 

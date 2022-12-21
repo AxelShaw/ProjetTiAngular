@@ -16,7 +16,7 @@
           De {{movie.director}}
         </div>
         <div *ngIf="rating; else ratingNotFound">
-            {{rating.average_rating}} / 100 - {{rating.numVote}} votes
+            {{rating.average_rating |  number: '1.0-2' }} / 100 - {{rating.numVote}} votes
         </div>
         <div>
           <span  *ngIf="alreadyFav(movie.idMovie); else favIsFav">

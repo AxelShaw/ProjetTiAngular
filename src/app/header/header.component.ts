@@ -119,7 +119,7 @@ export class HeaderComponent implements OnInit {
   }
 
   deleteCookie() {
-    this._cook.deleteAll();
+    this._cook.delete('UserInfo');
     this._route.navigate(['../home']);
   }
 
