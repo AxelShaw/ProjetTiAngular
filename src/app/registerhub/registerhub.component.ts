@@ -11,7 +11,7 @@ import {
 import {RegisterService} from "./register.service";
 import {DtoOutputCreateUser} from "./dtos/dto-output-create-user";
 import {DtoInputUser} from "./dtos/dto-input-user";
-import {Observable, Subscriber} from "rxjs";
+import {Observable, Subject, Subscriber} from "rxjs";
 import {Router} from "@angular/router";
 
 
@@ -36,7 +36,7 @@ export class RegisterhubComponent implements OnInit {
       mail: new FormControl('', [Validators.required, this.noWhitespaceValidator(), this.CheckIsPresent()]),
       nickname: new FormControl('', [Validators.required, this.noWhitespaceValidator()]),
       password: new FormControl('', [Validators.required, this.noWhitespaceValidator()] ),
-      role: new FormControl('user'),
+      role: 'user',
       profil_picture: new FormControl()
     });
 
@@ -45,15 +45,13 @@ export class RegisterhubComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   CheckIsPresent(): ValidatorFn {
+    var subject = false;
     return (control: AbstractControl): ValidationErrors | null => {
-      this._registerService.CheckIsPresentByMail(control.value as string).subscribe(test => this.test = test);
-      let isPresent=this.test;
-      console.log(this.test)
-
-      return isPresent ? { ispresent: true } : null;
-
-
+      this._registerService.CheckIsPresentByMail(control.value as string).subscribe(test => subject = test);
+      console.log(subject);
+      return subject ? { ispresent: true  } : null;
     };
 
   }

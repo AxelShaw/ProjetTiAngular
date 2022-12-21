@@ -115,7 +115,7 @@ export class MovieDetailComponent implements OnInit {
     this.form.controls['idUserRef'].setValue(idUser);
     this.createComment = this.form.value;
     for (let i = 0; i < this.comments.length; i++){
-       if(1 == this.comments[i].idUserRef){
+       if(idUser == this.comments[i].idUserRef){
          this.val = false;
        }
     }
