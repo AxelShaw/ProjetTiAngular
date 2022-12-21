@@ -11,6 +11,8 @@ import {DtoOutputUpdateRating} from "../dtos/dto-output-update-rating";
 import {observable, Observable, Subject} from "rxjs";
 import {DtoOutputCreateFavorie} from "../dtos/dto-output-create-favorie";
 import {DtoInputFavorie} from "../dtos/dto-input-favorie";
+import jwtDecode from "jwt-decode";
+import {CookieService} from "ngx-cookie-service";
 
 
 
@@ -31,22 +33,24 @@ export class MovieDetailComponent implements OnInit {
   form : FormGroup;
   formFavorie : FormGroup;
   val : boolean = true;
+  idUser : number = 0;
 
-  constructor(private _movieService: MovieService, private _route: ActivatedRoute, private _fb: FormBuilder) {
+  constructor(private _movieService: MovieService, private _route: ActivatedRoute, private _fb: FormBuilder, private _cook:CookieService) {
     this.form = this._fb.group({
       rating: new FormControl(),
       commentText: new FormControl(''),
       idMovieRef: 0,
-      idUserRef: 1
+      idUserRef: 0
     });
 
     this.formFavorie = this._fb.group({
       idMovieRef: 0,
-      idUserRef: 1,
+      idUserRef: 0,
     });
   }
 
   ngOnInit(): void {
+    this.GetUser();
     this._route.paramMap.subscribe(args => {
       if (args.has("movieid")) {
         const movieId = Number(args.get("movieid"));
@@ -54,7 +58,7 @@ export class MovieDetailComponent implements OnInit {
         this.fetchByRating(movieId);
         this.fetchAllCommentById(movieId);
       }
-      this.fetchAllFavorie(1);
+      this.fetchAllFavorie(this.idUser);
       this.fetchAllUser();
     });
   }
@@ -100,7 +104,15 @@ export class MovieDetailComponent implements OnInit {
   }
 
   emitCommentCreated(id : number, rate : DtoInputRatingMovie) {
+    let idUser : number = 0;
+    try{
+      // @ts-ignore
+      idUser = jwtDecode(this._cook.get('UserInfo')).id
+    }catch (error){
+
+    }
     this.form.controls['idMovieRef'].setValue(id);
+    this.form.controls['idUserRef'].setValue(idUser);
     this.createComment = this.form.value;
     for (let i = 0; i < this.comments.length; i++){
        if(1 == this.comments[i].idUserRef){
@@ -133,13 +145,21 @@ export class MovieDetailComponent implements OnInit {
   addFavorie(idMovie: number) {
     let stop: number = 0;
     let id: number = 0;
+    let idUser : number = 0;
+    try{
+      // @ts-ignore
+      idUser = jwtDecode(this._cook.get('UserInfo')).id
+    }catch (error){
+
+    }
     for (let i = 0; i < this.favories.length; i++) {
-      if (this.favories[i].idMovieRef == idMovie && this.favories[i].idUserRef == 1) {
+      if (this.favories[i].idMovieRef == idMovie && this.favories[i].idUserRef == idUser) {
         stop = 1;
         id = this.favories[i].idFav;
       }
     }
     if (stop == 0) {
+      this.formFavorie.controls['idUserRef'].setValue(idUser);
       this.formFavorie.controls['idMovieRef'].setValue(idMovie);
       this.createFavorie = this.formFavorie.value;
       this._movieService.createFavorie(this.createFavorie).subscribe(fav => this.favories.push(fav))
@@ -161,9 +181,15 @@ export class MovieDetailComponent implements OnInit {
 
   alreadyFav(idMovie: number){
     let stop: number = 0;
+    let idUser : number = 0;
+    try{
+      // @ts-ignore
+      idUser = jwtDecode(this._cook.get('UserInfo')).id
+    }catch (error){
 
+    }
     for (let i = 0; i < this.favories.length; i++) {
-      if (this.favories[i].idMovieRef == idMovie && this.favories[i].idUserRef == 1) {
+      if (this.favories[i].idMovieRef == idMovie && this.favories[i].idUserRef == idUser) {
         stop = 1;
       }
     }
@@ -173,4 +199,36 @@ export class MovieDetailComponent implements OnInit {
       return false;
       }
     }
+
+  connect() {
+    try{
+      if(jwtDecode(this._cook.get('UserInfo'))){
+        return true;
+      }
+      return false;
+    }catch (error){
+      return false;
+    }
+  }
+
+  connectAdmin() {
+    try{
+      // @ts-ignore
+      if(jwtDecode(this._cook.get('UserInfo')).Role == 'admin'){
+        return true;
+      }
+      return false;
+    }catch (error){
+      return false;
+    }
+  }
+
+  GetUser(){
+    try{
+      // @ts-ignore
+      this.idUser = jwtDecode(this._cook.get('UserInfo')).id
+    }catch (error){
+
+    }
+  }
 }

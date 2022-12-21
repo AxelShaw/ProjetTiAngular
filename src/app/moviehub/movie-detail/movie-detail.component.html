@@ -47,13 +47,18 @@
         </div>
         <textarea id="commentInput" wrap="hard" type="text" maxlength="1500" class="createComment" rows="3" formControlName="commentText"></textarea>
         <div *ngIf="val == true">
-          <button class="buttonEnvoie" type="submit" [disabled]="form.invalid">Envoyer</button>
+          <button class="buttonEnvoie" type="submit" *ngIf="connect()" [disabled]="form.invalid">Envoyer</button>
         </div>
         <div *ngIf="val == false">
           <p>Vous avez deja posté un commentaire sur ce film</p>
         </div>
       </form>
     </div>
+  </div>
+
+
+  <div *ngIf="!connect()" class="notConnect">
+    Vous devez vous connecter pour commenter ce film
   </div>
 
   <div *ngIf="comments; else commentNotFound" class="commentList">
@@ -77,7 +82,7 @@
 
 
         <div *ngIf="rating">
-          <button (click)="DeleteComment(comment, rating)" class="suppbtn">supprimer</button>
+          <button *ngIf="connectAdmin()" (click)="DeleteComment(comment, rating)" class="suppbtn">supprimer</button>
         </div>
       </li>
     </ul>

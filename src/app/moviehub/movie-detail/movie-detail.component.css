@@ -141,9 +141,11 @@ textarea {
 .textcomment{
   text-align: justify;
   font-size: 14px;
-
   width: 700px;
-
+}
+.notConnect{
+  text-align: right;
+  margin-right: 5%;
 }
 
 

@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
-import {MovieListComponent} from "./moviehub/movie-list/movie-list.component";
-import {MoviehubComponent} from "./moviehub/moviehub.component";
 import {MovieDetailComponent} from "./moviehub/movie-detail/movie-detail.component";
 import {MovieHomeComponent} from "./moviehub/movie-home/movie-home.component";
 import {AdminhubComponent} from "./adminhub/adminhub.component";
@@ -17,14 +15,6 @@ import {LoginhubComponent} from "./loginhub/loginhub.component";
 
 const routes: Routes = [
   {path: '',redirectTo:'home', pathMatch:'full'},
-  {
-    path: 'movies', component: MoviehubComponent,
-    children: [
-      {
-        path: 'list', component: MovieListComponent
-      }
-    ]
-  },
   {
     path: 'detail/:movieid', component: MovieDetailComponent
   },

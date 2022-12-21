@@ -3,6 +3,8 @@ import {DtoInputActu} from "../adminhub/dtos/dto-intput-actu";
 import {AdminService} from "../adminhub/admin.service";
 import {DtoInputMovie} from "../adminhub/dtos/dto-input-movie";
 import {DtoInputFavorie} from "../favorihub/dtos/dto-input-favorie";
+import jwtDecode from "jwt-decode";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-notification-hub',
@@ -15,13 +17,15 @@ export class NotificationHubComponent implements OnInit {
   favories : DtoInputFavorie[] = [];
   DeleteNot : number[] = [];
   seeNot : number[] = [];
+  id: number = 0;
 
-  constructor(private _adminService: AdminService) { }
+  constructor(private _adminService: AdminService, private _cook : CookieService) { }
 
   ngOnInit(): void {
+    this.getUser();
     this.fetchAllActu();
     this.fetchAll();
-    this.fetchAllFavorieById(1);
+    this.fetchAllFavorieById(this.id);
     if(localStorage.getItem('DeleteNot') != null){
       // @ts-ignore
       this.DeleteNot = JSON.parse(localStorage.getItem(`DeleteNot`));
@@ -55,5 +59,15 @@ export class NotificationHubComponent implements OnInit {
     this.seeNot.push(idActu);
     localStorage.setItem('seeNot', JSON.stringify(this.seeNot));
     console.log(this.seeNot);
+  }
+
+  getUser() {
+    try {
+      // @ts-ignore
+      this.id = jwtDecode(this._cook.get('UserInfo')).id
+
+    } catch (error) {
+
+    }
   }
 }

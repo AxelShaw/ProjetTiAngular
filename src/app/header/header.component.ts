@@ -20,15 +20,16 @@ export class HeaderComponent implements OnInit {
   temp : number = 0;
   DeleteNot : number[] = [];
   seeNot : number[] = [];
-
+  id : number = 0;
 
   constructor(private _movieService: MovieService, private _cook: CookieService, private _route : Router) {
   }
 
   ngOnInit(): void {
+    this.getUser();
     this.searchMovies = [];
     this.fetchAllActu();
-    this.fetchAllFavorieById(1);
+    this.fetchAllFavorieById(this.id);
 
     if(localStorage.getItem('DeleteNot') != null){
       // @ts-ignore
@@ -121,4 +122,15 @@ export class HeaderComponent implements OnInit {
     this._cook.delete('UserInfo');
     this._route.navigate(['../home']);
   }
+
+  getUser() {
+    try {
+      // @ts-ignore
+      this.id = jwtDecode(this._cook.get('UserInfo')).id
+
+    } catch (error) {
+
+    }
+  }
+
 }

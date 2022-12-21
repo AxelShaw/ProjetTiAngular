@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { MoviehubComponent } from './moviehub/moviehub.component';
-import { MovieListComponent } from './moviehub/movie-list/movie-list.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AppRootingModule} from "./app-rooting.module";
@@ -31,7 +30,6 @@ import { NotificationHubComponent } from './notification-hub/notification-hub.co
   declarations: [
     AppComponent,
     MoviehubComponent,
-    MovieListComponent,
     HeaderComponent,
     MovieDetailComponent,
     MovieHomeComponent,
