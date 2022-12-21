@@ -12,6 +12,7 @@ import {RegisterService} from "./register.service";
 import {DtoOutputCreateUser} from "./dtos/dto-output-create-user";
 import {DtoInputUser} from "./dtos/dto-input-user";
 import {Observable, Subscriber} from "rxjs";
+import {Router} from "@angular/router";
 
 
 
@@ -28,7 +29,7 @@ export class RegisterhubComponent implements OnInit {
   users: DtoInputUser[] = [];
   test : boolean = false;
 
-  constructor(private _fb: FormBuilder, private _registerService: RegisterService) {
+  constructor(private _fb: FormBuilder, private _registerService: RegisterService, private _route:Router) {
     this.form = this._fb.group({
       last_name: new FormControl('', [Validators.required, this.noWhitespaceValidator()]),
       first_name: new FormControl('', [Validators.required, this.noWhitespaceValidator()]),
@@ -72,6 +73,8 @@ export class RegisterhubComponent implements OnInit {
     this._registerService.createUser(this.userCreated).subscribe(user => this.users.push(user));
     this.form.reset();
     this.userCreated = null;
+
+    this._route.navigate(['../login']);
   }
 
   control(nameUser: string): AbstractControl | null {
