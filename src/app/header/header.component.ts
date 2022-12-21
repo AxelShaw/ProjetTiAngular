@@ -3,6 +3,9 @@ import {DtoInputMovie} from "../moviehub/dtos/dto-input-movie";
 import {MovieService} from "../moviehub/movie.service";
 import {DtoInputActu} from "../adminhub/dtos/dto-intput-actu";
 import {DtoInputFavorie} from "../favorihub/dtos/dto-input-favorie";
+import jwtDecode from "jwt-decode";
+import {CookieService} from "ngx-cookie-service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -19,7 +22,7 @@ export class HeaderComponent implements OnInit {
   seeNot : number[] = [];
 
 
-  constructor(private _movieService: MovieService) {
+  constructor(private _movieService: MovieService, private _cook: CookieService, private _route : Router) {
   }
 
   ngOnInit(): void {
@@ -92,4 +95,30 @@ export class HeaderComponent implements OnInit {
       .subscribe(fav => this.favories = fav);
   }
 
+  testAdmin() {
+    try{
+      // @ts-ignore
+      if(jwtDecode(this._cook.get('UserInfo')).Role == 'admin'){
+        return true;
+      }
+      return false;
+    }catch (error){
+      return false;
+    }
+  }
+
+  testLog() {
+    try{
+      // @ts-ignore
+      jwtDecode(this._cook.get('UserInfo'))
+      return true;
+    }catch (error){
+      return false;
+    }
+  }
+
+  deleteCookie() {
+    this._cook.delete('UserInfo');
+    this._route.navigate(['../home']);
+  }
 }

@@ -2,7 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {DtoInputMovie} from "../dtos/dto-input-movie";
 import {MovieService} from "../movie.service";
 import {DtoInputRatingMovie} from "../dtos/dto-input-rating-movie";
-import {getCookies} from 'typescript-cookie'
 import {CookieService} from "ngx-cookie-service";
 import jwtDecode from "jwt-decode";
 
@@ -25,10 +24,5 @@ export class MovieListComponent implements OnInit {
 
   private fetchAllRating() {
     this._movieService.fetchAllRating().subscribe(rating => this.ratings = rating);
-  }
-
-  GetCookie(){
-    console.log(this._cook.get('UserInfo'));
-    console.log(jwtDecode(this._cook.get('UserInfo')));
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {DtoOutputLogin} from "./dtos/dto-output-login";
 import {AbstractControl, FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {LoginService} from "./login.service";
+import {Route, Router, Routes} from "@angular/router";
 
 @Component({
   selector: 'app-loginhub',
@@ -11,9 +12,8 @@ import {LoginService} from "./login.service";
 export class LoginhubComponent implements OnInit {
   userLogin: DtoOutputLogin| null = null;
   form : FormGroup;
-  test : string;
 
-  constructor(private _fb: FormBuilder, private _loginService: LoginService) {
+  constructor(private _fb: FormBuilder, private _loginService: LoginService, private  _route: Router) {
     this.form = this._fb.group({
       mail: new FormControl(),
       password: new FormControl(),
@@ -23,10 +23,11 @@ export class LoginhubComponent implements OnInit {
   ngOnInit(): void {
   }
   emitUserLogin() {
-    console.log(this.form.value);
     this.userLogin = this.form.value;
-    this._loginService.connexionLogin(this.userLogin).subscribe(login => this.test = login);
+    this._loginService.connexionLogin(this.userLogin).subscribe();
     this.form.reset();
+
+    this._route.navigate(['../home']);
   }
   control(login: string): AbstractControl | null {
     return this.form.get(login);
