@@ -28,3 +28,7 @@
   border:1px solid #a9a9a9;
   display: grid;
 }
+
+.all{
+  display: block;
+}

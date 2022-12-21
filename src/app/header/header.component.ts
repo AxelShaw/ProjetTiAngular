@@ -86,7 +86,14 @@ export class HeaderComponent implements OnInit {
           }
         }
       }
-
+    }
+    if(localStorage.getItem('DeleteNot') != null){
+      // @ts-ignore
+      this.DeleteNot = JSON.parse(localStorage.getItem(`DeleteNot`));
+    }
+    if(localStorage.getItem('seeNot') != null){
+      // @ts-ignore
+      this.seeNot = JSON.parse(localStorage.getItem(`seeNot`));
     }
     return this.temp;
   }
@@ -119,7 +126,7 @@ export class HeaderComponent implements OnInit {
   }
 
   deleteCookie() {
-    this._cook.delete('UserInfo');
+    this._cook.delete('UserInfo', '/');
     this._route.navigate(['../home']);
   }
 

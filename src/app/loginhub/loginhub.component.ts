@@ -3,6 +3,7 @@ import {DtoOutputLogin} from "./dtos/dto-output-login";
 import {AbstractControl, FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {LoginService} from "./login.service";
 import {Route, Router, Routes} from "@angular/router";
+import jwtDecode from "jwt-decode";
 
 @Component({
   selector: 'app-loginhub',
@@ -25,10 +26,11 @@ export class LoginhubComponent implements OnInit {
   emitUserLogin() {
     this.userLogin = this.form.value;
     this._loginService.connexionLogin(this.userLogin).subscribe();
+    console.log('test');
     this.form.reset();
-
     this._route.navigate(['../home']);
   }
+
   control(login: string): AbstractControl | null {
     return this.form.get(login);
   }
