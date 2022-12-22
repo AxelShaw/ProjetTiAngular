@@ -26,7 +26,6 @@ export class LoginhubComponent implements OnInit {
   emitUserLogin() {
     this.userLogin = this.form.value;
     this._loginService.connexionLogin(this.userLogin).subscribe();
-    console.log('test');
     this.form.reset();
     this._route.navigate(['../home']);
   }

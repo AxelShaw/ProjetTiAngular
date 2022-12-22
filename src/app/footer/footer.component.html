@@ -5,13 +5,16 @@
         <a routerLink="home" >Accueil</a>
       </li>
       <li>
-        <a routerLink="top100" >Top 100</a>
+        <a routerLink="top100" >Meilleur Film</a>
       </li>
       <li>
-        <a routerLink="bad100">Bad 100</a>
+        <a routerLink="bad100">Pire Film</a>
       </li>
       <li>
-        <a routerLink="movies">Déconnexion</a>
+        <a routerLink="favorie" *ngIf="testLog()">Mes favories</a>
+      </li>
+      <li>
+        <a routerLink="notification" *ngIf="testLog()">Notification</a>
       </li>
     </ul>
   </nav>
