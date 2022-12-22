@@ -17,8 +17,4 @@ export class RegisterService {
   createUser(dto: DtoOutputCreateUser | null): Observable<DtoInputUser> {
     return this._httpClient.post<DtoInputUser>(RegisterService.ENTRY_POINT_USER, dto);
   }
-
-  CheckIsPresentByMail(mail : string) : Observable<boolean> {
-    return this._httpClient.get<boolean>(RegisterService.ENTRY_POINT_USER+ "/mail/" +mail);
-  }
 }

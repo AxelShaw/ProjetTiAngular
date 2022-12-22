@@ -31,48 +31,27 @@ export class RegisterhubComponent implements OnInit {
 
   constructor(private _fb: FormBuilder, private _registerService: RegisterService, private _route:Router) {
     this.form = this._fb.group({
-      last_name: new FormControl('', [Validators.required, this.noWhitespaceValidator()]),
-      first_name: new FormControl('', [Validators.required, this.noWhitespaceValidator()]),
-      mail: new FormControl('', [Validators.required, this.noWhitespaceValidator(), this.CheckIsPresent()]),
-      nickname: new FormControl('', [Validators.required, this.noWhitespaceValidator()]),
-      password: new FormControl('', [Validators.required, this.noWhitespaceValidator()] ),
+      last_name: new FormControl('', [Validators.required]),
+      first_name: new FormControl('', [Validators.required]),
+      mail: new FormControl('', [Validators.required]),
+      nickname: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required]),
       role: 'user',
       profil_picture: new FormControl()
     });
 
   }
 
-
   ngOnInit(): void {
-  }
-
-  CheckIsPresent(): ValidatorFn {
-    var subject = false;
-    return (control: AbstractControl): ValidationErrors | null => {
-      this._registerService.CheckIsPresentByMail(control.value as string).subscribe(test => subject = test);
-      console.log(subject);
-      return subject ? { ispresent: true  } : null;
-    };
-
-  }
-
-  noWhitespaceValidator(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const isWhitespace = (control.value as string).indexOf(' ') >= 0;
-      return isWhitespace ? { whitespace: true } : null;
-    };
   }
 
   emitUserCreated() {
 
     this.form.controls['profil_picture'].setValue(this.imageData);
-    console.log(this.form.value);
     this.userCreated = this.form.value;
     this._registerService.createUser(this.userCreated).subscribe(user => this.users.push(user));
     this.form.reset();
     this.userCreated = null;
-
-    this._route.navigate(['../login']);
   }
 
   control(nameUser: string): AbstractControl | null {
