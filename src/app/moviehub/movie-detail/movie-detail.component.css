@@ -1,4 +1,4 @@
-
+/*css for star favorite*/
 .star {
   background-image: url("src/assets/img/star.png");
   background-size: 100%;
@@ -9,6 +9,7 @@
   background-color: #f5f5f5;
 
 }
+/*css for star favorites activate*/
 .starfill{
   background-image: url("src/assets/img/star-fill.png");
   background-size: 100%;
@@ -18,7 +19,7 @@
   border-radius:50%;
   background-color: #f5f5f5;
 }
-
+/*css imgae movie*/
 .imgP>img{
   width: 300px;
   inline : block;
@@ -27,20 +28,23 @@
   border: #3a424c solid 4px;
   order: 1;
 }
+/*css supp btn*/
 .suppbtn{
   margin-bottom: 5px;
 }
+/*css user image*/
 .imguser{
   height: 75PX;
   width: 75PX;
   border-radius: 50%;
   border: #008680 solid 4PX;
 }
+/*css user name*/
 .Puser{
   font-size: 18px;
   color: #008680;
 }
-
+/*css all page*/
 .all{
   background-color: #f5f5f5;
   max-width: 1100px;
@@ -53,6 +57,7 @@
   color: black;
   box-shadow: 6px 5px 5px black;
 }
+/*css movie*/
 .movieP{
   padding: 10px;
   float: left;
@@ -64,11 +69,13 @@
   flex-direction: column;
   justify-content: space-between;
 }
+/*css desription*/
 .descrptionP{
   padding: 10px;
   order: 2;
   margin-top: 1%;
 }
+/*css descrription text*/
 .descrptionP>p{
   background-color: #4a5662;
   color: white;
@@ -78,60 +85,65 @@
   font-size: 18px;
 
 }
-
+/*css info*/
 .infoP{
   order: 1;
   display: inline-block;
   font-size: 18px;
 
 }
-
+/*css title*/
 h2{
   text-align: center;
   text-transform: uppercase;
   font-size: 30px;
 
 }
+/*css create comment all*/
 .createCommentAll{
   order: 2;
   bottom: 0;
   width: 100%;
 
 }
+/*css comment list*/
 .commentList{
   order: 3;
   bottom: 0;
   width: 100%;
 }
-
+/*css create comment*/
 .createComment{
   width: 90%;
   height: 50px;
   display: block;
   margin: 10px auto 10px 50px;
 }
-
+/*css rating*/
 .noteComment{
   width: 5%;
   display: block;
   margin-left: 50px;
 }
-
+/*css btn send*/
 .buttonEnvoie{
   margin-left: auto;
   display: block;
   margin-right: 5%;
 }
+/*css favorites*/
 .favori{
   width: 20px;
   height: 20px;
 }
+/*css list comment*/
 .commentList>ul{
   list-style: none;
 }
 .commentList>ul li{
   border-bottom: solid black 2PX;
 }
+/*css text area*/
 textarea {
   resize: none;
 }
@@ -143,6 +155,7 @@ textarea {
   font-size: 14px;
   width: 700px;
 }
+/*css rating user*/
 .notConnect{
   text-align: right;
   margin-right: 5%;

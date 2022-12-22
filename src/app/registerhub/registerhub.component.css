@@ -1,3 +1,4 @@
+/*css for register*/
 .registeruserAll{
   width: 400PX;
   margin: auto;
@@ -8,9 +9,11 @@
   min-height: 600PX;
   color: #008680;
 }
+/*title css*/
 H2{
   text-align: center;
 }
+/*css for all page register*/
 .all{
   width: 100%;
   min-height: 700PX;
@@ -22,6 +25,7 @@ form>div{
   margin-left: 20px;
   margin-right: 20px;
 }
+/*css for button submit*/
 .submitbtn{
   float: left;
   width: 100%;
@@ -29,14 +33,17 @@ form>div{
 p{
   color: #008680;
 }
+/*css to input*/
 input{
   padding: 5PX;
 }
+/*css for name close to input*/
 form>div .divname{
   display: inline-grid;
   margin-right: 10PX;
   margin-bottom: 5PX;
 }
+/*css for error email*/
 .testEmail{
   text-align: center;
   color:  red;

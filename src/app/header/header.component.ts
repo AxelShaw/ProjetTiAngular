@@ -14,17 +14,24 @@ import {Router} from "@angular/router";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  //all movie 5 search
   searchMovies: DtoInputMovie[] = [];
+  //all actu
   actus: DtoInputActu[] = [];
+  //all favorite
   favories : DtoInputFavorie[] = [];
   temp : number = 0;
+  //localstorage
   DeleteNot : number[] = [];
+  //localstorage
   seeNot : number[] = [];
+  //id user cookie
   id : number = 0;
 
   constructor(private _movieService: MovieService, private _cook: CookieService, private _route : Router) {
   }
 
+  //get user and actus and favorite by id and initial localstorage
   ngOnInit(): void {
     this.getUser();
     this.searchMovies = [];
@@ -41,10 +48,12 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  //get all news
   private fetchAllActu() {
     this._movieService.fetchAllActu().subscribe(actus => this.actus = actus);
   }
 
+  //get all search by anme
   search(chaine: HTMLInputElement , delay = 700) {
     let time;
     clearTimeout(time);
@@ -65,6 +74,7 @@ export class HeaderComponent implements OnInit {
     }, delay);
   }
 
+  //get input delay
   selectInput( delay = 100) {
     let time;
     clearTimeout(time);
@@ -74,6 +84,7 @@ export class HeaderComponent implements OnInit {
     }, delay);
   }
 
+  //nb notification
   nbNot() {
     this.temp = 0;
     if(this.favories != null && this.actus!= null){
@@ -97,12 +108,14 @@ export class HeaderComponent implements OnInit {
     }
     return this.temp;
   }
+  //get all favorite by id
   private fetchAllFavorieById(id : number) {
     this._movieService
       .fetchByIdFavorie(id)
       .subscribe(fav => this.favories = fav);
   }
 
+  // test if admin cookie
   testAdmin() {
     try{
       // @ts-ignore
@@ -115,6 +128,7 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  //get login
   testLog() {
     try{
       // @ts-ignore
@@ -125,11 +139,13 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  //delete cookie
   deleteCookie() {
     this._cook.delete('UserInfo', '/');
     this._route.navigate(['../home']);
   }
 
+  //get user
   getUser() {
     try {
       // @ts-ignore

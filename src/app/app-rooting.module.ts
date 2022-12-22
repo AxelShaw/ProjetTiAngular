@@ -14,43 +14,56 @@ import {NotificationHubComponent} from "./notification-hub/notification-hub.comp
 import {LoginhubComponent} from "./loginhub/loginhub.component";
 
 const routes: Routes = [
+  //default start page
   {path: '',redirectTo:'home', pathMatch:'full'},
   {
+    //detail's movie
     path: 'detail/:movieid', component: MovieDetailComponent
   },
   {
+    //home page
     path: 'home', component: MovieHomeComponent
   },
   {
+    //register page
     path: 'registerhub', component: RegisterhubComponent
   },
   {
+    //login page
     path: 'loginhub', component: LoginhubComponent
   },
   {
+    //menu admin page
     path: 'admin', component: AdminhubComponent,
     children: [
       {
+        //admin movie page
         path: 'movieAdmin', component: MovieAdminComponent
       },
       {
+        //admin user page
         path: 'userAdmin', component: MovieUserComponent
       },
       {
+        //admin newq page
         path: 'actuAdmin', component: MovieActuComponent
       }
     ]
   },
   {
+    //best movie(top 500)
     path: 'top100', component: MovieTop100Component
   },
   {
+    //worst movie(bad 500)
     path: 'bad100', component: MovieBad100Component
   },
   {
+    //favorite page(user)
     path: 'favorie', component: FavorihubComponent
   },
   {
+    //notification page(user)
     path: 'notification', component: NotificationHubComponent
   }
 ];

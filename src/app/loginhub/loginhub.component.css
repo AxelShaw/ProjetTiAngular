@@ -1,3 +1,4 @@
+/*css for all login*/
 .registeruserAll{
   width: 400PX;
   margin: auto;
@@ -8,13 +9,16 @@
   min-height: 300PX;
   color: #008680;
 }
+/*css for title*/
 H2{
   text-align: center;
 }
+ /*css all page*/
 .all{
   width: 100%;
   min-height: 400PX;
 }
+ /*css form*/
 form>div{
   flex-direction: column;
   margin-bottom: 10PX;
@@ -22,32 +26,40 @@ form>div{
   margin-left: 20px;
   margin-right: 20px;
 }
+ /*css submit */
 .submitbtn{
   width: 100%;
   float: left;
   text-align: center;
 }
+ /*css color*/
 p{
   color: #008680;
 }
+ /*css input*/
 input{
   padding: 5PX;
 }
+ /*css div in form*/
 form>div .divname{
   display: inline-grid;
   margin-right: 10PX;
   margin-bottom: 5PX;
 }
+ /*css login*/
 .aInscription{
   background-color: #008680;
   color: white;
   padding: 5px;
   text-decoration: none;
 }
+ /*css hover login*/
 .aInscription:hover{
   background-color: #00c1b8;
   color: white;
 }
+/*
+css mail fail*/
 .mailInco{
   text-align: center;
   color: red;

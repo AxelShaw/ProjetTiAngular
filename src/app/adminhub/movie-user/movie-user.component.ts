@@ -5,7 +5,6 @@ import {DtoInputComments} from "../../moviehub/dtos/dto-input-comments";
 import {DtoInputFavorie} from "../../favorihub/dtos/dto-input-favorie";
 import jwtDecode from "jwt-decode";
 import {CookieService} from "ngx-cookie-service";
-import {DtoOutputUpdateMovie} from "../dtos/dto-output-update-movie";
 import {DtoOutputUpdateUser} from "../dtos/dto-output-update-user";
 
 @Component({
@@ -14,16 +13,19 @@ import {DtoOutputUpdateUser} from "../dtos/dto-output-update-user";
   styleUrls: ['./movie-user.component.css']
 })
 export class MovieUserComponent implements OnInit {
+  //search user
   searchUsers: DtoInputUser[] = [];
+  //all comment
   comments: DtoInputComments [] = [];
+  //all user
   users: DtoInputUser[] = [];
+  //all favorite
   favories: DtoInputFavorie [] = [];
-  userUpdated: DtoOutputUpdateUser | null = null;
 
   constructor( private _adminService: AdminService,private _cook:CookieService) {
 
   }
-
+//gat all user
   ngOnInit(): void {
     this.fetchAllUser();
   }
@@ -70,6 +72,7 @@ export class MovieUserComponent implements OnInit {
     this._adminService.fetchAllUsers().subscribe(user => this.users = user);
   }
 
+  //check connect to admin
   connectAdmin() {
     try{
       // @ts-ignore
@@ -82,6 +85,7 @@ export class MovieUserComponent implements OnInit {
     }
   }
 
+  //updtae user admin and user
   emitUpdate(user: DtoInputUser) {
     if (confirm("Êtes-vous sur de vouloir mettre cette utilisateur admin ? ")) {
       if (user.role == "admin") {
@@ -110,6 +114,7 @@ export class MovieUserComponent implements OnInit {
     }
   }
 
+  //check admin
   isAdmin(user: DtoInputUser) {
     if(user.role == "admin"){
       return true

@@ -13,16 +13,23 @@ import {Router} from "@angular/router";
   styleUrls: ['./notification-hub.component.css']
 })
 export class NotificationHubComponent implements OnInit {
-    actus: DtoInputActu[] = [];
+  //list news
+  actus: DtoInputActu[] = [];
+  //lsit movies
   movies: DtoInputMovie[] = [];
+  //list favorite
   favories : DtoInputFavorie[] = [];
+  //for localstorage when delete news
   DeleteNot : number[] = [];
+  //for localstorage when chech see the news
   seeNot : number[] = [];
+  //id of user connected
   id: number = 0;
 
   constructor(private _adminService: AdminService, private _cook : CookieService, private _route : Router
   , private _changeDetector: ChangeDetectorRef) { }
 
+  //get all user,news,movie and get user by id in cookie and see localstorage
   ngOnInit(): void {
     this.getUser();
     this.fetchAllActu();
@@ -38,30 +45,35 @@ export class NotificationHubComponent implements OnInit {
     }
   }
 
-
+//get all news
   private fetchAllActu() {
     this._adminService.fetchAllActu().subscribe(actus => this.actus = actus);
   }
+  //get all movies
   private fetchAll() {
     this._adminService.fetchAllMovie().subscribe(movies => this.movies = movies);
   }
 
+  //get user by id in cookie
   private fetchAllFavorieById(id : number) {
     this._adminService
       .fetchByIdFavorie(id)
       .subscribe(fav => this.favories = fav);
   }
 
+  //save in localsorage when delete news in notification
   saveDelete(idActu: number) {
     this.DeleteNot.push(idActu);
     localStorage.setItem('DeleteNot', JSON.stringify(this.DeleteNot));
   }
 
+  //save in  localstorage when check see news in notification
   saveSee(idActu: number) {
     this.seeNot.push(idActu);
     localStorage.setItem('seeNot', JSON.stringify(this.seeNot));
   }
 
+  //get user in cookie
   getUser() {
     try {
       // @ts-ignore
@@ -72,6 +84,7 @@ export class NotificationHubComponent implements OnInit {
     }
   }
 
+  //return for button in notification
   getInclude(idActu: number){
     return this.seeNot.includes(idActu);
   }

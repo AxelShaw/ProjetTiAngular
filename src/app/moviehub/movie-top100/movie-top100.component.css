@@ -1,23 +1,25 @@
+/*css all page*/
 .all{
   width: 80%;
   margin-left: auto;
   margin-right: auto;
 }
-
+/*css all movie*/
 .allMovie{
   list-style:none;
   display:inline-block;
 
 }
+/*css movie*/
 .film{
   margin-left:15px;
   margin-bottom:15px;
 }
-
+/*css li*/
 li{
   width: 250px;
 }
-
+/*css name movie*/
 .name{
   overflow: hidden;
   white-space: nowrap;
@@ -25,41 +27,42 @@ li{
   width: 68%;
   display:inline-block;
 }
-
+/*css rating*/
 .ratingSpan{
   float: right;
   margin-right: 10px;
 }
-
+/*css image*/
 img{
   width: 240px;
 }
-
+/*css hover movie*/
 .film:hover{
   -ms-transform: scale(1.05);
   -webkit-transform: scale(1.05);
   transform: scale(1.05);
   transition: all .5s;
 }
-
+/*css page*/
 .Page{
   text-align: center;
 }
-
+/*css genre left*/
 .genre{
   float: left;
   height: 100%;
   min-height: 900px;
   list-style:none;
 }
-
+/*css over genre*/
 .genre li:hover{
   background-color: #00c1b8;
 }
-
+/*css li genre*/
 .genre li{
   margin-top: 10px;
 }
+/*css link*/
 a{
   color: white;
   font-size: 18px;

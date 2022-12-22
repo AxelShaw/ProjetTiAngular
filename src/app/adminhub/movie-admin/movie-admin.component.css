@@ -1,3 +1,4 @@
+/*css middel input*/
 .moyen{
   padding-right:5px;
   padding-left:5px;
@@ -9,7 +10,7 @@
   border:1px solid #a9a9a9;
   display: grid;
 }
-
+/*css small input*/
 .petit{
   padding-right:5px;
   padding-left:5px;
@@ -21,7 +22,7 @@
   border:1px solid #a9a9a9;
   display: grid;
 }
-
+/*css large input*/
 .grand{
   padding-right:5px;
   padding-left:5px;
@@ -33,24 +34,27 @@
   border:1px solid #a9a9a9;
   display: grid;
 }
-
+/*css labem*/
 label{
   font-size: 1.1em;
 }
-
+/*css image*/
 .image{
   margin-right: 5px;
   margin-bottom: 5px;
 }
+/*css admin*/
 .adminmovie{
   width: 100%;
   min-height: 300px;
   height: 100%;
   margin-top: -300px;
 }
+/*css input recherhce*/
 .recherchemovie{
   margin: 50px;
 }
+/*css list*/
 .list-movie{
   list-style:none;
   font-size: 16px;

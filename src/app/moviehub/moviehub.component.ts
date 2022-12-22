@@ -8,14 +8,17 @@ import {MovieService} from "./movie.service";
   styleUrls: ['./moviehub.component.css']
 })
 export class MoviehubComponent implements OnInit {
+  //all movies
   movies:DtoInputMovie[] = [];
 
   constructor(private _movieService: MovieService) { }
 
+  //get all movies
   ngOnInit(): void {
     this.fetchAll();
   }
 
+  //get all movies
   private fetchAll() {
     this._movieService.fetchAllMovie().subscribe(movies => this.movies = movies);
   }

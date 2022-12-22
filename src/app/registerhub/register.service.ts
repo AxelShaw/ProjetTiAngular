@@ -10,10 +10,12 @@ import {DtoInputUser} from "./dtos/dto-input-user";
   providedIn: 'root'
 })
 export class RegisterService {
+  //path for user for rider
   private static readonly ENTRY_POINT_USER = environment.apiUrl + "/user"
 
   constructor(private _httpClient: HttpClient) { }
 
+  //create user
   createUser(dto: DtoOutputCreateUser | null): Observable<DtoInputUser> {
     return this._httpClient.post<DtoInputUser>(RegisterService.ENTRY_POINT_USER, dto);
   }

@@ -1,3 +1,4 @@
+/*css manu*/
 .menuAdmin{
   list-style-type: none;
   display: flex;
@@ -7,7 +8,7 @@
   height: 100%;
 
 }
-
+/*css link*/
 a{
   margin-right: 10px;
   background-color: #ff3b3b;
@@ -15,6 +16,7 @@ a{
   color: #ffffff;
   text-decoration: none;
 }
+/*css link hover*/
 a:hover{
 
   background-color: #00c1b8;

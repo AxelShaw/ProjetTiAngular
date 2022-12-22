@@ -11,29 +11,35 @@ import {CookieService} from "ngx-cookie-service";
   styleUrls: ['./favorihub.component.css']
 })
 export class FavorihubComponent implements OnInit {
+  //ge all favorites
   favories : DtoInputFavorie[] = [];
+  //get all movie
   movies : DtoInputMovie[] = [];
+  //user id cookie
   id : number = 0;
 
   constructor(private _favorieService: FavorieService, private _cook : CookieService) { }
 
+  //get all user and all movie and user by id cookie
   ngOnInit(): void {
     this.getUser();
     this.fetchAllMovie();
     this.fetchAllFavorieById(this.id);
   }
 
+  //gat all favorite
   private fetchAllFavorieById(id : number) {
     this._favorieService
       .fetchByIdFavorie(id)
       .subscribe(fav => this.favories = fav);
   }
 
+  //gat all movie
   private fetchAllMovie() {
     this._favorieService.fetchAllMovie().subscribe(movie => this.movies = movie);
   }
 
-
+//delete favorite action
   emitFavoriDeleted(favorie: DtoInputFavorie) {
     if (confirm("Êtes-vous sur de vouloir supprimer ce favorie ? ")) {
       this._favorieService.deleteFavoriteById(favorie.idFav).subscribe(() => {
@@ -42,6 +48,7 @@ export class FavorihubComponent implements OnInit {
     }
   }
 
+  //get cookie user
   getUser(){
     try{
       // @ts-ignore

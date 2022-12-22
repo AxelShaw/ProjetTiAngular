@@ -3,9 +3,7 @@ import {
   AbstractControl,
   FormBuilder,
   FormControl,
-  FormGroup, ValidationErrors, ValidatorFn,
-
-
+  FormGroup,
   Validators
 } from "@angular/forms";
 import {RegisterService} from "./register.service";
@@ -23,13 +21,18 @@ import {Router} from "@angular/router";
 })
 
 export class RegisterhubComponent implements OnInit {
+  //for create user
   userCreated: DtoOutputCreateUser| null = null;
+  //form for create user
   form : FormGroup;
+  //image for user
   imageData : "";
+  //input user
   users: DtoInputUser[] = [];
-  test : boolean = false;
+  //test mail for error
   testEmail : boolean = true;
 
+  //create form for create user
   constructor(private _fb: FormBuilder, private _registerService: RegisterService, private _route:Router) {
     this.form = this._fb.group({
       last_name: new FormControl('', [Validators.required]),
@@ -46,12 +49,14 @@ export class RegisterhubComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //function for create user
   emitUserCreated() {
-    console.log(this.imageData);
+    //set image by default when no selected image
     if(this.imageData != undefined){
       this.form.controls['profil_picture'].setValue(this.imageData);
     }
 
+    //create user and check if error
     this.userCreated = this.form.value;
     console.log(this.userCreated);
     this._registerService.createUser(this.userCreated).subscribe(user =>{
@@ -62,10 +67,12 @@ export class RegisterhubComponent implements OnInit {
     this.testEmail = false;
   }
 
+  //for check validity in form
   control(nameUser: string): AbstractControl | null {
     return this.form.get(nameUser);
   }
 
+  //get image in base64
   getImage(event: Event) {
     const file1=(event.target as HTMLInputElement).files;
     let file;
@@ -76,6 +83,7 @@ export class RegisterhubComponent implements OnInit {
     this.convertToBase64(file);
   }
 
+  //convert image in base64
   convertToBase64(file : File){
     const observable = new Observable((subscriber: Subscriber<any>)=>{
       this.readFile(file,subscriber);
@@ -86,6 +94,7 @@ export class RegisterhubComponent implements OnInit {
     })
   }
 
+  //get imgage data
   readFile(file : File, subscriber: Subscriber<any>){
     const filereader = new FileReader();
 

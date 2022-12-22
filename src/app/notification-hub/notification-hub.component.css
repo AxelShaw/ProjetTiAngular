@@ -1,6 +1,8 @@
+/*disable the point in list*/
 ul{
   list-style: none;
 }
+/*css for all*/
 .main {
   list-style-type: none;
   display: flex;
@@ -12,10 +14,12 @@ ul{
 .main>div {
   float: left;
 }
+/*title*/
 h2{
   text-align: center;
 
 }
+/*set news css*/
 p{
   background-color: #4a5662;
   margin-bottom: 20px;
@@ -25,6 +29,7 @@ p{
   width: 400px;
   border: solid 3PX #4a5662;
 }
+/*change when go hover news*/
 p:hover, p:focus {
   border: solid 3PX #ff3b3b;
   -ms-transform: scale(1.05);
@@ -33,6 +38,7 @@ p:hover, p:focus {
   transition: all .4s;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
+/*set button delete*/
 .btnsup{
   background-color: #3a424c;
   color: white;
@@ -41,10 +47,12 @@ p:hover, p:focus {
   border: #4a5662 solid 2px;
   transition: all 0.5s ease-out;
 }
+/*change button delete when go hover*/
 .btnsup:hover, .btnsup:focus{
   background-color: #ff3b3b;
   border: #ff3b3b solid 2px;
 }
+/*set button see*/
 .btnvue{
   background-color: #3a424c;
   color: white;
@@ -53,6 +61,7 @@ p:hover, p:focus {
   border: #4a5662 solid 2px;
   transition: all 0.5s ease-out;
 }
+/*change button see when go hover*/
 .btnvue:hover, .btnvue:focus{
   background-color: #008680;
   border: #008680 solid 2px;

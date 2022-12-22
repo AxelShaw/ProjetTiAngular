@@ -3,23 +3,25 @@
   height: 100%;
 }
 
+/*css rating*/
 .ratingSpan{
   float: right;
   margin-right: 10px;
 }
-
+/*css image*/
 img{
   width: 240px;
   margin-right: 5px;
 }
-
+/*css liste*/
 li{
   width: 250px;
 }
+/*css link*/
 a{
   color: black;
 }
-
+/*css name*/
 .name{
   overflow: hidden;
   white-space: nowrap;
@@ -27,6 +29,7 @@ a{
   width: 75%;
   display:inline-block;
 }
+/*css main*/
 .main_div{
   background-color: #ebebeb;
   max-width: 1100px;
@@ -38,10 +41,11 @@ a{
   box-shadow: 6px 5px 5px black;
   color: black;
 }
+/*css title*/
 h2{
   text-align: center;
 }
-
+/*css all liste*/
 .ulMenu{
   margin-left: 80px;
   padding-top: 10px;
@@ -53,11 +57,11 @@ h2{
   scrollbar-color: #00c1b8 #535f6d ;
   scrollbar-width: thin;
 }
-
+/*css movie*/
 .film{
   margin-bottom: 10px;
 }
-
+/*css hover movie*/
 .film:hover, .film:focus{
   -ms-transform: scale(1.05);
   -webkit-transform: scale(1.05);

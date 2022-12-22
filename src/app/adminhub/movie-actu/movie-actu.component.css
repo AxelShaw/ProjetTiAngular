@@ -1,10 +1,11 @@
+/*css admin movie*/
 .adminmovie{
   width: 100%;
   min-height: 300px;
   height: 100%;
   margin-top: -300px;
 }
-
+/*css small input*/
 .petit{
   padding-right:5px;
   padding-left:5px;
@@ -16,7 +17,7 @@
   border:1px solid #a9a9a9;
   display: grid;
 }
-
+/*css large input*/
 .grand{
   padding-right:5px;
   padding-left:5px;
@@ -28,7 +29,7 @@
   border:1px solid #a9a9a9;
   display: grid;
 }
-
+/*css all*/
 .all{
   display: block;
 }

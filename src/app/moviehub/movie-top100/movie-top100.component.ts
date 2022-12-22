@@ -9,28 +9,36 @@ import {MovieService} from "../movie.service";
   styleUrls: ['./movie-top100.component.css']
 })
 export class MovieTop100Component implements OnInit {
+  //all movie
   movies: DtoInputMovie[] = [];
+  //get all rating
   ratings : DtoInputRatingMovie[] = [];
+  //page
   page : number ;
+  //item by page
   item : number = 12;
 
   constructor(private _movieService: MovieService) {
 
   }
 
+  //get all movie and rating
   ngOnInit(): void {
     this.fetchAll();
     this.fetchAllRating();
   }
 
+  //get all movies
   private fetchAll() {
     this._movieService.fetchAllMovie().subscribe(movies => this.movies = movies);
   }
 
+  //get all ratings
   private fetchAllRating() {
     this._movieService.fetchAllRatingTop().subscribe(rating => this.ratings = rating);
   }
 
+  //sort by genre
   Tri(genre: string) {
     if(genre == ''){
       this.item = 12;

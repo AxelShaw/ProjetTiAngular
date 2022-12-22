@@ -1,11 +1,12 @@
+/*css all header*/
 nav{
-
   background-color: #3a424c;
   display: block;
   width: 100%;
   margin-bottom: -16px;
 
 }
+/*css menu*/
 .menu{
   list-style-type: none;
   display: flex;
@@ -13,11 +14,13 @@ nav{
   justify-content: center;
   width: 100%;
 }
+/*css image*/
 img{
   padding: 5px;
   width: 50px;
   float: left;
 }
+/*css manu login*/
 .menuA{
   display:block;
   min-width: 120px;
@@ -27,12 +30,13 @@ img{
   text-decoration: none;
   transition: all 0.5s ease-out;
 }
+/*css hover menu*/
 .menuA:hover, .menuA:focus{
 
   background-color: #00c1b8;
 }
 
-
+/*css login*/
 .login{
   display:block;
   padding: 0.4rem;
@@ -42,10 +46,11 @@ img{
   float: right;
   transition: all 0.5s ease-out;
 }
+/*css hover login*/
 .login:hover{
   background-color: #00c1b8;
 }
-
+/*css input*/
 input{
   width: 500px;
   padding: 5px;
@@ -55,7 +60,7 @@ input{
   border: 2px solid;
   border-radius: 4px;
 }
-
+/*css choice*/
 .menuChoix{
   margin-left: 100px;
   list-style:none;
@@ -65,7 +70,7 @@ input{
   z-index: 1;
   display:block;
 }
-
+/*css choice*/
 .choix{
   background-color: white;
   width: 40%;
@@ -74,7 +79,7 @@ input{
   list-style:none;
   width: 400px;
 }
-
+/*css choice hover*/
 .choix:hover{
   background-color:  #00c1b8;
 }
@@ -84,7 +89,7 @@ input{
   color: black;
 
 }
-
+/*css notification*/
 .not{
   width: 15px;
 }

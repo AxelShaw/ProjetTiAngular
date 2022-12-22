@@ -9,12 +9,14 @@ import {getCookies} from "typescript-cookie";
 
 })
 export class LoginService {
+  //link in rider for login
   private static readonly ENTRY_POINT_LOGIN= environment.apiUrl + "/login"
 
   constructor(private _httpClient: HttpClient) {
 
   }
 
+  //connection login
   connexionLogin(dto: DtoOutputLogin | null){
     return this._httpClient.post(LoginService.ENTRY_POINT_LOGIN ,  dto , {
     withCredentials: true,

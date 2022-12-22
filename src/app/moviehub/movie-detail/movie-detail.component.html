@@ -59,7 +59,9 @@
 
   <div *ngIf="comments; else commentNotFound" class="commentList">
     <ul>
-      <li *ngFor="let comment of comments">
+      <li *ngFor="let comment of comments | paginate :{
+    itemsPerPage: item ,
+     currentPage: page}">
         <span *ngFor="let user of users">
           <span *ngIf="comment.idUserRef == user.idUser">
 

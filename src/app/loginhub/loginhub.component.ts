@@ -10,10 +10,13 @@ import {Router} from "@angular/router";
   styleUrls: ['./loginhub.component.css']
 })
 export class LoginhubComponent implements OnInit {
+  //user login
   userLogin: DtoOutputLogin| null = null;
+  //form
   form : FormGroup;
+  //test mail
   testEmail : boolean = true;
-
+//create form
   constructor(private _fb: FormBuilder, private _loginService: LoginService, private  _route: Router) {
     this.form = this._fb.group({
       mail: new FormControl(),
@@ -24,6 +27,7 @@ export class LoginhubComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //crete login user
   emitUserLogin() {
     this.userLogin = this.form.value;
     this._loginService.connexionLogin(this.userLogin).subscribe(error =>{
@@ -35,6 +39,7 @@ export class LoginhubComponent implements OnInit {
     this.form.reset();
   }
 
+  //control form
   control(login: string): AbstractControl | null {
     return this.form.get(login);
   }

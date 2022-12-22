@@ -3,7 +3,7 @@ import {DtoOutputCreateMovie} from "../dtos/dto-output-create-movie";
 import {DtoOutputCreateRatingmovie} from "../dtos/dto-output-create-ratingmovie";
 import {AdminService} from "../admin.service";
 import {DtoInputMovie} from "../dtos/dto-input-movie";
-import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {DtoInputRatingMovie} from "../../moviehub/dtos/dto-input-rating-movie";
 import {Observable, Subscriber} from "rxjs";
 import {DtoInputComments} from "../../moviehub/dtos/dto-input-comments";
@@ -19,21 +19,33 @@ import {CookieService} from "ngx-cookie-service";
   styleUrls: ['./movie-admin.component.css']
 })
 export class MovieAdminComponent implements OnInit {
+  //get all movies
   movies: DtoInputMovie[] = [];
+  //movie update
   moviesUpdated: DtoOutputUpdateMovie | null = null;
+  //all ratings
   ratings: DtoInputRatingMovie [] = [];
+  //get all comment
   comments: DtoInputComments [] = [];
+  //get all favorites
   favories: DtoInputFavorie [] = [];
+  //get all news
   actus: DtoInputActu [] = [];
+  //movie create
   movieCreated: DtoOutputCreateMovie | null = null;
+  //rating create
   ratingCreated: DtoOutputCreateRatingmovie | null = null;
+  //form movie
   form : FormGroup;
+  //form rating
   formRating : FormGroup;
+  //image movie
   imageData : "";
   rating: boolean = false;
+  //search movie all
   searchMovies: DtoInputMovie[] = [];
 
-
+//form movie and rating
   constructor(private _fb: FormBuilder, private _adminService: AdminService,private _cook:CookieService) {
     //set new form for movie
     this.form = this._fb.group({
@@ -60,6 +72,7 @@ export class MovieAdminComponent implements OnInit {
     this.searchMovies = [];
   }
 
+  //gat all movie
   private fetchAll() {
     this._adminService.fetchAllMovie().subscribe(movies => this.movies = movies);
   }
@@ -148,6 +161,7 @@ export class MovieAdminComponent implements OnInit {
     this.convertToBase64(file);
   }
 
+  //convet image to base 64
   convertToBase64(file : File){
     const observable = new Observable((subscriber: Subscriber<any>)=>{
       this.readFile(file,subscriber);
@@ -158,6 +172,7 @@ export class MovieAdminComponent implements OnInit {
     })
   }
 
+  //read file imgae
   readFile(file : File, subscriber: Subscriber<any>){
     const filereader = new FileReader();
 
@@ -175,10 +190,12 @@ export class MovieAdminComponent implements OnInit {
     }
   }
 
+  //set rating movie
   setRating() {
     this.rating = true;
   }
 
+  //rating set
   ratingSet() {
     this.fetchAll();
 
@@ -194,6 +211,7 @@ export class MovieAdminComponent implements OnInit {
 
     this.formRating.reset();
   }
+  //search movie
   search(chaine: HTMLInputElement , delay = 700) {
     let time;
     clearTimeout(time);
@@ -214,6 +232,7 @@ export class MovieAdminComponent implements OnInit {
     }, delay);
   }
 
+  //connecct admin
   connectAdmin() {
     try{
       // @ts-ignore

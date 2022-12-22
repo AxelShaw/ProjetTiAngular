@@ -24,6 +24,7 @@ export class AdminhubComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //tes admin
   connectAdmin() {
     try{
       // @ts-ignore

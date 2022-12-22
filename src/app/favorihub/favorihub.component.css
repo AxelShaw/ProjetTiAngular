@@ -1,17 +1,20 @@
+/*css image*/
 .image{
   width: 200px;
   border: #3a424c solid 5px;
 }
+/*css imga hover*/
 .image:hover{
   border: #ff3b3b solid 5px;
 }
-
+/*css ul*/
 ul{
   list-style: none;
   float: left;
 
 
 }
+/*css li*/
 ul>li{
   margin-bottom: 30px;
   margin-right: 50PX;
@@ -19,10 +22,12 @@ ul>li{
   display:inline-block;
 
 }
+/*css title*/
 h2{
   text-align: center;
 
 }
+/*css link*/
 a{
   color: white;
   font-size: 20px;
@@ -32,6 +37,7 @@ a{
   margin: auto 10px auto auto;
   padding-top: 3px;
 }
+/*css movie map*/
 .movienamesp{
   overflow: hidden;
   white-space: nowrap;
@@ -40,20 +46,22 @@ a{
   display:inline-block;
   width: 170px;
 }
+/*css btn remove*/
 .btnremove{
   background-color: #3a424c;
   color: white;
   border-radius: 50%;
 }
+/*css btn remove hover*/
 .btnremove:hover{
   background-color: #ff3b3b;
   color: black;
 }
-
+/*css link hover*/
 a:hover{
   color: #ff3b3b;
 }
-
+/*css movie*/
 .movieF{
   list-style-type: none;
   display: flex;

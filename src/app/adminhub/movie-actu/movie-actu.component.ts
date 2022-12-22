@@ -13,17 +13,26 @@ import {CookieService} from "ngx-cookie-service";
   styleUrls: ['./movie-actu.component.css']
 })
 export class MovieActuComponent implements OnInit {
+  //form
   form : FormGroup;
+  //data now
   maDate = new Date();
+  //search movies
   searchMovies: DtoInputMovie[] = [];
+  //get all movie
   movies: DtoInputMovie[] = [];
+  //create actus
   actuCreated: DtoOutputCreateActu | null = null;
+  //gat all actus
   actus: DtoInputActu[] = [];
+  //dat now
   myDate = new Date();
-
+  //name movie
   movieName : string = "";
+  //id cookie
   idMovie : number = 0;
 
+  //form news
   constructor(private _fb: FormBuilder, private _adminService: AdminService,private _cook:CookieService) {
 
     this.form = this._fb.group({
@@ -38,13 +47,16 @@ export class MovieActuComponent implements OnInit {
     this.fetchAllActu();
   }
 
+  //get all movie
   private fetchAll() {
     this._adminService.fetchAllMovie().subscribe(movies => this.movies = movies);
   }
+  //get all news
   private fetchAllActu() {
     this._adminService.fetchAllActu().subscribe(actus => this.actus = actus);
   }
 
+  //create news
   emitActuCreated() {
     this.form.controls['release_actu'].setValue(this.maDate.toUTCString());
     this.form.controls['idMovieRef'].setValue(this.idMovie);
@@ -53,7 +65,7 @@ export class MovieActuComponent implements OnInit {
     this._adminService.createActu(this.actuCreated).subscribe(actu => this.actus.push(actu));
     this.form.reset();
 
-
+//auto delte newss
     this.myDate.setMinutes(this.myDate.getMinutes() - 10080 );
     for (let i = 0; i < this.actus.length; i++){
       if(new Date(this.actus[i].release_actu) < this.myDate){
@@ -64,10 +76,12 @@ export class MovieActuComponent implements OnInit {
     }
   }
 
+  //control form
   control(nameMovie: string): AbstractControl | null {
     return this.form.get(nameMovie);
   }
 
+  //search name movie
   search(chaine: HTMLInputElement , delay = 700) {
     let time;
     clearTimeout(time);
@@ -88,16 +102,19 @@ export class MovieActuComponent implements OnInit {
     }, delay);
   }
 
+  //select movie
   select(movie: DtoInputMovie) {
     this.movieName = movie.nameMovie;
     this.idMovie = movie.idMovie;
   }
 
+  //end input form
   endInput() {
     this.searchMovies = [];
     this.movieName = "";
   }
 
+  //delete news
   emitActuDeleted(actu: DtoInputActu) {
     if (confirm("Êtes-vous sur de vouloir supprimer cette actualité ? ")) {
       this._adminService.deleteActuById(actu.idActu).subscribe(() => {
@@ -106,6 +123,7 @@ export class MovieActuComponent implements OnInit {
     }
   }
 
+  //conect to admin
   connectAdmin() {
     try{
       // @ts-ignore

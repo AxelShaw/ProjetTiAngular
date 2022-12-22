@@ -1,3 +1,4 @@
+/*css for backgroung image*/
 .image {
   color: #fff;background-image: url("src/assets/img/background.jpg");
   background-size: 100%;
@@ -5,6 +6,7 @@
   padding: 20px;
   margin-bottom: -17px;
 }
+/*ccs to main*/
 .main{
   height:100%;
   min-height: 100%;
