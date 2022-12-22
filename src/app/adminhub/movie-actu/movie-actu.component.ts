@@ -4,6 +4,7 @@ import {AdminService} from "../admin.service";
 import {DtoInputMovie} from "../dtos/dto-input-movie";
 import {DtoOutputCreateActu} from "../dtos/dto-output-create-actu";
 import {DtoInputActu} from "../dtos/dto-intput-actu";
+import jwtDecode from "jwt-decode";
 
 @Component({
   selector: 'app-movie-actu',
@@ -101,6 +102,18 @@ export class MovieActuComponent implements OnInit {
       this._adminService.deleteActuById(actu.idActu).subscribe(() => {
         this.actus = this.actus.filter(actus => actus.idActu !== actu.idActu);
       });
+    }
+  }
+
+  connectAdmin() {
+    try{
+      // @ts-ignore
+      if(jwtDecode(this._cook.get('UserInfo')).Role == 'admin'){
+        return true;
+      }
+      return false;
+    }catch (error){
+      return false;
     }
   }
 }

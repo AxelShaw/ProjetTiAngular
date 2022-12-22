@@ -105,6 +105,7 @@ export class MovieDetailComponent implements OnInit {
   }
 
   emitCommentCreated(id : number, rate : DtoInputRatingMovie) {
+    this.val = true;
     let idUser : number = 0;
     try{
       // @ts-ignore
@@ -133,9 +134,9 @@ export class MovieDetailComponent implements OnInit {
         this.updateRating.numVote = this.updateRating.numVote + 1;
       }
 
+      console.log(this.updateRating);
       this._movieService.updateRate(this.updateRating).subscribe();
       this.form.reset();
-
     }
   }
 

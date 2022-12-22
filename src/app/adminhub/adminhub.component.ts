@@ -9,6 +9,8 @@ import {DtoInputCommentmovie} from "./dtos/dto-input-commentmovie";
 import {FavorieService} from "../favorihub/favorie.service";
 import {DtoInputFavorie} from "../favorihub/dtos/dto-input-favorie";
 import {DtoInputRatingMovie} from "../moviehub/dtos/dto-input-rating-movie";
+import jwtDecode from "jwt-decode";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-adminhub',
@@ -17,9 +19,20 @@ import {DtoInputRatingMovie} from "../moviehub/dtos/dto-input-rating-movie";
 })
 export class AdminhubComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _cook:CookieService) { }
 
   ngOnInit(): void {
   }
 
+  connectAdmin() {
+    try{
+      // @ts-ignore
+      if(jwtDecode(this._cook.get('UserInfo')).Role == 'admin'){
+        return true;
+      }
+      return false;
+    }catch (error){
+      return false;
+    }
+  }
 }

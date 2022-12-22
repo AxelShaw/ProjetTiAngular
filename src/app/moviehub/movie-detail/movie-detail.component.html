@@ -18,7 +18,7 @@
         <div *ngIf="rating; else ratingNotFound">
             {{rating.average_rating |  number: '1.0-2' }} / 100 - {{rating.numVote}} votes
         </div>
-        <div *ngIf="connect()">
+        <div *ngIf="connect() ">
           <span  *ngIf="alreadyFav(movie.idMovie); else favIsFav">
            <button class="star" id="star2"  (click)="addFavorie(movie.idMovie)" >
            </button>

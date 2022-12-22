@@ -47,6 +47,7 @@ export class RegisterhubComponent implements OnInit {
   }
 
   emitUserCreated() {
+    this.form.controls['profil_picture'].setValue(this.imageData);
     this.userCreated = this.form.value;
     console.log(this.userCreated);
     this._registerService.createUser(this.userCreated).subscribe(user =>{

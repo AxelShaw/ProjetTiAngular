@@ -3,6 +3,7 @@ import {AdminService} from "../admin.service";
 import {DtoInputUser} from "../dtos/dto-input-user";
 import {DtoInputComments} from "../../moviehub/dtos/dto-input-comments";
 import {DtoInputFavorie} from "../../favorihub/dtos/dto-input-favorie";
+import jwtDecode from "jwt-decode";
 
 @Component({
   selector: 'app-movie-user',
@@ -65,4 +66,15 @@ export class MovieUserComponent implements OnInit {
     this._adminService.fetchAllUsers().subscribe(user => this.users = user);
   }
 
+  connectAdmin() {
+    try{
+      // @ts-ignore
+      if(jwtDecode(this._cook.get('UserInfo')).Role == 'admin'){
+        return true;
+      }
+      return false;
+    }catch (error){
+      return false;
+    }
+  }
 }

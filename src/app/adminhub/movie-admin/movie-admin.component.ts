@@ -10,6 +10,7 @@ import {DtoInputComments} from "../../moviehub/dtos/dto-input-comments";
 import {DtoOutputUpdateMovie} from "../dtos/dto-output-update-movie";
 import {DtoInputFavorie} from "../../favorihub/dtos/dto-input-favorie";
 import {DtoInputActu} from "../dtos/dto-intput-actu";
+import jwtDecode from "jwt-decode";
 
 @Component({
   selector: 'app-movie-admin',
@@ -210,5 +211,17 @@ export class MovieAdminComponent implements OnInit {
         this.searchMovies = [];
       }
     }, delay);
+  }
+
+  connectAdmin() {
+    try{
+      // @ts-ignore
+      if(jwtDecode(this._cook.get('UserInfo')).Role == 'admin'){
+        return true;
+      }
+      return false;
+    }catch (error){
+      return false;
+    }
   }
 }

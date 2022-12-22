@@ -1,6 +1,6 @@
 <p>nombre d'utilisateur inscrit : {{users.length}}</p>
 
-<div class="rechercheUser">
+<div *ngIf="connectAdmin()" class="rechercheUser">
   <h2>Rechercher un utilisateur</h2>
   <input
     type="text"

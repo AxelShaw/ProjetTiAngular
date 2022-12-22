@@ -1,4 +1,4 @@
-<div class="adminmovie">
+<div *ngIf="connectAdmin()" class="adminmovie">
   <h2>Ajout d'un film</h2>
   <form [formGroup]="form" (ngSubmit)="emitMovieCreated()">
     <div>
