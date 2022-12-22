@@ -11,6 +11,7 @@ import {DtoOutputUpdateMovie} from "../dtos/dto-output-update-movie";
 import {DtoInputFavorie} from "../../favorihub/dtos/dto-input-favorie";
 import {DtoInputActu} from "../dtos/dto-intput-actu";
 import jwtDecode from "jwt-decode";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-movie-admin',
@@ -33,7 +34,7 @@ export class MovieAdminComponent implements OnInit {
   searchMovies: DtoInputMovie[] = [];
 
 
-  constructor(private _fb: FormBuilder, private _adminService: AdminService) {
+  constructor(private _fb: FormBuilder, private _adminService: AdminService,private _cook:CookieService) {
     //set new form for movie
     this.form = this._fb.group({
       nameMovie: new FormControl(),

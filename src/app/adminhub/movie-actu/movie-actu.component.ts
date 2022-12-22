@@ -5,6 +5,7 @@ import {DtoInputMovie} from "../dtos/dto-input-movie";
 import {DtoOutputCreateActu} from "../dtos/dto-output-create-actu";
 import {DtoInputActu} from "../dtos/dto-intput-actu";
 import jwtDecode from "jwt-decode";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-movie-actu',
@@ -23,7 +24,7 @@ export class MovieActuComponent implements OnInit {
   movieName : string = "";
   idMovie : number = 0;
 
-  constructor(private _fb: FormBuilder, private _adminService: AdminService) {
+  constructor(private _fb: FormBuilder, private _adminService: AdminService,private _cook:CookieService) {
 
     this.form = this._fb.group({
       idMovieRef: 0,

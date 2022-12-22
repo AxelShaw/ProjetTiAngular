@@ -45,7 +45,7 @@
         <div *ngIf="control('rating')?.dirty && control('rating')?.invalid">
           Entrez un nombre entre 0 et 100 svp.
         </div>
-        <textarea id="commentInput" wrap="hard" type="text" maxlength="1500" class="createComment" rows="3" formControlName="commentText"></textarea>
+        <textarea id="commentInput" wrap="hard" type="text" maxlength="1499" class="createComment" rows="3" formControlName="commentText"></textarea>
         <div *ngIf="val == true">
           <button class="buttonEnvoie" type="submit" *ngIf="connect()" [disabled]="form.invalid">Envoyer</button>
         </div>

@@ -4,6 +4,7 @@ import {DtoInputUser} from "../dtos/dto-input-user";
 import {DtoInputComments} from "../../moviehub/dtos/dto-input-comments";
 import {DtoInputFavorie} from "../../favorihub/dtos/dto-input-favorie";
 import jwtDecode from "jwt-decode";
+import {CookieService} from "ngx-cookie-service";
 
 @Component({
   selector: 'app-movie-user',
@@ -16,7 +17,7 @@ export class MovieUserComponent implements OnInit {
   users: DtoInputUser[] = [];
   favories: DtoInputFavorie [] = [];
 
-  constructor( private _adminService: AdminService) { }
+  constructor( private _adminService: AdminService,private _cook:CookieService) { }
 
   ngOnInit(): void {
     this.fetchAllUser();
