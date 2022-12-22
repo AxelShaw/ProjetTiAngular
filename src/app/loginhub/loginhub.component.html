@@ -1,6 +1,7 @@
 <div class="all">
   <div class="registeruserAll">
     <h2>Connexion</h2>
+    <p class="mailInco" *ngIf="!testEmail">Email ou Mots de passe Incorrect*</p>
     <form [formGroup]="form" (ngSubmit)="emitUserLogin()">
       <div>
         <p>

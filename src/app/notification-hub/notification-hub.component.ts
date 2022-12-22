@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {DtoInputActu} from "../adminhub/dtos/dto-intput-actu";
 import {AdminService} from "../adminhub/admin.service";
 import {DtoInputMovie} from "../adminhub/dtos/dto-input-movie";
@@ -13,14 +13,15 @@ import {Router} from "@angular/router";
   styleUrls: ['./notification-hub.component.css']
 })
 export class NotificationHubComponent implements OnInit {
-  actus: DtoInputActu[] = [];
+    actus: DtoInputActu[] = [];
   movies: DtoInputMovie[] = [];
   favories : DtoInputFavorie[] = [];
   DeleteNot : number[] = [];
   seeNot : number[] = [];
   id: number = 0;
 
-  constructor(private _adminService: AdminService, private _cook : CookieService, private _route : Router) { }
+  constructor(private _adminService: AdminService, private _cook : CookieService, private _route : Router
+  , private _changeDetector: ChangeDetectorRef) { }
 
   ngOnInit(): void {
     this.getUser();
@@ -36,6 +37,7 @@ export class NotificationHubComponent implements OnInit {
       this.seeNot = JSON.parse(localStorage.getItem(`seeNot`));
     }
   }
+
 
   private fetchAllActu() {
     this._adminService.fetchAllActu().subscribe(actus => this.actus = actus);
@@ -53,13 +55,11 @@ export class NotificationHubComponent implements OnInit {
   saveDelete(idActu: number) {
     this.DeleteNot.push(idActu);
     localStorage.setItem('DeleteNot', JSON.stringify(this.DeleteNot));
-    console.log(this.DeleteNot);
   }
 
   saveSee(idActu: number) {
     this.seeNot.push(idActu);
     localStorage.setItem('seeNot', JSON.stringify(this.seeNot));
-    console.log(this.seeNot);
   }
 
   getUser() {
@@ -70,5 +70,9 @@ export class NotificationHubComponent implements OnInit {
     } catch (error) {
 
     }
+  }
+
+  getInclude(idActu: number){
+    return this.seeNot.includes(idActu);
   }
 }

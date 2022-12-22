@@ -50,7 +50,6 @@ export class RegisterhubComponent implements OnInit {
     this._registerService.createUser(this.userCreated).subscribe(user => this.users.push(user));
     this.form.reset();
     this.userCreated = null;
-    this._route.navigate(['../loginhub']);
   }
 
   control(nameUser: string): AbstractControl | null {

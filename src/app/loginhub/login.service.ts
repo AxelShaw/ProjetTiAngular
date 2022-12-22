@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {DtoOutputLogin} from "./dtos/dto-output-login";
-import {getCookies, setCookie} from "typescript-cookie";
+import {getCookies} from "typescript-cookie";
 
 @Injectable({
   providedIn: 'root'

@@ -7,7 +7,7 @@
     <ul *ngIf="actus">
       <li *ngFor="let actu of actus" class="pnews">
         <span *ngFor="let favorie of favories">
-          <span *ngIf="actu.idMovieRef == favorie.idMovieRef && DeleteNot.includes(actu.idActu) == false">
+          <span *ngIf="actu.idMovieRef == favorie.idMovieRef && !DeleteNot.includes(actu.idActu)">
             <p>
               <span *ngIf="seeNot.includes(actu.idActu) == false">New*</span>
               <span *ngFor="let movie of movies">
@@ -15,15 +15,15 @@
                   {{movie.nameMovie}}
                 </span>
               </span> - {{actu.release_actu}}
-              <br>
+              <br />
               <button (click)="saveDelete(actu.idActu)" class="btnsup">X</button>
-              <span *ngIf="seeNot.includes(actu.idActu) == false">
+              <span *ngIf="getInclude(actu.idActu) == false" >
                 <button (click)="saveSee(actu.idActu)" class="btnvue">V</button>
               </span >
-              <br>
-              <br>
+              <br />
+              <br />
               {{actu.newsActu}}
-          </p>
+            </p>
           </span>
         </span>
       </li>
