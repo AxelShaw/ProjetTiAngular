@@ -14,6 +14,7 @@ import {DtoInputUser} from "./dtos/dto-input-user";
 import {DtoOutputCreateActu} from "./dtos/dto-output-create-actu";
 import {DtoInputActu} from "./dtos/dto-intput-actu";
 import {DtoInputFavorie} from "../favorihub/dtos/dto-input-favorie";
+import {DtoOutputCreateUser} from "./dtos/dto-output-create-user";
 
 @Injectable({
   providedIn: 'root'
@@ -77,6 +78,9 @@ export class AdminService {
   }
   update(dto : DtoOutputCreateMovie | null): Observable<any>{
     return this._httpClient.put(AdminService.ENTRY_POINT, dto);
+  }
+  updateUser(dto : DtoInputUser | null): Observable<any>{
+    return this._httpClient.put(AdminService.ENTRY_POINT_USER, dto);
   }
   deleteFavovieByMovie(id: number):Observable<any>{
     return this._httpClient.delete(AdminService.ENTRY_POINT_FAVORIE + "/movie/" + id);

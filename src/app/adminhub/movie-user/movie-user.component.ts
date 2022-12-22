@@ -5,6 +5,8 @@ import {DtoInputComments} from "../../moviehub/dtos/dto-input-comments";
 import {DtoInputFavorie} from "../../favorihub/dtos/dto-input-favorie";
 import jwtDecode from "jwt-decode";
 import {CookieService} from "ngx-cookie-service";
+import {DtoOutputUpdateMovie} from "../dtos/dto-output-update-movie";
+import {DtoOutputUpdateUser} from "../dtos/dto-output-update-user";
 
 @Component({
   selector: 'app-movie-user',
@@ -16,7 +18,7 @@ export class MovieUserComponent implements OnInit {
   comments: DtoInputComments [] = [];
   users: DtoInputUser[] = [];
   favories: DtoInputFavorie [] = [];
-  taille : number ;
+  userUpdated: DtoOutputUpdateUser | null = null;
 
   constructor( private _adminService: AdminService,private _cook:CookieService) {
 
@@ -56,8 +58,6 @@ export class MovieUserComponent implements OnInit {
           this.favories = this.favories.filter(favories => favories.idMovieRef !== user.idUser);
         });
       });
-
-      this.taille = this.taille - 1;
     }
 
     this._adminService.deleteUser(user.idUser).subscribe(() => {
@@ -71,7 +71,6 @@ export class MovieUserComponent implements OnInit {
   }
 
   connectAdmin() {
-    this.taille = this.users.length;
     try{
       // @ts-ignore
       if(jwtDecode(this._cook.get('UserInfo')).Role == 'admin'){
@@ -81,5 +80,40 @@ export class MovieUserComponent implements OnInit {
     }catch (error){
       return false;
     }
+  }
+
+  emitUpdate(user: DtoInputUser) {
+    if (confirm("Êtes-vous sur de vouloir mettre cette utilisateur admin ? ")) {
+      if (user.role == "admin") {
+        this._adminService.updateUser({
+          idUser: user.idUser,
+          last_name: user.last_name,
+          first_name: user.first_name,
+          mail: user.mail,
+          nickname: user.nickname,
+          password: user.password,
+          role: "user",
+          profil_picture: user.profil_picture
+        }).subscribe();
+      } else {
+        this._adminService.updateUser({
+          idUser: user.idUser,
+          last_name: user.last_name,
+          first_name: user.first_name,
+          mail: user.mail,
+          nickname: user.nickname,
+          password: user.password,
+          role: "admin",
+          profil_picture: user.profil_picture
+        }).subscribe();
+      }
+    }
+  }
+
+  isAdmin(user: DtoInputUser) {
+    if(user.role == "admin"){
+      return true
+    }
+    return false;
   }
 }
