@@ -16,8 +16,11 @@ export class MovieUserComponent implements OnInit {
   comments: DtoInputComments [] = [];
   users: DtoInputUser[] = [];
   favories: DtoInputFavorie [] = [];
+  taille : number ;
 
-  constructor( private _adminService: AdminService,private _cook:CookieService) { }
+  constructor( private _adminService: AdminService,private _cook:CookieService) {
+
+  }
 
   ngOnInit(): void {
     this.fetchAllUser();
@@ -54,7 +57,7 @@ export class MovieUserComponent implements OnInit {
         });
       });
 
-
+      this.taille = this.taille - 1;
     }
 
     this._adminService.deleteUser(user.idUser).subscribe(() => {
@@ -68,6 +71,7 @@ export class MovieUserComponent implements OnInit {
   }
 
   connectAdmin() {
+    this.taille = this.users.length;
     try{
       // @ts-ignore
       if(jwtDecode(this._cook.get('UserInfo')).Role == 'admin'){

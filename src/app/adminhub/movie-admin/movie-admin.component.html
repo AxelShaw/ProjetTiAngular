@@ -3,50 +3,50 @@
   <form [formGroup]="form" (ngSubmit)="emitMovieCreated()">
     <div>
       <label>
-        movie name: <input type="text" formControlName="nameMovie" required class="moyen">
+        Nom du film: <input type="text" formControlName="nameMovie" required class="moyen">
       </label>
       <div *ngIf="control('nameMovie')?.dirty && control('nameMovie')?.invalid">
-        Please, you have to provide a name for the movie.
+        S'il vous plaît, vous devez fournir un nom pour le film.
       </div>
     </div>
     <div>
       <label>
-        runtime minutes: <input type="number" formControlName="runtimeMinute" required class="petit">
+        Durée du film: <input type="number" formControlName="runtimeMinute" required class="petit">
       </label>
       <div *ngIf="control('runtimeMinute')?.dirty && control('runtimeMinute')?.invalid">
-        You need to provide an amount of minutes for completing the movie.
+        S'il vous plaît, vous devez fournir un nombre de minutes pour le film.
       </div>
     </div>
     <div>
     <label>
-      movie type:
+      Type de film:
       <select formControlName="movieType" class="petit" required>
-        <option value="streaming">streaming</option>
-        <option value="en salle">en salle</option>
-        <option value="pasDispo">pas disponible</option>
+        <option value="streaming">Streaming</option>
+        <option value="en salle">En salle</option>
+        <option value="pasDispo">Pas disponible</option>
       </select>
     </label>
     <div *ngIf="control('movieType')?.dirty && control('movieType')?.invalid">
-      Please, you have to provide a type for the movie.
+      S'il vous plaît, vous devez fournir un type pour le film.
     </div>
     </div>
     <div>
       <label>
-        description movie: <textarea type="text" formControlName="descriptionMovie" required class="grand"></textarea>
+        Description du film: <textarea type="text" formControlName="descriptionMovie" required class="grand"></textarea>
       </label>
       <div *ngIf="control('descriptionMovie')?.dirty && control('descriptionMovie')?.invalid">
-        Please, you have to provide a description for the movie.
+        S'il vous plaît, vous devez fournir une description du film.
       </div>
     </div>
     <div>
       <label>
-        image movie: <input type="file" id="fileInput" required (change)="getImage($event)" required class="image">
+        Image du film: <input type="file" id="fileInput" (change)="getImage($event)" required class="image">
       </label>
 
     </div>
     <div>
       <label>
-        film genre:
+        Genre du film:
         <select formControlName="filmGenre" class="petit" required>
           <option value="Action">Action</option>
           <option value="Animation">Animation</option>
@@ -69,29 +69,29 @@
         </select>
       </label>
       <div *ngIf="control('filmGenre')?.dirty && control('filmGenre')?.invalid" >
-        Please, you have to provide a genre for the movie.
+        S'il vous plaît, vous devez fournir un genre pour le film.
       </div>
     </div>
     <div>
       <label>
-        director: <input type="text" formControlName="director" required class="moyen">
+        Réalisateur: <input type="text" formControlName="director" required class="moyen">
       </label>
       <div *ngIf="control('director')?.dirty && control('director')?.invalid">
-        Please, you have to provide a director for the movie.
+        S'il vous plaît, vous devez fournir un réalisateur pour le film.
       </div>
     </div>
     <div>
       <label>
-        release movie: <input type="text" formControlName="release_movie" required class="petit">
+        Date de sortie du film: <input type="text" formControlName="release_movie" required class="petit">
       </label>
       <div *ngIf="control('release_movie')?.dirty && control('release_movie')?.invalid">
-        Please, you have to provide a release movie for the movie.
+        S'il vous plaît, vous devez fournir une date de sortie du film.
       </div>
     </div>
     <input  type="submit" [disabled]="form.invalid" *ngIf="rating == false" >
   </form>
   <input type="submit" *ngIf="rating" value="Click to continue" (click)="ratingSet()">
-  <h2>recherche d'un film</h2>
+  <h2>Recherche d'un film :</h2>
   <div class="recherchemovie">
     <input
       type="text"
@@ -109,8 +109,8 @@
 
         {{movie.idMovie}}
         {{movie.nameMovie}}
-        <button (click)="emitMovieDeleted(movie)">supprimer</button>
-        <button (click)= "emitMovieUpdated(movie, form)">change</button>
+        <button (click)="emitMovieDeleted(movie)">Supprimer</button>
+        <button (click)= "emitMovieUpdated(movie, form)">Changer</button>
       </li>
     </div>
 

@@ -91,14 +91,14 @@ export class MovieAdminComponent implements OnInit {
         this.form.controls['filmGenre'].setValue(this.moviesUpdated.filmGenre);
       }
     }
-    this.moviesUpdated.nameMovie = FormGroup.value.nameMovie;
-    this.moviesUpdated.runtimeMinute = FormGroup.value.runtimeMinute;
-    this.moviesUpdated.descriptionMovie = FormGroup.value.descriptionMovie;
-    this.moviesUpdated.movieType = FormGroup.value.movieType;
-    this.moviesUpdated.imageMovie = FormGroup.value.imageMovie;
-    this.moviesUpdated.release_movie = FormGroup.value.release_movie;
-    this.moviesUpdated.director = FormGroup.value.director;
-    this.moviesUpdated.filmGenre = FormGroup.value.filmGenre;
+    this.moviesUpdated.nameMovie = this.form.value.nameMovie;
+    this.moviesUpdated.runtimeMinute = this.form.value.runtimeMinute;
+    this.moviesUpdated.descriptionMovie = this.form.value.descriptionMovie;
+    this.moviesUpdated.movieType = this.form.value.movieType;
+    this.moviesUpdated.imageMovie = this.form.value.imageMovie;
+    this.moviesUpdated.release_movie = this.form.value.release_movie;
+    this.moviesUpdated.director = this.form.value.director;
+    this.moviesUpdated.filmGenre = this.form.value.filmGenre;
 
     this._adminService.update(this.moviesUpdated).subscribe();
   }

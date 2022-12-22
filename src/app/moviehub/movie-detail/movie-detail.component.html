@@ -6,17 +6,13 @@
         <div class="imgP">
           <img src="data:image/jpg;base64, {{movie.imageMovie}}" alt="img movie">
 
-        </div>
+          <br />
 
-
-
-        <div>
-
-          {{movie.release_movie | date:"dd/MM/yyyy"}} - {{movie.movieType}} / {{movie.runtimeMinute}} min / {{movie.filmGenre}} <br />
+          {{movie.release_movie | date:"dd/MM/yyyy"}} - {{movie.movieType}} / {{movie.runtimeMinute}} minutes / {{movie.filmGenre}} <br />
           De {{movie.director}}
         </div>
         <div *ngIf="rating; else ratingNotFound">
-            {{rating.average_rating |  number: '1.0-2' }} / 100 - {{rating.numVote}} votes
+            {{rating.average_rating |  number: '1.0-2' }} / 100 - {{rating.numVote}} Votes
         </div>
         <div *ngIf="connect() ">
           <span  *ngIf="alreadyFav(movie.idMovie); else favIsFav">
@@ -43,14 +39,14 @@
           <input id="noteInput" type="number" max="100" min="0" class="noteComment" formControlName="rating" required/>
         </div>
         <div *ngIf="control('rating')?.dirty && control('rating')?.invalid">
-          Entrez un nombre entre 0 et 100 svp.
+          Entrez un nombre entre 0 et 100 s’il vous plaît.
         </div>
         <textarea id="commentInput" wrap="hard" type="text" maxlength="1499" class="createComment" rows="3" formControlName="commentText"></textarea>
         <div *ngIf="val == true">
           <button class="buttonEnvoie" type="submit" *ngIf="connect()" [disabled]="form.invalid">Envoyer</button>
         </div>
         <div *ngIf="val == false">
-          <p>Vous avez deja posté un commentaire sur ce film</p>
+          <p>Vous avez déjà posté un commentaire sur ce film</p>
         </div>
       </form>
     </div>
@@ -58,7 +54,7 @@
 
 
   <div *ngIf="!connect()" class="notConnect">
-    Vous devez vous connecter pour commenter ce film
+    Vous devez vous connecter pour commenter ce film.
   </div>
 
   <div *ngIf="comments; else commentNotFound" class="commentList">

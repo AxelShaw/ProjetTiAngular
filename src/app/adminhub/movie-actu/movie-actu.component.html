@@ -1,6 +1,6 @@
 <div *ngIf="connectAdmin()" class="adminmovie">
-  <h2>ajout d'une actualité</h2>
-  movie name:
+  <h2>Ajout d'une actualité :</h2>
+  Nom du film:
   <div class="recherchemovie">
     <input
       type="text"
@@ -26,7 +26,7 @@
         News: <textarea type="text" formControlName="newsActu" required class="grand"></textarea>
       </label>
       <div *ngIf="control('newsActu')?.dirty && control('newsActu')?.invalid">
-        Please, you have to provide a news for the movie.
+        S'il vous plaît, vous devez fournir une news pour le film.
       </div>
     </div>
 
@@ -44,7 +44,7 @@
         </span>
       </span>
       - {{actu.release_actu}} - {{actu.newsActu.slice(0,15) }}...
-      <button (click)="emitActuDeleted(actu)">supprimer</button>
+      <button (click)="emitActuDeleted(actu)">Supprimer</button>
     </li>
   </ul>
 </div>

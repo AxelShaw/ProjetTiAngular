@@ -1,4 +1,4 @@
-<h2>Vos favories</h2>
+<h2>Vos favoris :</h2>
 <div *ngIf="favories; else favorieNotFound" class="movieF">
   <ul>
     <li *ngFor="let favorie of favories" >
@@ -22,5 +22,5 @@
 
 
 <ng-template #favorieNotFound>
-  Pas de favorie
+  Vous n'avez aucun film en favoris
 </ng-template>

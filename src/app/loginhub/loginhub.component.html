@@ -1,7 +1,7 @@
 <div class="all">
   <div class="registeruserAll">
     <h2>Connexion</h2>
-    <p class="mailInco" *ngIf="!testEmail">Email ou Mots de passe Incorrect*</p>
+    <p class="mailInco" *ngIf="!testEmail">Email ou Mot de passe Incorrect*</p>
     <form [formGroup]="form" (ngSubmit)="emitUserLogin()">
       <div>
         <p>
@@ -10,16 +10,16 @@
         <input type="text"  formControlName="mail" placeholder="exemple@mail.com"
                size="30" required >
         <p *ngIf="control('mail')?.dirty && control('mail')?.invalid">
-          mail requis*
+          Mail requis*
         </p>
       </div>
       <div>
         <p>
-          mot de passe :
+          Mot de passe :
         </p>
         <input size="30" type="password" formControlName="password" required >
         <p *ngIf="control('password')?.dirty && control('password')?.invalid">
-          mot de passe requis*
+          Mot de passe requis*
         </p>
 
       </div>

@@ -1,7 +1,7 @@
-<p>nombre d'utilisateur inscrit : {{users.length}}</p>
+<p>Nombre d'utilisateurs inscrits : {{taille}}</p>
 
 <div *ngIf="connectAdmin()" class="rechercheUser">
-  <h2>Rechercher un utilisateur</h2>
+  <h2>Rechercher un utilisateur :</h2>
   <input
     type="text"
     id="tempo"
@@ -15,7 +15,7 @@
     <li *ngFor="let user of searchUsers" class="list-movie">
       {{user.idUser}}
       {{user.nickname}}
-      <button (click)="emitUserDeleted(user)">ban</button>
+      <button (click)="emitUserDeleted(user)">Bannir</button>
     </li>
   </div>
 

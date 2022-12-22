@@ -1,6 +1,6 @@
 
 <h2>
-  Notification
+  Notifications :
 </h2>
 <div *ngIf="favories" class="main">
   <div>
@@ -9,7 +9,7 @@
         <span *ngFor="let favorie of favories">
           <span *ngIf="actu.idMovieRef == favorie.idMovieRef && !DeleteNot.includes(actu.idActu)">
             <p>
-              <span *ngIf="seeNot.includes(actu.idActu) == false">New*</span>
+              <span *ngIf="seeNot.includes(actu.idActu) == false">Nouveau*</span>
               <span *ngFor="let movie of movies">
                 <span *ngIf=" actu.idMovieRef == movie.idMovie">
                   {{movie.nameMovie}}

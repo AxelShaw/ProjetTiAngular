@@ -22,7 +22,7 @@
   <a class="login" routerLink="loginhub" *ngIf="!testLog()">Connexion</a>
   <a class="login" (click)="deleteCookie()" *ngIf="testLog()">Deconnexion</a>
   <a class="login" routerLink="admin" *ngIf="testAdmin()">Admin</a>
-  <a class="login" routerLink="favorie" *ngIf="testLog()">Mes favories</a>
+  <a class="login" routerLink="favorie" *ngIf="testLog()">Mes favoris</a>
   <a class="login" (click)="nbNot()" routerLink="notification" *ngIf="testLog()"><img src="../../assets/img/not.png" alt="logo site" class="not"> <span>{{nbNot()}}</span> </a>
 
   <ul class="menu">
