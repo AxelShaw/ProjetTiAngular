@@ -7,7 +7,7 @@
         <p>
           Mail :
         </p>
-        <input type="text"  formControlName="mail" placeholder="exemple@mail.com"
+        <input type="email"  formControlName="mail" placeholder="exemple@mail.com"
                size="30" required >
         <p *ngIf="control('mail')?.dirty && control('mail')?.invalid">
           Mail requis*
