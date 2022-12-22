@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {CookieService} from "ngx-cookie-service";
+import jwtDecode from "jwt-decode";
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _cook: CookieService) { }
 
   ngOnInit(): void {
   }
 
+  testLog() {
+    try{
+      // @ts-ignore
+      jwtDecode(this._cook.get('UserInfo'))
+      return true;
+    }catch (error){
+      return false;
+    }
+  }
 }

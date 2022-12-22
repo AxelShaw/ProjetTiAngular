@@ -5,6 +5,7 @@ import {DtoInputMovie} from "../adminhub/dtos/dto-input-movie";
 import {DtoInputFavorie} from "../favorihub/dtos/dto-input-favorie";
 import jwtDecode from "jwt-decode";
 import {CookieService} from "ngx-cookie-service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-notification-hub',
@@ -19,7 +20,7 @@ export class NotificationHubComponent implements OnInit {
   seeNot : number[] = [];
   id: number = 0;
 
-  constructor(private _adminService: AdminService, private _cook : CookieService) { }
+  constructor(private _adminService: AdminService, private _cook : CookieService, private _route : Router) { }
 
   ngOnInit(): void {
     this.getUser();
