@@ -37,3 +37,7 @@ form>div .divname{
   margin-right: 10PX;
   margin-bottom: 5PX;
 }
+.testEmail{
+  text-align: center;
+  color:  red;
+}

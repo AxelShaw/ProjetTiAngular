@@ -1,6 +1,7 @@
 <DIV class="all">
   <div class="registeruserAll">
     <h2>Inscrivez-vous</h2>
+    <p class="testEmail" *ngIf="!testEmail">Adresse Mail deja existant*</p>
     <form [formGroup]="form" (ngSubmit)="emitUserCreated()">
       <div>
         <p>
@@ -49,7 +50,7 @@
       </div>
       <div >
         <P>
-          image de profile(obligatoire):
+          image de profile:
         </P>
 
         <input accept="image/png, image/jpeg" type="file" id="fileInput" (change)="getImage($event)" required >

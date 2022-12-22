@@ -28,6 +28,7 @@ export class RegisterhubComponent implements OnInit {
   imageData : "";
   users: DtoInputUser[] = [];
   test : boolean = false;
+  testEmail : boolean = true;
 
   constructor(private _fb: FormBuilder, private _registerService: RegisterService, private _route:Router) {
     this.form = this._fb.group({
@@ -47,9 +48,13 @@ export class RegisterhubComponent implements OnInit {
 
   emitUserCreated() {
     this.userCreated = this.form.value;
-    this._registerService.createUser(this.userCreated).subscribe(user => this.users.push(user));
-    this.form.reset();
-    this.userCreated = null;
+    console.log(this.userCreated);
+    this._registerService.createUser(this.userCreated).subscribe(user =>{
+      this.users.push(user);
+      this._route.navigate(['../loginhub']);
+      this.testEmail = true;
+    });
+    this.testEmail = false;
   }
 
   control(nameUser: string): AbstractControl | null {
