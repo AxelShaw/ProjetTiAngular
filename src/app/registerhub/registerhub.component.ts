@@ -37,7 +37,7 @@ export class RegisterhubComponent implements OnInit {
       nickname: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required]),
       role: 'user',
-      profil_picture: new FormControl()
+      profil_picture: 'null'
     });
 
   }
@@ -46,12 +46,11 @@ export class RegisterhubComponent implements OnInit {
   }
 
   emitUserCreated() {
-
-    this.form.controls['profil_picture'].setValue(this.imageData);
     this.userCreated = this.form.value;
     this._registerService.createUser(this.userCreated).subscribe(user => this.users.push(user));
     this.form.reset();
     this.userCreated = null;
+    this._route.navigate(['../loginhub']);
   }
 
   control(nameUser: string): AbstractControl | null {
