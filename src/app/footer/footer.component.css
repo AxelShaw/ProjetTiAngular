@@ -13,7 +13,7 @@
 }
 .menufooter>ul>li{
   list-style-type: none;
-  /*padding: 10px;*/
+  padding: 10px;
 
 }
 .menufooter>ul>li>a{
