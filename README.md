@@ -1,4 +1,4 @@
-RENAUT Mickaël - > NextAndCie \n
-MAADID Maxence - > MaadidMaxence \n
-DORCHY Lucas - > Clymentoo \n
+RENAUT Mickaël - > NextAndCie 
+MAADID Maxence - > MaadidMaxence 
+DORCHY Lucas - > Clymentoo 
 SHAW Axel - > AxelShaw
